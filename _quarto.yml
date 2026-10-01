@@ -28,8 +28,6 @@ website:
         text: Accueil
       - href: cours.qmd
         text: Chapitres
-      - href: laboratoires.qmd
-        text: Laboratoires
       - href: calendrier.qmd
         text: Calendrier
       - href: ressources.qmd
