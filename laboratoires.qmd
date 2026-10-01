@@ -1,0 +1,42 @@
+---
+title: "Laboratoires"
+---
+
+Le matériel ci-dessous a été créé ou mis à jour en septembre 2026. Les laboratoires portent sur la régression linéaire simple à partir de déplacements BIXI.
+
+## Fichiers à télécharger
+
+| Fichier | Utilisation |
+|:--|:--|
+| [Données BIXI pour R](fichiers/Bixi.rda) | Échantillon utilisé dans les scripts des laboratoires |
+| [Laboratoire 1 — script R](fichiers/Bixi-Laboratoire-1.R) | Ajustement du modèle, coefficients, valeurs ajustées et résidus |
+| [Laboratoire 2 — script R](fichiers/Bixi-Laboratoire-2.R) | Inférence sur les coefficients et intervalles de prévision |
+| [Distance et durée — fichier CSV](fichiers/bixi.csv) | Les deux variables de l’analyse, dans un format facile à importer |
+
+## Préparer votre dossier
+
+1. Téléchargez `Bixi.rda` et le script du laboratoire dans un même dossier.
+2. Dans RStudio, créez ou ouvrez un projet dans ce dossier.
+3. Ouvrez le script et exécutez les commandes progressivement.
+
+La première commande du script charge les données :
+
+```r
+load("Bixi.rda")
+head(Bixi)
+```
+
+## Les données
+
+L’échantillon contient 500 déplacements tirés des données ouvertes BIXI de 2025 et préparés pour le cours en septembre 2026.
+
+| Variable | Description |
+|:--|:--|
+| `distance_km` | Distance à vol d’oiseau entre les stations, en kilomètres |
+| `Duree_min` | Durée du déplacement, en minutes |
+
+Le fichier CSV reprend uniquement ces deux variables. Le fichier R contient l’échantillon original utilisé dans les scripts.
+
+## Pour vous accompagner
+
+Consultez les [fiches R](ressources.qmd#fiches-r) et les [notes des chapitres 2 et 3](cours.qmd). Les consignes et les semaines de laboratoire sont indiquées sur monPortail et dans le [calendrier](calendrier.qmd).

@@ -1,0 +1,44 @@
+---
+title: "Ressources"
+---
+
+## Outils de travail
+
+- [R](https://cran.r-project.org/) : le logiciel utilisé pour les analyses statistiques.
+- [RStudio Desktop](https://posit.co/download/rstudio-desktop/) : un environnement pour travailler avec R.
+- [Documentation de R](https://cran.r-project.org/manuals.html) : les manuels de référence.
+- [monPortail](https://monportail.ulaval.ca/) : le plan de cours, les annonces et les consignes de remise.
+
+## Aide dans R
+
+Pour consulter l’aide d’une fonction, ajoutez `?` devant son nom :
+
+```r
+?lm
+?summary.lm
+?confint
+?predict.lm
+```
+
+## Repères pour une analyse
+
+1. Définir la variable réponse et les variables explicatives.
+2. Explorer les données à l’aide de graphiques et de statistiques descriptives.
+3. Ajuster un modèle et interpréter les coefficients dans leur contexte.
+4. Vérifier les postulats et examiner les observations influentes.
+5. Présenter les conclusions, les incertitudes et les limites de l’analyse.
+
+## Fiches R
+
+- [Rappels de R de base — script](fichiers/rappel-r-base.R)
+- [Chapitre 2 : régression linéaire simple](documents/chapitre-02-fiche-r.pdf)
+- [Chapitre 3 : inférence](documents/chapitre-03-fiche-r.pdf)
+- [Chapitre 5 : régression linéaire multiple](documents/chapitre-05-fiche-r.pdf)
+
+Ces documents ont été mis à jour en 2026.
+
+## Crédits
+
+Les notes de cours sont issues d’un document collaboratif de Christian Genest, Anne-Catherine Favre, Thierry Duchesne, Véronique Tremblay, Anne-Sophie Charest et Emmanuelle Reny-Nolin, avec les mises à jour utilisées dans le cours.
+
+Le jeu de données des laboratoires est un extrait des [données ouvertes de BIXI](https://bixi.com/fr/donnees-ouvertes/).

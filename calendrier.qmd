@@ -1,0 +1,40 @@
+---
+title: "Calendrier"
+subtitle: "Automne 2026"
+---
+
+La progression ci-dessous reprend le calendrier étudiant de la session. Les dates et les consignes confirmées sur monPortail font référence en cas de modification.
+
+[Télécharger le calendrier PDF](documents/calendrier-a2026.pdf){.btn .btn-outline-primary}
+
+## Progression de la session
+
+| Semaine | Dates | Matière et activités |
+|:--:|:--|:--|
+| 1 | 31 août au 4 septembre | Plan de cours, chapitres 1 et 2 |
+| 2 | 7 au 11 septembre | Chapitre 2 |
+| 3 | 14 au 18 septembre | Chapitre 3 · Laboratoire 1 |
+| 4 | 21 au 25 septembre | Chapitres 3 et 4 |
+| 5 | 28 septembre au 2 octobre | Chapitre 5 · Laboratoire 2 · Remise du devoir 1 |
+| 6 | 5 au 9 octobre | Fin des chapitres 1 à 5 · Examen 1 |
+| 7 | 12 au 16 octobre | Chapitre 6 |
+| 8 | 19 au 23 octobre | Chapitres 6 et 7 · Laboratoire 3 |
+| 9 | 26 au 30 octobre | Semaine de lecture |
+| 10 | 2 au 6 novembre | Chapitres 7 et 8 |
+| 11 | 9 au 13 novembre | Chapitre 8 · Laboratoire 4 |
+| 12 | 16 au 20 novembre | Chapitres 8 et 9 |
+| 13 | 23 au 27 novembre | Chapitres 9 et 10 |
+| 14 | 30 novembre au 4 décembre | Chapitres 10 et 11, fin de la matière · Laboratoire 5 |
+| 15 | 7 au 11 décembre | Fête de l’Université et fin des chapitres 5 à 11 |
+| 16 | 14 au 18 décembre | Examen 2 |
+
+## Évaluations
+
+| Activité | Date indiquée au calendrier |
+|:--|:--|
+| Remise du devoir 1 | Jeudi 1er octobre 2026 |
+| Examen 1 | Jeudi 8 octobre 2026 |
+| Remise du devoir 2 | Dimanche 6 décembre 2026 |
+| Examen 2 | Semaine du 14 au 18 décembre 2026 |
+
+Consultez le plan de cours pour les pondérations, les heures, les locaux et les modalités de remise.

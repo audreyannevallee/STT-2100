@@ -1,0 +1,59 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - cours.qmd
+    - laboratoires.qmd
+    - calendrier.qmd
+    - ressources.qmd
+  resources:
+    - documents/**
+    - fichiers/**
+    - favicon.svg
+
+lang: fr
+
+website:
+  title: "STT-2100"
+  description: "Régression — notes de cours, exercices et laboratoires. Université Laval, automne 2026."
+  site-url: https://audreyannevallee.github.io/STT-2100/
+  repo-url: https://github.com/audreyannevallee/STT-2100
+  favicon: favicon.svg
+  navbar:
+    background: "#8e2338"
+    foreground: "#ffffff"
+    left:
+      - href: index.qmd
+        text: Accueil
+      - href: cours.qmd
+        text: Chapitres
+      - href: laboratoires.qmd
+        text: Laboratoires
+      - href: calendrier.qmd
+        text: Calendrier
+      - href: ressources.qmd
+        text: Ressources
+    right:
+      - icon: github
+        href: https://github.com/audreyannevallee/STT-2100
+        aria-label: Dépôt GitHub du cours
+  search:
+    location: navbar
+    type: overlay
+  page-footer:
+    left: "STT-2100 · Régression · Université Laval"
+    right: "Automne 2026"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-title: "Sur cette page"
+    link-external-newwindow: true
+    code-copy: true
+    smooth-scroll: true
+
+execute:
+  eval: false

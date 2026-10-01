@@ -1,0 +1,41 @@
+---
+title: "STT-2100 — Régression"
+subtitle: "Université Laval · Automne 2026"
+toc: false
+---
+
+Ce cours présente la régression linéaire simple et multiple : ajuster un modèle, faire de l’inférence, prévoir et vérifier la qualité d’une analyse.
+
+## Le matériel du cours
+
+::: {.course-links}
+::: {.course-link}
+### [Chapitres](cours.qmd)
+
+Les notes, diapositives et exercices des chapitres 1 à 5, actualisés en 2026.
+:::
+::: {.course-link}
+### [Laboratoires](laboratoires.qmd)
+
+Mettre la théorie en pratique avec R et les données de déplacements BIXI.
+:::
+::: {.course-link}
+### [Calendrier](calendrier.qmd)
+
+La progression de la session, les laboratoires et les évaluations.
+:::
+:::
+
+## Pour commencer
+
+1. Consultez les [notes du chapitre 1](documents/chapitre-01-notes.pdf).
+2. Préparez votre environnement R à l’aide des [ressources](ressources.qmd).
+3. Repérez les activités à venir dans le [calendrier de la session](calendrier.qmd).
+
+::: {.callout-note title="Informations officielles"}
+Consultez le plan de cours et les annonces sur [monPortail](https://monportail.ulaval.ca/) pour les modalités d’évaluation, les consignes de remise et les changements d’horaire.
+:::
+
+## Contact
+
+Audrey-Anne Vallée · [audrey-anne.vallee@mat.ulaval.ca](mailto:audrey-anne.vallee@mat.ulaval.ca)

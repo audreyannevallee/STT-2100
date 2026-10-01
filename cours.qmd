@@ -1,0 +1,21 @@
+---
+title: "Chapitres"
+toc: false
+---
+
+Retrouvez ici les notes, les diapositives et les exercices **créés ou mis à jour en 2026**.
+
+| Chapitre | Sujet | Notes PDF | Diapositives PDF | Exercices PDF |
+|:--:|:--|:--:|:--:|:--:|
+| 1 | Introduction | [Notes](documents/chapitre-01-notes.pdf) | [Diapositives](documents/chapitre-01-diapos.pdf) | [Exercices](documents/chapitre-01-exercices.pdf) |
+| 2 | Régression linéaire simple : ajustement | [Notes](documents/chapitre-02-notes.pdf) | [Diapositives](documents/chapitre-02-diapos.pdf) | [Exercices](documents/chapitre-02-exercices.pdf) |
+| 3 | Régression linéaire simple : inférence | [Notes](documents/chapitre-03-notes.pdf) | [Diapositives](documents/chapitre-03-diapos.pdf) | [Exercices](documents/chapitre-03-exercices.pdf) |
+| 4 | Notions pour la statistique multivariée | [Notes](documents/chapitre-04-notes.pdf) | [Diapositives](documents/chapitre-04-diapos.pdf) | [Exercices](documents/chapitre-04-exercices.pdf) |
+| 5 | Régression linéaire multiple : ajustement | [Notes](documents/chapitre-05-notes.pdf) | [Diapositives](documents/chapitre-05-diapos.pdf) | [Exercices](documents/chapitre-05-exercices.pdf) |
+
+## Compléments
+
+- [Estimation par maximum de vraisemblance](documents/emv-2026.pdf)
+- [Lire la sortie de `summary()` dans R](documents/summary-2026.pdf)
+
+Pour appliquer les notions avec R, consultez les [laboratoires](laboratoires.qmd) et les [fiches R](ressources.qmd#fiches-r).
