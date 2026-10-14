@@ -1,0 +1,149 @@
+[
+  {
+    "objectID": "ressources.html",
+    "href": "ressources.html",
+    "title": "Ressources",
+    "section": "",
+    "text": "R : le logiciel utilisé pour les analyses statistiques.\nRStudio Desktop : un environnement pour travailler avec R.\nDocumentation de R : les manuels de référence.\nmonPortail : le plan de cours, les annonces et les consignes de remise."
+  },
+  {
+    "objectID": "ressources.html#outils-de-travail",
+    "href": "ressources.html#outils-de-travail",
+    "title": "Ressources",
+    "section": "",
+    "text": "R : le logiciel utilisé pour les analyses statistiques.\nRStudio Desktop : un environnement pour travailler avec R.\nDocumentation de R : les manuels de référence.\nmonPortail : le plan de cours, les annonces et les consignes de remise."
+  },
+  {
+    "objectID": "ressources.html#aide-dans-r",
+    "href": "ressources.html#aide-dans-r",
+    "title": "Ressources",
+    "section": "Aide dans R",
+    "text": "Aide dans R\nPour consulter l’aide d’une fonction, ajoutez ? devant son nom :\n?lm\n?summary.lm\n?confint\n?predict.lm"
+  },
+  {
+    "objectID": "ressources.html#repères-pour-une-analyse",
+    "href": "ressources.html#repères-pour-une-analyse",
+    "title": "Ressources",
+    "section": "Repères pour une analyse",
+    "text": "Repères pour une analyse\n\nDéfinir la variable réponse et les variables explicatives.\nExplorer les données à l’aide de graphiques et de statistiques descriptives.\nAjuster un modèle et interpréter les coefficients dans leur contexte.\nVérifier les postulats et examiner les observations influentes.\nPrésenter les conclusions, les incertitudes et les limites de l’analyse."
+  },
+  {
+    "objectID": "ressources.html#fiches-r",
+    "href": "ressources.html#fiches-r",
+    "title": "Ressources",
+    "section": "Fiches R",
+    "text": "Fiches R\n\nRappels de R de base — script\nChapitre 2 : régression linéaire simple\nChapitre 3 : inférence\nChapitre 5 : régression linéaire multiple\nChapitre 6 : inférence pour la RLM\nChapitre 7 : variables catégoriques et interactions\nChapitre 8 : choix et validation de modèle\nChapitre 9 : multicolinéarité\nChapitre 10 : observations influentes\nChapitre 11 : techniques avancées\n\nLes PDF et les scripts correspondants sont regroupés dans Chapitres."
+  },
+  {
+    "objectID": "ressources.html#crédits",
+    "href": "ressources.html#crédits",
+    "title": "Ressources",
+    "section": "Crédits",
+    "text": "Crédits\nLes notes de cours sont issues d’un document collaboratif de Christian Genest, Anne-Catherine Favre, Thierry Duchesne, Véronique Tremblay, Anne-Sophie Charest et Emmanuelle Reny-Nolin, avec les mises à jour utilisées dans le cours.\nLe jeu de données des laboratoires est un extrait des données ouvertes de BIXI."
+  },
+  {
+    "objectID": "laboratoires.html",
+    "href": "laboratoires.html",
+    "title": "Laboratoires",
+    "section": "",
+    "text": "Le matériel ci-dessous a été créé ou mis à jour en septembre 2026. Les laboratoires portent sur la régression linéaire simple à partir de déplacements BIXI."
+  },
+  {
+    "objectID": "laboratoires.html#fichiers-à-télécharger",
+    "href": "laboratoires.html#fichiers-à-télécharger",
+    "title": "Laboratoires",
+    "section": "Fichiers à télécharger",
+    "text": "Fichiers à télécharger\n\n\n\nFichier\nUtilisation\n\n\n\n\nDonnées BIXI pour R\nÉchantillon utilisé dans les scripts des laboratoires\n\n\nLaboratoire 1 — script R\nAjustement du modèle, coefficients, valeurs ajustées et résidus\n\n\nLaboratoire 2 — script R\nInférence sur les coefficients et intervalles de prévision\n\n\nDistance et durée — fichier CSV\nLes deux variables de l’analyse, dans un format facile à importer"
+  },
+  {
+    "objectID": "laboratoires.html#préparer-votre-dossier",
+    "href": "laboratoires.html#préparer-votre-dossier",
+    "title": "Laboratoires",
+    "section": "Préparer votre dossier",
+    "text": "Préparer votre dossier\n\nTéléchargez Bixi.rda et le script du laboratoire dans un même dossier.\nDans RStudio, créez ou ouvrez un projet dans ce dossier.\nOuvrez le script et exécutez les commandes progressivement.\n\nLa première commande du script charge les données :\nload(\"Bixi.rda\")\nhead(Bixi)"
+  },
+  {
+    "objectID": "laboratoires.html#les-données",
+    "href": "laboratoires.html#les-données",
+    "title": "Laboratoires",
+    "section": "Les données",
+    "text": "Les données\nL’échantillon contient 500 déplacements tirés des données ouvertes BIXI de 2025 et préparés pour le cours en septembre 2026.\n\n\n\n\n\n\n\nVariable\nDescription\n\n\n\n\ndistance_km\nDistance à vol d’oiseau entre les stations, en kilomètres\n\n\nDuree_min\nDurée du déplacement, en minutes\n\n\n\nLe fichier CSV reprend uniquement ces deux variables. Le fichier R contient l’échantillon original utilisé dans les scripts."
+  },
+  {
+    "objectID": "laboratoires.html#pour-vous-accompagner",
+    "href": "laboratoires.html#pour-vous-accompagner",
+    "title": "Laboratoires",
+    "section": "Pour vous accompagner",
+    "text": "Pour vous accompagner\nConsultez les fiches R et les notes des chapitres 2 et 3. Les consignes et les semaines de laboratoire sont indiquées sur monPortail et dans le calendrier."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "STT-2100 — Régression",
+    "section": "",
+    "text": "Ce cours présente la régression linéaire simple et multiple : ajuster un modèle, faire de l’inférence, prévoir et vérifier la qualité d’une analyse."
+  },
+  {
+    "objectID": "index.html#le-matériel-du-cours",
+    "href": "index.html#le-matériel-du-cours",
+    "title": "STT-2100 — Régression",
+    "section": "Le matériel du cours",
+    "text": "Le matériel du cours\n\n\nChapitres\nLes notes, diapositives et exercices des chapitres 1 à 5, actualisés en 2026.\n\n\nLaboratoires\nMettre la théorie en pratique avec R et les données de déplacements BIXI.\n\n\nCalendrier\nLa progression de la session, les laboratoires et les évaluations."
+  },
+  {
+    "objectID": "index.html#pour-commencer",
+    "href": "index.html#pour-commencer",
+    "title": "STT-2100 — Régression",
+    "section": "Pour commencer",
+    "text": "Pour commencer\n\nConsultez les notes du chapitre 1.\nPréparez votre environnement R à l’aide des ressources.\nRepérez les activités à venir dans le calendrier de la session.\n\n\n\n\n\n\n\nNoteInformations officielles\n\n\n\nConsultez le plan de cours et les annonces sur monPortail pour les modalités d’évaluation, les consignes de remise et les changements d’horaire."
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "STT-2100 — Régression",
+    "section": "Contact",
+    "text": "Contact\nAudrey-Anne Vallée · audrey-anne.vallee@mat.ulaval.ca"
+  },
+  {
+    "objectID": "cours.html",
+    "href": "cours.html",
+    "title": "Chapitres",
+    "section": "",
+    "text": "Les notes de cours, les fiches d’exercices et les fiches R sont regroupées par chapitre. Les documents sont révisés pour l’automne 2026 à partir du matériel du cours."
+  },
+  {
+    "objectID": "cours.html#notes-complètes",
+    "href": "cours.html#notes-complètes",
+    "title": "Chapitres",
+    "section": "Notes complètes",
+    "text": "Notes complètes\n\nNotes de cours complètes — chapitres 1 à 11, avec la bibliographie et les références entre chapitres.\n\nLes exercices sont fournis en version étudiante. Les scripts des chapitres 6 à 11 reprennent les exemples des fiches R."
+  },
+  {
+    "objectID": "cours.html#compléments",
+    "href": "cours.html#compléments",
+    "title": "Chapitres",
+    "section": "Compléments",
+    "text": "Compléments\n\nEstimation par maximum de vraisemblance\nLire la sortie de summary() dans R\n\nPour appliquer les notions avec R, consultez aussi les laboratoires et les ressources."
+  },
+  {
+    "objectID": "calendrier.html",
+    "href": "calendrier.html",
+    "title": "Calendrier",
+    "section": "",
+    "text": "La progression ci-dessous reprend le calendrier étudiant de la session. Les dates et les consignes confirmées sur monPortail font référence en cas de modification.\nTélécharger le calendrier PDF"
+  },
+  {
+    "objectID": "calendrier.html#progression-de-la-session",
+    "href": "calendrier.html#progression-de-la-session",
+    "title": "Calendrier",
+    "section": "Progression de la session",
+    "text": "Progression de la session\n\n\n\n\n\n\n\n\nSemaine\nDates\nMatière et activités\n\n\n\n\n1\n31 août au 4 septembre\nPlan de cours, chapitres 1 et 2\n\n\n2\n7 au 11 septembre\nChapitre 2\n\n\n3\n14 au 18 septembre\nChapitre 3 · Laboratoire 1\n\n\n4\n21 au 25 septembre\nChapitres 3 et 4\n\n\n5\n28 septembre au 2 octobre\nChapitre 5 · Laboratoire 2 · Remise du devoir 1\n\n\n6\n5 au 9 octobre\nFin des chapitres 1 à 5 · Examen 1\n\n\n7\n12 au 16 octobre\nChapitre 6\n\n\n8\n19 au 23 octobre\nChapitres 6 et 7 · Laboratoire 3\n\n\n9\n26 au 30 octobre\nSemaine de lecture\n\n\n10\n2 au 6 novembre\nChapitres 7 et 8\n\n\n11\n9 au 13 novembre\nChapitre 8 · Laboratoire 4\n\n\n12\n16 au 20 novembre\nChapitres 8 et 9\n\n\n13\n23 au 27 novembre\nChapitres 9 et 10\n\n\n14\n30 novembre au 4 décembre\nChapitres 10 et 11, fin de la matière · Laboratoire 5\n\n\n15\n7 au 11 décembre\nFête de l’Université et fin des chapitres 5 à 11\n\n\n16\n14 au 18 décembre\nExamen 2"
+  },
+  {
+    "objectID": "calendrier.html#évaluations",
+    "href": "calendrier.html#évaluations",
+    "title": "Calendrier",
+    "section": "Évaluations",
+    "text": "Évaluations\n\n\n\nActivité\nDate indiquée au calendrier\n\n\n\n\nRemise du devoir 1\nJeudi 1er octobre 2026\n\n\nExamen 1\nJeudi 8 octobre 2026\n\n\nRemise du devoir 2\nDimanche 6 décembre 2026\n\n\nExamen 2\nSemaine du 14 au 18 décembre 2026\n\n\n\nConsultez le plan de cours pour les pondérations, les heures, les locaux et les modalités de remise."
+  }
+]
