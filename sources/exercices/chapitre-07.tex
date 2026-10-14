@@ -1,0 +1,51 @@
+\documentclass[letterpaper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[french]{babel}
+\usepackage[margin=1in,headheight=28pt]{geometry}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{amsmath,amssymb,amsthm,bm,enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[small,compact]{titlesec}
+\usepackage{fancyhdr,fancyvrb}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\pagestyle{fancy}
+\fancyhead[L]{STT-2100 \\ Régression}
+\fancyhead[R]{A.-A. Vallée \\ Université Laval}
+\fancyfoot[C]{\thepage}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\fvset{fontsize=\small,frame=single,framesep=2mm}
+\newcommand{\esp}{\mathbb{E}}
+\newcommand{\var}{\operatorname{Var}}
+\newcommand{\bo}[1]{\bm{#1}}
+\newcommand{\N}{\mathcal{N}}
+% Définir \avecsolutions avant l'input pour une version corrigée.
+\newcommand{\prof}[1]{\ifdefined\avecsolutions\par{\color{blue}\textbf{Solution :} #1}\par\fi}
+\begin{document}
+\begin{center}{\Large Exercices - Chapitre 7}\end{center}
+\begin{enumerate}[leftmargin=*,wide,label=\bfseries Exercice \arabic*:]
+\item Pour le prix moyen d'une maison (en milliers de dollars), on ajuste
+$\hat Y=80+0{,}25x+30d$, où $x$ est la superficie en m$^2$ et $d=1$ pour le quartier B, $d=0$ pour le quartier A. Écrivez les deux droites. Interprétez $30$ et la pente. Calculez les prix prédits à $x=100$.
+\prof{A : $80+0{,}25x$; B : $110+0{,}25x$. À superficie identique, B a un prix moyen prédit supérieur de 30 milliers de dollars; la pente commune est de 250 dollars par m$^2$. À 100 m$^2$ : 105 et 135 milliers de dollars.}
+\item Une variable \og lot\fg{} possède quatre catégories A, B, C et D. Construisez un codage avec D comme référence. Pourquoi inclure les quatre indicatrices et une constante crée-t-il une dépendance exacte? Écrivez l'hypothèse qui teste l'utilité globale du lot en présence d'une concentration quantitative $x$.
+\prof{Utilisez $d_A,d_B,d_C$, avec $(0,0,0)$ pour D. La somme des quatre indicatrices vaut la colonne de 1. Dans $Y=\beta_0+\beta_A d_A+\beta_B d_B+\beta_C d_C+\beta_x x+\varepsilon$, testez $H_0:\beta_A=\beta_B=\beta_C=0$ par un test $F$ à trois contraintes.}
+\item On ajoute une interaction au premier modèle :
+\[
+\hat Y=80+0{,}25x+30d-0{,}10xd.
+\]
+\begin{enumerate}[label=\alph*)]
+\item Écrivez les deux droites et interprétez le coefficient d'interaction.
+\item Calculez la différence B moins A à $x=100$ et $x=200$.
+\item Centrez $x$ en 100. Quelle est alors l'interprétation du coefficient de $d$?
+\end{enumerate}
+\prof{A : $80+0{,}25x$; B : $110+0{,}15x$. La pente de B est inférieure de $0{,}10$ millier de dollars par m$^2$. La différence $30-0{,}10x$ vaut 20 puis 10. Pour $z=x-100$, le modèle devient $105+0{,}25z+20d-0{,}10zd$; le coefficient de $d$ est la différence à 100 m$^2$.}
+\item Pour $n=60$, un modèle sans interaction contient cinq coefficients et a $SC_{res}=500$. Le modèle avec les trois interactions lot--concentration contient huit coefficients et a $SC_{res}=350$. Calculez le test de parallélisme des droites. Utilisez $F_{3,52;0{,}95}=2{,}783$. Quels termes conserver si une interaction est retenue?
+\prof{$F=((500-350)/3)/(350/52)=7{,}429$. On rejette le parallélisme. On conserve les effets principaux du lot et de la concentration pour respecter la hiérarchie.}
+\item Dans $\esp(Y\mid x_1,x_2)=\beta_0+\beta_1x_1+\beta_2x_2+\beta_{12}x_1x_2$, exprimez l'effet d'une augmentation de $x_1$ d'une unité à $x_2$ fixé. Que teste $H_0:\beta_1=0$? Ce test suffit-il à dire que $x_1$ n'a aucun effet?
+\prof{L'effet est $\beta_1+\beta_{12}x_2$. Le test sur $\beta_1$ concerne l'effet à $x_2=0$. L'absence d'effet de $x_1$ à tous les profils exige $\beta_1=\beta_{12}=0$.}
+\item Avec \texttt{iris}, ajustez la longueur des sépales selon la longueur des pétales, l'espèce et leur interaction. Comparez au modèle additif. Identifiez le groupe de référence dans \texttt{model.matrix()} et prédisez dans chaque espèce à une longueur de pétale observée pour cette espèce. Expliquez pourquoi un profil commun peut constituer une extrapolation.
+\prof{Comparez \texttt{Sepal.Length \string~ Petal.Length + Species} à \texttt{Sepal.Length \string~ Petal.Length * Species}. Avec les contrastes par défaut et les niveaux usuels, setosa est la référence. Les domaines de longueur des pétales diffèrent entre espèces; utilisez des profils dans le domaine de chaque groupe.}
+\end{enumerate}
+\end{document}

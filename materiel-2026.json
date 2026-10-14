@@ -1,17 +1,11 @@
 {
-  "critere": "Fichiers sources dont la date de modification locale appartient à 2026. Les noms de certains fichiers conservent une ancienne année; la date de mise à jour est le critère utilisé.",
+  "critere": "Matériel pédagogique révisé pour l'automne 2026 : sources révisées d'Archives pour les chapitres 1 à 6; adaptation des archives et nouveaux exercices et fiches R pour les chapitres 6 à 11. Les diapositives et compléments déjà publiés sont conservés.",
   "documents": [
     {
-      "fichier": "documents/chapitre-01-notes.pdf",
-      "source": "2-Chapitres/Chapitre 1/1-Notes de cours/Chapitre 1.pdf",
-      "modification_source": "2026-08-28T14:24:01",
-      "sha256": "dfc908ca956f45254f62eccc6c91e44361d2d322b8cd90c9b8571cafe1c12998"
-    },
-    {
-      "fichier": "documents/chapitre-01-exercices.pdf",
-      "source": "2-Chapitres/Chapitre 1/3-Exercices/Exercices Chap1.pdf",
-      "modification_source": "2026-08-28T13:59:33",
-      "sha256": "64414a3b154f8b387839110ec78e5cc51ec6a0d246bb99c2a8c72187f26b5139"
+      "fichier": "documents/calendrier-a2026.pdf",
+      "source": "A2026/Calendrier-A26.pdf",
+      "modification_source": "2026-08-26T11:18:12",
+      "sha256": "df15baa2eab2817829ade3278e86551cb7e44ecbb478f2004c0daceda1e42dd2"
     },
     {
       "fichier": "documents/chapitre-01-diapos.pdf",
@@ -20,16 +14,31 @@
       "sha256": "78bf93dcdaa27f68f243a3c0b881029784b166254b8b66530c879458c38554f7"
     },
     {
-      "fichier": "documents/chapitre-02-notes.pdf",
-      "source": "2-Chapitres/Chapitre 2/1-Notes de cours/Chapitre 2.pdf",
-      "modification_source": "2026-08-28T14:26:24",
-      "sha256": "07892a04d012f4687a42b1f28f7be0fe1aa9428223fb33f6ec053f45b71f5a6c"
+      "fichier": "documents/chapitre-01-exercices.pdf",
+      "source": "sources/exercices/chapitre-01.tex",
+      "sha256": "33353dbeb0036064640c2a6d166a54fd97b0a0a0ed4510dd7fdd770047b43eb1",
+      "source_publication_initiale": "2-Chapitres/Chapitre 1/3-Exercices/Exercices Chap1.pdf",
+      "sources_compilation": [
+        "sources/exercices/chapitre-01.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Exercices/1- Chapitre 1.tex"
+      ],
+      "generation": "2026-10-14"
     },
     {
-      "fichier": "documents/chapitre-02-exercices.pdf",
-      "source": "2-Chapitres/Chapitre 2/3-Excercices/Exercices Chap2.pdf",
-      "modification_source": "2026-08-28T14:38:59",
-      "sha256": "5f07d43bf628b2ee3f4a08935bdf8dc576c2e2cea0cf809ce221f9fa69607fdd"
+      "fichier": "documents/chapitre-01-notes.pdf",
+      "source": "sources/notes/3-1-Introduction.tex",
+      "sha256": "383ce3a12c69dd7d96dec69619f62549e168b32f51525e8d33b6846924cf9b94",
+      "source_publication_initiale": "2-Chapitres/Chapitre 1/1-Notes de cours/Chapitre 1.pdf",
+      "sources_compilation": [
+        "sources/notes/3-1-Introduction.tex",
+        "sources/notes/notes.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Notes de cours/3-1-Introduction.tex"
+      ],
+      "generation": "2026-10-14"
     },
     {
       "fichier": "documents/chapitre-02-diapos.pdf",
@@ -38,16 +47,44 @@
       "sha256": "aed86b87b146a8de9250cc33bf63fb9cf9e4f268b656b8ea58876f32aa8e5c5d"
     },
     {
-      "fichier": "documents/chapitre-03-notes.pdf",
-      "source": "2-Chapitres/Chapitre 3/1-Notes de cours/Chapitre 3.pdf",
-      "modification_source": "2026-09-17T09:31:47",
-      "sha256": "12b14be721e713f3b269b57a04152a4bcfdcf96cf348e66520b76b088f650805"
+      "fichier": "documents/chapitre-02-exercices.pdf",
+      "source": "sources/exercices/chapitre-02.tex",
+      "sha256": "186ab9d1d9f1448fef3dea7a07b92dcd67b068e67b9a253538ed6dbd7dc9a77d",
+      "source_publication_initiale": "2-Chapitres/Chapitre 2/3-Excercices/Exercices Chap2.pdf",
+      "sources_compilation": [
+        "sources/exercices/chapitre-02.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Exercices/2- Chapitre 2.tex"
+      ],
+      "generation": "2026-10-14"
     },
     {
-      "fichier": "documents/chapitre-03-exercices.pdf",
-      "source": "2-Chapitres/Chapitre 3/3-Excercices/Chapitre 3 - Exercices.pdf",
-      "modification_source": "2026-09-08T14:52:55",
-      "sha256": "5c2dea9bd2459e93b037bac080a2e74098a375ec9888f5a73493ea29ba082344"
+      "fichier": "documents/chapitre-02-fiche-r.pdf",
+      "source": "sources/fiches-r/chapitre-02.tex",
+      "sha256": "ce6081e183d813bf3517e4dc8bcd62735626e01c3e954509ba040126286a6455",
+      "source_publication_initiale": "2-Chapitres/Chapitre 2/4-R et SAS/Chapitre 2 - Fiche R.pdf",
+      "sources_compilation": [
+        "sources/fiches-r/chapitre-02.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Fiches R/1- Chapitre 2 - Fiche R.tex"
+      ],
+      "generation": "2026-10-14"
+    },
+    {
+      "fichier": "documents/chapitre-02-notes.pdf",
+      "source": "sources/notes/3-2-AjusterRLS.tex",
+      "sha256": "392bd5eb5a71d80348556ca069c9174997d212bbbb752a795f0153918c88f1e5",
+      "source_publication_initiale": "2-Chapitres/Chapitre 2/1-Notes de cours/Chapitre 2.pdf",
+      "sources_compilation": [
+        "sources/notes/3-2-AjusterRLS.tex",
+        "sources/notes/notes.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Notes de cours/3-2-AjusterRLS.tex"
+      ],
+      "generation": "2026-10-14"
     },
     {
       "fichier": "documents/chapitre-03-diapos.pdf",
@@ -56,16 +93,44 @@
       "sha256": "46deea4a330ff8b9df03568ed9d1b543644db306a8aeb0b7b248db0b58fac1e3"
     },
     {
-      "fichier": "documents/chapitre-04-notes.pdf",
-      "source": "2-Chapitres/Chapitre 4 - 2026/1- Notes de cours/Chapitre 4.pdf",
-      "modification_source": "2026-09-24T14:40:52",
-      "sha256": "2eece3ed88fa550882c55cba961a229f7edf1f0f23ca00ade27860760c1b7726"
+      "fichier": "documents/chapitre-03-exercices.pdf",
+      "source": "sources/exercices/chapitre-03.tex",
+      "sha256": "ae00670673ad77d969950ec8aa97d2ccdd6311f9da68af0ce4aef8716dc2f824",
+      "source_publication_initiale": "2-Chapitres/Chapitre 3/3-Excercices/Chapitre 3 - Exercices.pdf",
+      "sources_compilation": [
+        "sources/exercices/chapitre-03.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Exercices/3- Chapitre 3.tex"
+      ],
+      "generation": "2026-10-14"
     },
     {
-      "fichier": "documents/chapitre-04-exercices.pdf",
-      "source": "2-Chapitres/Chapitre 4 - 2026/3- Exercices/Chapitre 4 - Exercices.pdf",
-      "modification_source": "2026-09-21T20:08:12",
-      "sha256": "c2981dd6207e76f77caef5e0d50cbf80019e9cb29f75c11f4a7889f8d0f04c97"
+      "fichier": "documents/chapitre-03-fiche-r.pdf",
+      "source": "sources/fiches-r/chapitre-03.tex",
+      "sha256": "75b080b3635ef09cf43ff4021a0adfdae4332710f7b2dd240989626a09c66c98",
+      "source_publication_initiale": "2-Chapitres/Chapitre 3/4-R et SAS/Chapitre 3 - Fiche R.pdf",
+      "sources_compilation": [
+        "sources/fiches-r/chapitre-03.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Fiches R/2- Chapitre 3 - Fiche R.tex"
+      ],
+      "generation": "2026-10-14"
+    },
+    {
+      "fichier": "documents/chapitre-03-notes.pdf",
+      "source": "sources/notes/3-3-InferenceRLS.tex",
+      "sha256": "6e7f4337d4912c471e6fa9458eb3034eb542a2b6f036a3575fff1148d64edf00",
+      "source_publication_initiale": "2-Chapitres/Chapitre 3/1-Notes de cours/Chapitre 3.pdf",
+      "sources_compilation": [
+        "sources/notes/3-3-InferenceRLS.tex",
+        "sources/notes/notes.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Notes de cours/3-3-InferenceRLS.tex"
+      ],
+      "generation": "2026-10-14"
     },
     {
       "fichier": "documents/chapitre-04-diapos.pdf",
@@ -74,16 +139,31 @@
       "sha256": "4524a7f65c9dc0d3e4fd3fea747e2fac2b13bb203f35bf9c5bcd82a5d0431715"
     },
     {
-      "fichier": "documents/chapitre-05-notes.pdf",
-      "source": "2-Chapitres/Chapitre 5/1-Notes de cours/Chapitre 5.pdf",
-      "modification_source": "2026-09-23T14:50:48",
-      "sha256": "4d0f756c5e1f83b3c2b07d126a0cea221760685959ba297512b11be5dbb15488"
+      "fichier": "documents/chapitre-04-exercices.pdf",
+      "source": "sources/exercices/chapitre-04.tex",
+      "sha256": "f1d974b0860ed10f8f88e46e0bbf18ca5b95992d5c38802330f075ab21e84aea",
+      "source_publication_initiale": "2-Chapitres/Chapitre 4 - 2026/3- Exercices/Chapitre 4 - Exercices.pdf",
+      "sources_compilation": [
+        "sources/exercices/chapitre-04.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Exercices/4- Chapitre 4.tex"
+      ],
+      "generation": "2026-10-14"
     },
     {
-      "fichier": "documents/chapitre-05-exercices.pdf",
-      "source": "2-Chapitres/Chapitre 5/3-Excercices/Chapitre 5 - Exercices.pdf",
-      "modification_source": "2026-09-25T14:16:08",
-      "sha256": "94f8620c087737021b22ddfdad0bd4032a32c9504973255d0bdd4919f06fa85a"
+      "fichier": "documents/chapitre-04-notes.pdf",
+      "source": "sources/notes/3-4-NotionsMultivarié.tex",
+      "sha256": "d86e4fd913cebcaedc726bf5cc42d18dfcfc61425a0f68a06b6b5df6299087c1",
+      "source_publication_initiale": "2-Chapitres/Chapitre 4 - 2026/1- Notes de cours/Chapitre 4.pdf",
+      "sources_compilation": [
+        "sources/notes/3-4-NotionsMultivarié.tex",
+        "sources/notes/notes.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Notes de cours/3-4-NotionsMultivarié.tex"
+      ],
+      "generation": "2026-10-14"
     },
     {
       "fichier": "documents/chapitre-05-diapos.pdf",
@@ -92,28 +172,272 @@
       "sha256": "a7b5686c10ed6fb54d2053b8116a240419ce8f4e84d070a38a47ae4d56db9c8e"
     },
     {
-      "fichier": "documents/calendrier-a2026.pdf",
-      "source": "A2026/Calendrier-A26.pdf",
-      "modification_source": "2026-08-26T11:18:12",
-      "sha256": "df15baa2eab2817829ade3278e86551cb7e44ecbb478f2004c0daceda1e42dd2"
-    },
-    {
-      "fichier": "documents/chapitre-02-fiche-r.pdf",
-      "source": "2-Chapitres/Chapitre 2/4-R et SAS/Chapitre 2 - Fiche R.pdf",
-      "modification_source": "2026-09-03T09:48:24",
-      "sha256": "939852e0427dc06aa56e6e8f0a04ed13d27bfc1e6acddd977b5d76ade063d179"
-    },
-    {
-      "fichier": "documents/chapitre-03-fiche-r.pdf",
-      "source": "2-Chapitres/Chapitre 3/4-R et SAS/Chapitre 3 - Fiche R.pdf",
-      "modification_source": "2026-09-08T15:07:07",
-      "sha256": "f49f738a13f91c1954e224fbac494fc46673815ed3abadcee87e1b47035733d5"
+      "fichier": "documents/chapitre-05-exercices.pdf",
+      "source": "sources/exercices/chapitre-05.tex",
+      "sha256": "65135aca52a983b32202b07b8d1bf1664e145b4871b2ba7f950edd92d26c974c",
+      "source_publication_initiale": "2-Chapitres/Chapitre 5/3-Excercices/Chapitre 5 - Exercices.pdf",
+      "sources_compilation": [
+        "sources/exercices/chapitre-05.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Exercices/5- Chapitre 5.tex"
+      ],
+      "generation": "2026-10-14"
     },
     {
       "fichier": "documents/chapitre-05-fiche-r.pdf",
-      "source": "2-Chapitres/Chapitre 5/4-R et SAS/Chapitre 5 - Fiche R.pdf",
-      "modification_source": "2026-09-24T14:54:35",
-      "sha256": "939881271840f0724e241dcc7bbbfabe5571c7f4d9eb0719db454b62c9dc5804"
+      "source": "sources/fiches-r/chapitre-05.tex",
+      "sha256": "2266f1d9c2ae179599e8d70f34e51c88e7c7e1eed8321a1dbec1214cec407d87",
+      "source_publication_initiale": "2-Chapitres/Chapitre 5/4-R et SAS/Chapitre 5 - Fiche R.pdf",
+      "sources_compilation": [
+        "sources/fiches-r/chapitre-05.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Fiches R/3- Chapitre 5 - Fiche R.tex"
+      ],
+      "generation": "2026-10-14"
+    },
+    {
+      "fichier": "documents/chapitre-05-notes.pdf",
+      "source": "sources/notes/3-5-AjusterRLM.tex",
+      "sha256": "c2a5789680ad55c5cc74a63890c60aadea3f07b7b7d4906695bcdfb788117fc2",
+      "source_publication_initiale": "2-Chapitres/Chapitre 5/1-Notes de cours/Chapitre 5.pdf",
+      "sources_compilation": [
+        "sources/notes/3-5-AjusterRLM.tex",
+        "sources/notes/notes.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Notes de cours/3-5-AjusterRLM.tex"
+      ],
+      "generation": "2026-10-14"
+    },
+    {
+      "fichier": "documents/chapitre-06-exercices.pdf",
+      "source": "sources/exercices/chapitre-06.tex",
+      "sources_compilation": [
+        "sources/exercices/chapitre-06.tex"
+      ],
+      "provenance": [
+        "sources/notes/3-6-InferenceRLM.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "391cb93f8ba6961a5d8bab99a2e53a6b05c8b493dd128b8d7207ce8f6d16a284"
+    },
+    {
+      "fichier": "documents/chapitre-06-fiche-r.pdf",
+      "source": "sources/fiches-r/chapitre-06.tex",
+      "sources_compilation": [
+        "sources/fiches-r/chapitre-06.tex",
+        "fichiers/chapitre-06.R"
+      ],
+      "provenance": [
+        "sources/notes/3-6-InferenceRLM.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "e93f0deb72966941eafb59fd5b46e4d75ddbf11803614e417cad612b33866dbe"
+    },
+    {
+      "fichier": "documents/chapitre-06-notes.pdf",
+      "source": "sources/notes/3-6-InferenceRLM.tex",
+      "sources_compilation": [
+        "sources/notes/3-6-InferenceRLM.tex",
+        "sources/notes/notes.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Notes de cours/3-6-InferenceRLM.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "63f915a88cf9f0e2782da60437ebe05c682a836a71faf14ddf39e9587df31b73"
+    },
+    {
+      "fichier": "documents/chapitre-07-exercices.pdf",
+      "source": "sources/exercices/chapitre-07.tex",
+      "sources_compilation": [
+        "sources/exercices/chapitre-07.tex"
+      ],
+      "provenance": [
+        "sources/notes/3-7-CategoriquesInteractions.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "3e26018fe2c837489769908d351f20f718b70f79323ed23d3d6db0fc27fa8840"
+    },
+    {
+      "fichier": "documents/chapitre-07-fiche-r.pdf",
+      "source": "sources/fiches-r/chapitre-07.tex",
+      "sources_compilation": [
+        "sources/fiches-r/chapitre-07.tex",
+        "fichiers/chapitre-07.R"
+      ],
+      "provenance": [
+        "sources/notes/3-7-CategoriquesInteractions.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "f88692223ac4495c7628985870ff8cc09987f432317094ab49a355ba144e9b90"
+    },
+    {
+      "fichier": "documents/chapitre-07-notes.pdf",
+      "source": "sources/notes/3-7-CategoriquesInteractions.tex",
+      "sources_compilation": [
+        "sources/notes/3-7-CategoriquesInteractions.tex",
+        "sources/notes/notes.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Notes de cours/Chap7-CategoriquesInteractions/CategoriquesInteractions.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "1fa9465984fb9c44f86ce37731c72745d9980fe9a57978483aa43099566b0454"
+    },
+    {
+      "fichier": "documents/chapitre-08-exercices.pdf",
+      "source": "sources/exercices/chapitre-08.tex",
+      "sources_compilation": [
+        "sources/exercices/chapitre-08.tex"
+      ],
+      "provenance": [
+        "sources/notes/3-8-ChoixModeleRLM.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "5dc61e94cbfb5de589a9b3353149a05bfe9e4ad57c92ad996be5ba8b9583ee5e"
+    },
+    {
+      "fichier": "documents/chapitre-08-fiche-r.pdf",
+      "source": "sources/fiches-r/chapitre-08.tex",
+      "sources_compilation": [
+        "sources/fiches-r/chapitre-08.tex",
+        "fichiers/chapitre-08.R"
+      ],
+      "provenance": [
+        "sources/notes/3-8-ChoixModeleRLM.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "c0f8069da00100b08af503fc560318c8f77d3c3fa0ffee25f7644fc825278505"
+    },
+    {
+      "fichier": "documents/chapitre-08-notes.pdf",
+      "source": "sources/notes/3-8-ChoixModeleRLM.tex",
+      "sources_compilation": [
+        "sources/notes/3-8-ChoixModeleRLM.tex",
+        "sources/notes/notes.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Notes de cours/Chap8-ChoixModeleRLM/ChoixModeleRLM.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "b49a8c5672c0f79ee821bbd42c9fd21edc8ef9631bb8329c697827455f386319"
+    },
+    {
+      "fichier": "documents/chapitre-09-exercices.pdf",
+      "source": "sources/exercices/chapitre-09.tex",
+      "sources_compilation": [
+        "sources/exercices/chapitre-09.tex"
+      ],
+      "provenance": [
+        "sources/notes/3-9-Multicolinearite.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "bec88b304a851bdc2c1ffb0399f21deaae61b786245afed0bbad5f9a4bc1ee6a"
+    },
+    {
+      "fichier": "documents/chapitre-09-fiche-r.pdf",
+      "source": "sources/fiches-r/chapitre-09.tex",
+      "sources_compilation": [
+        "sources/fiches-r/chapitre-09.tex",
+        "fichiers/chapitre-09.R"
+      ],
+      "provenance": [
+        "sources/notes/3-9-Multicolinearite.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "b7d4678601293ed51c9f5029e77bb9def681ecc7342777b227bfba4df412d6d2"
+    },
+    {
+      "fichier": "documents/chapitre-09-notes.pdf",
+      "source": "sources/notes/3-9-Multicolinearite.tex",
+      "sources_compilation": [
+        "sources/notes/3-9-Multicolinearite.tex",
+        "sources/notes/notes.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Notes de cours/Chap9-Multicolinearite/Multicolinearite.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "900afc4bb6a1d1b058d94552fe69c9f5b2c9b80fd839899b9e4d5b7bfae91f7d"
+    },
+    {
+      "fichier": "documents/chapitre-10-exercices.pdf",
+      "source": "sources/exercices/chapitre-10.tex",
+      "sources_compilation": [
+        "sources/exercices/chapitre-10.tex"
+      ],
+      "provenance": [
+        "sources/notes/3-10-DonneesInfluentes.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "a9812a6077e9ff05a1519dbf433c220f44c3e08965efe34c30826523b647f705"
+    },
+    {
+      "fichier": "documents/chapitre-10-fiche-r.pdf",
+      "source": "sources/fiches-r/chapitre-10.tex",
+      "sources_compilation": [
+        "sources/fiches-r/chapitre-10.tex",
+        "fichiers/chapitre-10.R"
+      ],
+      "provenance": [
+        "sources/notes/3-10-DonneesInfluentes.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "99ba2f76608801b66d131551bec2836e54c263be919c3acdec5956c8ca777db3"
+    },
+    {
+      "fichier": "documents/chapitre-10-notes.pdf",
+      "source": "sources/notes/3-10-DonneesInfluentes.tex",
+      "sources_compilation": [
+        "sources/notes/3-10-DonneesInfluentes.tex",
+        "sources/notes/notes.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Notes de cours/Chap10-DonneesInfluentes/DonneesInfluentes.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "4e182504e819bff2a2e5a090e3a2d12d7a5a23f7c13787afa916f5e444d68e08"
+    },
+    {
+      "fichier": "documents/chapitre-11-exercices.pdf",
+      "source": "sources/exercices/chapitre-11.tex",
+      "sources_compilation": [
+        "sources/exercices/chapitre-11.tex"
+      ],
+      "provenance": [
+        "sources/notes/3-11-TechniquesAvancees.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "08857d506d693f4a9784464abffe563805de04b156a9c9527a7278a39fa6e099"
+    },
+    {
+      "fichier": "documents/chapitre-11-fiche-r.pdf",
+      "source": "sources/fiches-r/chapitre-11.tex",
+      "sources_compilation": [
+        "sources/fiches-r/chapitre-11.tex",
+        "fichiers/chapitre-11.R"
+      ],
+      "provenance": [
+        "sources/notes/3-11-TechniquesAvancees.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "f31bbf91149ff9df198d9ac229a97f7c9014e7c72cecdc1f09d8153348e60e23"
+    },
+    {
+      "fichier": "documents/chapitre-11-notes.pdf",
+      "source": "sources/notes/3-11-TechniquesAvancees.tex",
+      "sources_compilation": [
+        "sources/notes/3-11-TechniquesAvancees.tex",
+        "sources/notes/notes.tex"
+      ],
+      "provenance": [
+        "Archives/STT-2100 - Notes de cours/Chap11-TechniquesAvancees/TechniquesAvancees.tex"
+      ],
+      "generation": "2026-10-14",
+      "sha256": "082df274bf113a081da10883442215eec88b1699167d81cf86b6c793f8c31a69"
     },
     {
       "fichier": "documents/emv-2026.pdf",
@@ -122,22 +446,31 @@
       "sha256": "eb1d37d6364470cf9c5fc227cca61eea40400b0df689a62935ce6ce3e6943199"
     },
     {
+      "fichier": "documents/notes-completes.pdf",
+      "source": "sources/notes/notes.tex",
+      "sources_compilation": [
+        "sources/notes/notes.tex",
+        "sources/notes/3-1-Introduction.tex",
+        "sources/notes/3-10-DonneesInfluentes.tex",
+        "sources/notes/3-11-TechniquesAvancees.tex",
+        "sources/notes/3-2-AjusterRLS.tex",
+        "sources/notes/3-3-InferenceRLS.tex",
+        "sources/notes/3-4-NotionsMultivarié.tex",
+        "sources/notes/3-5-AjusterRLM.tex",
+        "sources/notes/3-6-InferenceRLM.tex",
+        "sources/notes/3-7-CategoriquesInteractions.tex",
+        "sources/notes/3-8-ChoixModeleRLM.tex",
+        "sources/notes/3-9-Multicolinearite.tex"
+      ],
+      "provenance": [],
+      "generation": "2026-10-14",
+      "sha256": "5145a2bba3615cb76bc5fef9ed1cb51dd358b57784083e70a731bf7924f8e272"
+    },
+    {
       "fichier": "documents/summary-2026.pdf",
       "source": "2-Chapitres/Chapitre 3/2-Diapo/Chapitre 3 - summary() - A2026.pdf",
       "modification_source": "2026-09-22T10:41:19",
       "sha256": "6f7381d885367d69220d3393ce91dcaf1f29364e89caa43292e50f4ab0bc7f7c"
-    },
-    {
-      "fichier": "fichiers/rappel-r-base.R",
-      "source": "2-Chapitres/Chapitre 1/4-Laboratoire/Rappel-R-base.R",
-      "modification_source": "2026-08-28T14:17:14",
-      "sha256": "9e6be1ec44ec90d301b6e4154407627654bd6de14068523b2b1cff1e4d90f2bd"
-    },
-    {
-      "fichier": "fichiers/Bixi.rda",
-      "source": "7-Laboratoires 2026/1-Laboratoires 1 et 2 (RLS)/Bixi.rda",
-      "modification_source": "2026-09-11T10:20:16",
-      "sha256": "7fbc1c04fd85319cd2bcac859af43148d12ecea08073ad9737cb7db65a260cfa"
     },
     {
       "fichier": "fichiers/Bixi-Laboratoire-1.R",
@@ -150,6 +483,18 @@
       "source": "7-Laboratoires 2026/1-Laboratoires 1 et 2 (RLS)/Bixi-Laboratoire 2.R",
       "modification_source": "2026-09-29T14:52:36",
       "sha256": "270dd654f16fdbf4844e2ad810cac8eb264f6e8f16c7c291b0226a20ea6a3068"
+    },
+    {
+      "fichier": "fichiers/Bixi.rda",
+      "source": "7-Laboratoires 2026/1-Laboratoires 1 et 2 (RLS)/Bixi.rda",
+      "modification_source": "2026-09-11T10:20:16",
+      "sha256": "7fbc1c04fd85319cd2bcac859af43148d12ecea08073ad9737cb7db65a260cfa"
+    },
+    {
+      "fichier": "fichiers/rappel-r-base.R",
+      "source": "2-Chapitres/Chapitre 1/4-Laboratoire/Rappel-R-base.R",
+      "modification_source": "2026-08-28T14:17:14",
+      "sha256": "9e6be1ec44ec90d301b6e4154407627654bd6de14068523b2b1cff1e4d90f2bd"
     }
   ],
   "derive": [

@@ -1,0 +1,96 @@
+\documentclass[letterpaper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[french]{babel}
+\usepackage[margin=1in,headheight=28pt]{geometry}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{amsmath,amssymb,amsthm,bm,enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[small,compact]{titlesec}
+\usepackage{fancyhdr,fancyvrb}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\pagestyle{fancy}
+\fancyhead[L]{STT-2100 \\ Régression}
+\fancyhead[R]{A.-A. Vallée \\ Université Laval}
+\fancyfoot[C]{\thepage}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\fvset{fontsize=\small,frame=single,framesep=2mm}
+\newcommand{\esp}{\mathbb{E}}
+\newcommand{\var}{\operatorname{Var}}
+\newcommand{\bo}[1]{\bm{#1}}
+\newcommand{\N}{\mathcal{N}}
+% Définir \avecsolutions avant l'input pour une version corrigée.
+\newcommand{\prof}[1]{\ifdefined\avecsolutions\par{\color{blue}\textbf{Solution :} #1}\par\fi}
+\begin{document}
+\begin{center}{\Large Diagnostiquer la multicolinéarité avec R}\end{center}
+Cette fiche accompagne les notes du chapitre 9. Les noms des objets peuvent être adaptés à vos données. Les exemples utilisent des données incluses dans R ou des données simulées; aucun fichier externe n’est requis.
+
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\subsection*{Dépendance exacte et rang}
+Une corrélation par paire ne suffit pas à dépister les dépendances entre plusieurs colonnes. alias() et le rang QR révèlent une dépendance exacte.
+\begin{Verbatim}
+donnees <- mtcars
+donnees$double_wt <- 2 * donnees$wt
+mod_exact <- lm(mpg ~ wt + double_wt + hp, data = donnees)
+coef(mod_exact)
+alias(mod_exact)
+X <- model.matrix(mod_exact)
+c(rang = qr(X)$rank, colonnes = ncol(X))
+\end{Verbatim}
+
+\end{minipage}\par
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\subsection*{VIF par régressions auxiliaires}
+Cette formule concerne des prédicteurs numériques à une colonne, dans un modèle avec constante, sans interaction et de plein rang. Pour un facteur à plusieurs colonnes, un diagnostic par terme tel que le GVIF exige une autre formule.
+\begin{Verbatim}
+variables <- c("wt", "hp", "disp")
+cor(donnees[variables])
+vif <- sapply(variables, function(v) {
+  f <- reformulate(setdiff(variables, v), response = v)
+  auxiliaire <- lm(f, data = donnees)
+  1 / (1 - summary(auxiliaire)$r.squared)
+})
+vif
+\end{Verbatim}
+
+\end{minipage}\par
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\subsection*{Indices de conditionnement}
+On normalise ici toutes les colonnes, constante comprise, à une norme euclidienne de 1. Les indices sont les racines des rapports de valeurs propres. Le maximum est le conditionnement spectral de cette matrice de modèle normalisée.
+\begin{Verbatim}
+mod <- lm(mpg ~ wt + hp + disp, data = donnees)
+X <- model.matrix(mod)
+Xs <- sweep(X, 2, sqrt(colSums(X^2)), "/")
+decomp <- eigen(crossprod(Xs), symmetric = TRUE)
+if (min(decomp$values) <= 0) stop("Matrice singuliere")
+indices <- sqrt(max(decomp$values) / decomp$values)
+contributions <- sweep(decomp$vectors^2, 2,
+                       decomp$values, "/")
+proportions <- contributions / rowSums(contributions)
+rownames(proportions) <- colnames(X)
+indices
+proportions
+\end{Verbatim}
+
+\end{minipage}\par
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\subsection*{Une pénalisation ridge illustrative}
+Les prédicteurs sont centrés et réduits; la constante n'est pas pénalisée. lambda=10 est choisi pour illustrer le calcul, sans prétendre être optimal. Une validation croisée est nécessaire pour le choisir selon la prévision.
+\begin{Verbatim}
+Z <- scale(as.matrix(donnees[variables]))
+y <- donnees$mpg
+lambda <- 10
+beta_ridge <- solve(crossprod(Z) + lambda * diag(ncol(Z)),
+                    crossprod(Z, y - mean(y)))
+beta_ridge
+pred_ridge <- drop(mean(y) + Z %*% beta_ridge)
+\end{Verbatim}
+
+\end{minipage}\par
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\subsection*{Aide}
+Dans R, utilisez \texttt{?lm} et l’aide des fonctions présentées. 
+\end{minipage}\par
+\end{document}

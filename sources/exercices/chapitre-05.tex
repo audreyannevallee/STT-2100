@@ -1,0 +1,368 @@
+
+\documentclass[letter, 11pt]{article}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \oddsidemargin  0.0in
+    \evensidemargin 0.0in
+    \textwidth      6.8in
+    \headheight     28pt
+    \topmargin      0.0in
+    \textheight=9.0in
+    \parindent=0in
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\renewcommand{\familydefault}{\sfdefault} % Police 
+
+\usepackage{amsthm,amsfonts,amssymb,amsmath, xcolor, enumitem}
+\usepackage{graphicx}   %To include graphics
+\usepackage[small,compact]{titlesec}
+
+\usepackage[T1]{fontenc}\usepackage{lmodern}\usepackage[utf8]{inputenc}
+
+\usepackage[french]{babel}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\input{Symboles.tex} %Symboles programmés pour simplifier le texte
+
+\newcommand{\E}{\operatorname{E}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bbeta}{\boldsymbol{\beta}}
+\newcommand{\bepsilon}{\boldsymbol{\varepsilon}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\trans}{^{\mathsf T}}
+
+% Version étudiante par défaut; définir \avecsolutions pour le corrigé.
+\newcommand{\etudiant}[1]{#1}
+\newcommand{\prof}[1]{\ifdefined\avecsolutions\par{\color{blue}\textbf{Solution :} #1}\par\fi}
+
+\fancyhead[L]{STT-2100 \\ Régression}
+\fancyhead[R]{A.-A. Vallée \\ Université Laval}
+
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\bo}[1]{\boldsymbol#1}
+\begin{document}
+
+\vspace*{0.01 cm}
+\begin{center}
+{\Large Exercices - Chapitre 5}
+\end{center}
+
+
+
+
+\begin{enumerate}[leftmargin=*, wide, label=\bf Exercice \arabic*:]
+
+%%%%%%%%%%%%
+% Question 1
+\item Pour prédire le prix de vente $Y$, en milliers de dollars, d'une maison, on
+ajuste le modèle
+\[
+  \widehat{Y}=-85+0{,}32x_1+18{,}5x_2-7{,}2x_3,
+\]
+où $x_1$ est la superficie habitable en mètres carrés, $x_2$ le nombre de
+salles de bain et $x_3$ la distance du centre-ville en kilomètres.
+
+\begin{enumerate}[label=\alph*)]
+  \item Interprétez chacun des trois coefficients de pente dans le contexte.
+  \item Interprétez l'ordonnée à l'origine. Cette interprétation est-elle
+        utile dans le contexte?
+  \item Comparez deux maisons identiques, sauf que la seconde possède une
+        salle de bain supplémentaire. Quelle différence de prix le modèle
+        prévoit-il?
+\end{enumerate}
+
+
+\prof{  \begin{enumerate}[label=\alph*)]
+  \item 
+  \begin{itemize}
+    \item En maintenant les autres variables constantes, une augmentation de 1~m$^2$ de la superficie habitable est associée
+          à une augmentation de  320~\$, du
+          prix de vente moyen prédit;
+    \item En maintenant les autres variables constantes, une salle de bain supplémentaire est associée à une augmentation de
+           18~500~\$, du prix moyen prédit;
+    \item En maintenant les autres variables constantes, une augmentation de 1~km de la distance du centre-ville est associée
+          à une diminution de 7~200~\$, du prix
+          moyen prédit.
+  \end{itemize}
+
+  \item L'ordonnée à l'origine $-85$ correspond au prix moyen prédit, en
+        milliers de dollars, pour une maison de superficie nulle, sans salle
+        de bain et située à 0~km du centre-ville. Ce profil n'est pas réaliste;
+        l'interprétation contextuelle de l'ordonnée à l'origine est donc farfelue ici.
+
+  \item Pour des valeurs identiques de $x_1$ et $x_3$, une augmentation d'une
+        unité de $x_2$ produit
+        \[
+          \Delta\widehat{Y}=18{,}5
+        \]
+        milliers de dollars. Le prix prédit de la seconde maison est donc
+        supérieur de 18~500~\$.
+
+\end{enumerate}
+
+}
+
+
+%%%%%
+% Question 2
+
+\item 
+Une étude relie la note finale $Y$ d'un étudiant au nombre d'heures d'étude
+hebdomadaires $x_1$ et à son résultat à un test diagnostique $x_2$ :
+\[
+  \E(Y\mid x_1,x_2)=35+1{,}8x_1+0{,}45x_2.
+\]
+
+\begin{enumerate}[label=\alph*)]
+  \item Interprétez le coefficient de $x_1$.
+  \item Pourquoi serait-il incorrect d'affirmer simplement que deux étudiants
+        dont le nombre d'heures d'étude diffère de cinq heures auront des notes
+        moyennes différant de neuf points?
+  \item Donnez deux profils d'étudiants pour lesquels le modèle prévoit la
+        même note moyenne.
+\end{enumerate}
+
+\prof{
+\begin{enumerate}[label=\alph*)]
+  \item À résultat identique au test diagnostique, une heure d'étude
+        hebdomadaire supplémentaire est associée à une augmentation de
+        1,8 point de la note finale moyenne.
+
+  \item Une différence de cinq heures d'étude entraîne une différence prédite
+        de $5(1{,}8)=9$ points seulement si les deux étudiants ont le même
+        résultat au test diagnostique. En général,
+        \[
+          \Delta\E(Y)=1{,}8\Delta x_1+0{,}45\Delta x_2.
+        \]
+        Une différence entre les résultats diagnostiques modifierait donc la
+        comparaison. Pour que l'énoncé soit correct, il faudrait préciser que les deux résultats au test diagnostique sont identiques.
+
+  \item Pour obtenir la même note moyenne, il faut que
+        \[
+          1{,}8\Delta x_1+0{,}45\Delta x_2=0,
+          \qquad\text{soit}\qquad
+          \Delta x_2=-4\Delta x_1.
+        \]
+        Par exemple, les profils $(x_1,x_2)=(5,80)$ et $(10,60)$ donnent tous
+        les deux
+        \[
+          \widehat{Y}=35+1{,}8(5)+0{,}45(80)
+                     =35+1{,}8(10)+0{,}45(60)=80.
+        \]
+\end{enumerate}
+}
+
+
+%%%%
+% Question 3
+
+\item On observe la réponse $Y$ ainsi que deux variables explicatives $x_1$ et $x_2$
+pour quatre unités :
+\[
+\begin{array}{c|rrrr}
+  i   & 1 & 2 & 3 & 4\\ \hline
+  Y   & 5 & 8 & 9 & 14\\
+  x_1 & 1 & 2 & 3 & 4\\
+  x_2 & 0 & 1 & 1 & 2
+\end{array}
+\]
+
+\begin{enumerate}[label=\alph*)]
+  \item Écrivez explicitement $\bY$, $\bX$ et $\bbeta$.
+  \item Calculez $\bX\trans\bX$ et $\bX\trans\bY$.
+  \item Vérifiez que $\bX\trans\bX$ est inversible.
+  \item En utilisant 
+        \[
+        (\bX\trans\bX)^{-1}=
+        \begin{pmatrix}
+          11/4&-2&5/2\\
+          -2&2&-3\\
+          5/2&-3&5
+        \end{pmatrix},
+        \] calculez $\widehat{\bbeta}=(\bX\trans\bX)^{-1}\bX\trans\bY$ et donnez l'expression du modèle de prédiction estimé.
+  \item Calculez les valeurs ajustées et les résidus.
+  \item Vérifiez numériquement que $\bX\trans\widehat{\bepsilon}=\mathbf{0}$.
+\end{enumerate}
+
+\prof{
+\begin{enumerate}[label=\alph*)]
+  \item Puisque le modèle comprend une ordonnée à l'origine,
+        \[
+        \bY=\begin{pmatrix}5\\8\\9\\14\end{pmatrix},\qquad
+        \bX=\begin{pmatrix}
+          1&1&0\\
+          1&2&1\\
+          1&3&1\\
+          1&4&2
+        \end{pmatrix},\qquad
+        \bbeta=\begin{pmatrix}\beta_0\\\beta_1\\\beta_2\end{pmatrix}.
+        \]
+
+  \item Les produits matriciels sont
+        \[
+        \bX\trans\bX=
+        \begin{pmatrix}
+          4&10&4\\
+          10&30&13\\
+          4&13&6
+        \end{pmatrix},
+        \qquad
+        \bX\trans\bY=
+        \begin{pmatrix}36\\104\\45\end{pmatrix}.
+        \]
+
+  \item On calcule
+        \[
+          \det(\bX\trans\bX)=4\neq0.
+        \]
+        La matrice est donc inversible. 
+
+  \item 
+        \[
+        \widehat{\bbeta}
+        =(\bX\trans\bX)^{-1}\bX\trans\bY
+        =\begin{pmatrix}3{,}5\\1\\3\end{pmatrix}.
+        \]
+        Le modèle ajusté est donc
+        \[
+          \widehat{Y}=3{,}5+x_1+3x_2.
+        \]
+
+  \item Les valeurs ajustées et les résidus sont
+        \[
+        \widehat{\bY}=\bX\widehat{\bbeta}
+        =\begin{pmatrix}4{,}5\\8{,}5\\9{,}5\\13{,}5\end{pmatrix},
+        \qquad
+        \widehat{\bepsilon}=\bY-\widehat{\bY}
+        =\begin{pmatrix}0{,}5\\-0{,}5\\-0{,}5\\0{,}5\end{pmatrix}.
+        \]
+
+  \item Finalement,
+        \[
+        \bX\trans\widehat{\bepsilon}
+        =\begin{pmatrix}
+          1&1&1&1\\
+          1&2&3&4\\
+          0&1&1&2
+        \end{pmatrix}
+        \begin{pmatrix}0{,}5\\-0{,}5\\-0{,}5\\0{,}5\end{pmatrix}
+        =\begin{pmatrix}0\\0\\0\end{pmatrix}.
+        \]
+        Les résidus sont donc orthogonaux à chacune des colonnes de $\bX$.
+\end{enumerate}
+}
+
+%%%%%
+% Question 4
+
+\item On note $\widehat{\bY}=\bX\widehat{\bbeta}$ et
+$\widehat{\bepsilon}=\bY-\widehat{\bY}$.
+
+\begin{enumerate}[label=\alph*)]
+  \item Montrez que
+        $\bX\trans\widehat{\bepsilon}=\mathbf{0}$.
+    \item Montrez que $\widehat{\bY}\trans\widehat{\bepsilon}=0$.
+  \item Interprétez géométriquement ces résultats.
+\end{enumerate}
+
+\prof{
+\begin{enumerate}[label=\alph*)]
+  \item On a,
+        \[
+        \bX\trans\widehat{\bepsilon}
+        =\bX\trans(\bY-\bX\widehat{\bbeta})
+        =\bX\trans\bY-\bX\trans\bX\widehat{\bbeta}
+        =\bX\trans\bY-\bX\trans\bX(\bX\trans\bX)^{-1}\bX^\top\bY
+        =\mathbf{0}.
+        \]
+
+   \item Puisque $\widehat{\bY}=\bX\widehat{\bbeta}$,
+        \[
+        \widehat{\bY}\trans\widehat{\bepsilon}
+        =(\bX\widehat{\bbeta})\trans\widehat{\bepsilon}
+        =\widehat{\bbeta}\trans\bX\trans\widehat{\bepsilon}
+        =\mathbf{0}.
+        \]
+
+  \item Le vecteur $\widehat{\bY}$ appartient à l'espace engendré par les
+        colonnes de $\bX$, tandis que $\widehat{\bepsilon}$ appartient à son
+        complément orthogonal. Ainsi, $\widehat{\bY}$ est la projection
+        orthogonale de $\bY$ sur l'espace colonne de $\bX$ et est orthogonal à $\widehat{\bepsilon}$.
+\end{enumerate}
+}
+
+%%%%% 
+% Question 5
+
+\item Supposons que $\bX$ est de plein rang colonne et posons
+\[
+  \bH=\bX(\bX\trans\bX)^{-1}\bX\trans.
+\]
+
+\begin{enumerate}[label=\alph*)]
+  \item Montrez que $\bX\widehat{\bbeta}=\bH\bY$.
+  \item Montrez que $\bH$ est symétrique.
+  \item Montrez que $\bH$ est idempotente, c'est-à-dire que
+        $\bH^2=\bH$.
+  \item Montrez que $\mathbf{I}_n-\bH$ est également symétrique et idempotente.
+  \item Quel est le rôle géométrique de $\mathbf{I}_n-\bH$?
+\end{enumerate}
+
+\prof{\begin{enumerate}[label=\alph*)]
+  \item En remplaçant l'estimateur des moindres carrés,
+        \[
+        \widehat{\bY}=\bX\widehat{\bbeta}
+        =\bX(\bX\trans\bX)^{-1}\bX\trans\bY
+        =\bH\bY.
+        \]
+
+  \item On utilise $(\mathbf{A}\mathbf{B})\trans
+        =\mathbf{B}\trans\mathbf{A}\trans$ et le fait que
+        $\bX\trans\bX$ ainsi que son inverse sont symétriques :
+        \begin{align*}
+        \bH\trans
+        &=\left[\bX(\bX\trans\bX)^{-1}\bX\trans\right]\trans\\
+        &=\bX\left[(\bX\trans\bX)^{-1}\right]\trans\bX\trans\\
+        &=\bX(\bX\trans\bX)^{-1}\bX\trans=\bH.
+        \end{align*}
+
+  \item On calcule
+        \begin{align*}
+        \bH^2
+        &=\bX(\bX\trans\bX)^{-1}\bX\trans
+          \bX(\bX\trans\bX)^{-1}\bX\trans\\
+        &=\bX(\bX\trans\bX)^{-1}
+          (\bX\trans\bX)(\bX\trans\bX)^{-1}\bX\trans\\
+        &=\bX(\bX\trans\bX)^{-1}\bX\trans=\bH.
+        \end{align*}
+
+  \item La symétrie suit de
+        \[
+          (\mathbf{I}_n-\bH)\trans
+          =\mathbf{I}_n-\bH\trans=\mathbf{I}_n-\bH.
+        \]
+        Pour l'idempotence,
+        \[
+          (\mathbf{I}_n-\bH)^2
+          =\mathbf{I}_n-2\bH+\bH^2
+          =\mathbf{I}_n-\bH.
+        \]
+
+  \item La matrice $\mathbf{I}_n-\bH$ projette $\bY$ sur le complément
+        orthogonal de l'espace colonne de $\bX$. En particulier,
+        \[
+          \widehat{\bepsilon}=(\mathbf{I}_n-\bH)\bY.
+        \]
+\end{enumerate}
+}
+
+
+\end{enumerate}
+
+\end{document}
+

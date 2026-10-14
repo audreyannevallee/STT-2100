@@ -1,0 +1,43 @@
+\documentclass[letterpaper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[french]{babel}
+\usepackage[margin=1in,headheight=28pt]{geometry}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{amsmath,amssymb,amsthm,bm,enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[small,compact]{titlesec}
+\usepackage{fancyhdr,fancyvrb}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\pagestyle{fancy}
+\fancyhead[L]{STT-2100 \\ Régression}
+\fancyhead[R]{A.-A. Vallée \\ Université Laval}
+\fancyfoot[C]{\thepage}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\fvset{fontsize=\small,frame=single,framesep=2mm}
+\newcommand{\esp}{\mathbb{E}}
+\newcommand{\var}{\operatorname{Var}}
+\newcommand{\bo}[1]{\bm{#1}}
+\newcommand{\N}{\mathcal{N}}
+% Définir \avecsolutions avant l'input pour une version corrigée.
+\newcommand{\prof}[1]{\ifdefined\avecsolutions\par{\color{blue}\textbf{Solution :} #1}\par\fi}
+\begin{document}
+\begin{center}{\Large Exercices - Chapitre 8}\end{center}
+\begin{enumerate}[leftmargin=*,wide,label=\bfseries Exercice \arabic*:]
+\item Une analyse des résidus montre successivement une courbure, une forme d'entonnoir et des longues séries de résidus positifs suivis de résidus négatifs dans le temps. À quel postulat chaque motif se rapporte-t-il? Proposez une démarche pour chacun, sans conclure uniquement à partir d'un test de normalité.
+\prof{Courbure : forme de la moyenne; envisager transformation, interaction ou terme polynomial. Entonnoir : variance constante; examiner transformation ou pondération. Séries temporelles : indépendance; examiner collecte, autocorrélation et covariance des erreurs. Réajuster et revoir les diagnostics.}
+\item Deux modèles utilisent les mêmes $n=50$ observations et ont $SC_{tot}=500$. Le modèle A a $p'_A=3$, $SC_{res,A}=150$; B a $p'_B=5$, $SC_{res,B}=140$.
+Calculez $R^2$, $R_a^2$, $AIC^*=n\log(SC_{res}/n)+2p'$ et $BIC^*=n\log(SC_{res}/n)+p'\log n$. Quel modèle chaque critère favorise-t-il?
+\prof{A : $R^2=0{,}700$, $R_a^2=0{,}6872$, $AIC^*=60{,}9306$, $BIC^*=66{,}6667$. B : $R^2=0{,}720$, $R_a^2=0{,}6951$, $AIC^*=61{,}4810$, $BIC^*=71{,}0411$. $R^2$ et $R_a^2$ favorisent B, AIC et BIC favorisent A. Les constantes communes et le paramètre de variance ne changent pas le classement.}
+\item Trois résidus valent $(1,-2,1)$ et leurs leviers $(0{,}1,0{,}5,0{,}2)$. Calculez les résidus de validation leave-one-out et leur contribution au critère PRESS. Pourquoi le modèle doit-il rester de plein rang après chaque retrait?
+\prof{Les résidus sont $(1/0{,}9,-2/0{,}5,1/0{,}8)=(1{,}1111,-4,1{,}25)$, d'où $PRESS=1{,}2346+16+1{,}5625=18{,}7971$. La formule suppose que les ajustements retirant une observation existent avec le même espace de coefficients; $h_{ii}=1$ pose notamment problème.}
+\item Pour un sous-modèle de $p'=3$ coefficients, $SC_{res}=120$ et $n=40$. Le modèle complet fournit $\hat\sigma^2_{complet}=4$. Calculez $C_p=SC_{res}/\hat\sigma^2_{complet}-n+2p'$. Comment interpréter $C_p$ proche de $p'$? Que se passe-t-il si le modèle complet est mal spécifié?
+\prof{$C_p=120/4-40+6=-4$. Une valeur voisine de $p'$ est un repère pour un sous-modèle ayant peu de biais; une valeur négative peut apparaître par fluctuation ou surestimation de la variance de référence. Le critère dépend d'une estimation pertinente de cette variance; un complet mal spécifié peut rendre le classement trompeur.}
+\item Expliquez pourquoi effectuer la sélection des variables sur toutes les données puis calculer une validation croisée du seul modèle retenu peut produire une erreur trop optimiste. Décrivez une validation où la sélection est répétée dans chaque jeu d'entraînement. Quand faut-il une validation externe ou imbriquée?
+\prof{Les réponses des observations de validation ont déjà influencé la sélection. Toute sélection, transformation et standardisation apprise doit se faire dans l'entraînement de chaque pli. Si les plis servent aussi à choisir la méthode ou les hyperparamètres, un jeu de test indépendant ou une boucle externe permet d'estimer la performance finale.}
+\item Avec \texttt{mtcars}, comparez trois modèles fixés à l'avance : \texttt{mpg \string~ wt}, \texttt{mpg \string~ wt + hp} et \texttt{mpg \string~ wt + hp + qsec}. Calculez AIC, BIC et PRESS. Expliquez pourquoi les valeurs de $p$ usuelles d'un modèle trouvé par \texttt{step()} ne tiennent pas compte de la recherche du modèle.
+\prof{Utilisez \texttt{AIC()}, \texttt{BIC()} et \texttt{sum((residuals(mod)/(1-hatvalues(mod)))\string^2)}. La recherche examine de nombreux modèles, ce qui introduit une sélection que les tests conditionnels du modèle final ignorent.}
+\end{enumerate}
+\end{document}

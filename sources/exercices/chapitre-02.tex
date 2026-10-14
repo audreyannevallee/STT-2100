@@ -1,0 +1,117 @@
+
+\documentclass[letter, 11pt]{article}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \oddsidemargin  0.0in
+    \evensidemargin 0.0in
+    \textwidth      6.8in
+    \headheight     28pt
+    \topmargin      0.0in
+    \textheight=9.0in
+    \parindent=0in
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\renewcommand{\familydefault}{\sfdefault} % Police 
+
+\usepackage{amsthm,amsfonts,amssymb,amsmath, xcolor, enumitem}
+\usepackage{graphicx}   %To include graphics
+\usepackage[small,compact]{titlesec}
+
+\usepackage[T1]{fontenc}\usepackage{lmodern}\usepackage[utf8]{inputenc}
+
+\usepackage[french]{babel}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\input{Symboles.tex} %Symboles programmés pour simplifier le texte
+
+
+
+% Version étudiante par défaut; définir \avecsolutions pour le corrigé.
+\newcommand{\etudiant}[1]{#1}
+\newcommand{\prof}[1]{\ifdefined\avecsolutions\par{\color{blue}\textbf{Solution :} #1}\par\fi}
+
+\fancyhead[L]{STT-2100 \\ Régression}
+\fancyhead[R]{A.-S. Charest, E. Reny-Nolin, A.-A. Vallée \\ Université Laval}
+
+
+\begin{document}
+
+\vspace*{0.01 cm}
+\begin{center}
+{\Large Exercices - Chapitre 2}
+\end{center}
+
+
+
+\begin{enumerate}[leftmargin=*, wide, label=\bf Exercice \arabic*:]
+%QUESTION 1
+\item
+Soient les données suivantes qui correspondent à la taille ($x_i$ en cm) et au poids ($Y_i$ en kg) de 6 filles de 18 ans (tirées de Morgenthaler, 1997, Exercice 3, p.122) :
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+$x_i$ & 170 & 167 & 171 & 181 & 158 & 166 \\\hline
+$Y_i$ & 71 & 58 & 56 & 85 & 45 & 53\\\hline
+\end{tabular}
+\end{center}
+
+\begin{enumerate}[label={\bf \alph*)}] 
+\item Déterminez la droite de régression pour les données ci-dessus.
+\item  Interprétez la valeur des estimations des paramètres en termes du poids et de la taille des filles de 18 ans de cette population.
+\item  Donnez une estimation de la variance des termes d’erreur.
+\end{enumerate}
+
+\prof{\begin{enumerate}[label={\bf \alph*)}]
+\item  On trouve $n = 6$, $\sum_{i=1}^n x_i = 1013$, $\sum_{i=1}^n x_i^2 = 171\;311$, $\sum_{i=1}^n Y_i = 368$ et $\sum_{i=1}^n x_iY_i = 62\;625$.\\
+ On obtient donc que
+    $$
+    S_{xx} = 171\;311-\frac{1013^2}{6} = 282.83 \text{\quad et \quad} S_{xy} = 62\;625 -\frac{(1013)(368)}{6} = 494.33.
+    $$
+    De plus $\overline{x}= 168.83$ et $\overline{Y}= 61.33$. \\
+		Cela nous conduit aux estimations suivantes $$\hat{\beta}_1= \frac{S_{xy}}{S_{xx}} = \frac{494.33}{282.83} = 1.75$$ $$\hat{\beta}_0 = \overline{Y} - \hat{\beta}_1\overline{x} = 61.33 - 1.75\times168.83 = -234.12.$$
+		Le modèle de régression linéaire simple ajusté devient alors $\hat{Y}_i = -234.12 + 1.75x_i$.\\
+
+\item    L'ordonnée à l'origine indique que dans la population des filles de $18$ ans mesurant $0$ cm, le poids moyen est  de $-234.12$ kg. Ce n'est pas une valeur très intéressante à interpréter ici. \\
+
+ La pente indique quant à elle qu'une hausse de la taille de $1$ cm chez une fille de $18$ ans est associée à une augmentation du poids moyen de 1.75 kg. \\
+
+\item L'estimation de la variance des termes d'erreur est
+    $$
+     \hat\sigma^2=\frac{\sum_{i=1}^n \hat{\varepsilon}_i^2}{n-2} =  \frac{\sum_{i=1}^n(Y_i-\hat{Y}_i)^2}{n-2}
+    $$
+     qui vaut ici 41.33.
+     
+    \end{enumerate}}
+
+\item On veut donc ajuster le modèle suivant, dans lequel on force le modèle de régression linéaire à passer par l'origine:
+    
+    $$Y_i = \beta\,x_i + \varepsilon_i\qquad\text{pour } i=1,\dots,n.$$
+    
+    Trouver l'estimateur des moindres carrés du paramètre $\beta$ associé à ce modèle.
+    
+\prof{On veut trouver la valeur de $\beta$ qui minimise la fonction $$L=\sum\limits_{i=1}^n (Y_i-\beta\,x_i)^2.$$ Il faut d'abord annuler sa dérivée par rapport à $\beta$.
+
+
+$$\begin{array}{rcl}
+\dfrac{\partial L}{\partial\beta}&=& 2\,\sum\limits_{i=1}^n (Y_i-\beta\,x_i)(-x_i)\\[6mm]
+\dfrac{\partial L}{\partial\beta}=0&\Leftrightarrow &\sum\limits_{i=1}^n (x_iY_i)= \hat\beta \sum\limits_{i=1}^n  x_i^2\\[6mm]
+&\Leftrightarrow &\hat\beta = \dfrac{\sum\limits_{i=1}^n (x_iY_i)}{\sum\limits_{i=1}^n  x_i^2}
+\end{array}$$
+
+Pour vérifier qu'il s'agit bien d'un minimum, vérifions que la dérivée seconde de $L$ au point $\hat\beta$ est bien positive.
+
+$$\begin{array}{rl}
+\dfrac{\partial^2 L}{\partial\beta^2}&= \dfrac{\partial }{\partial\beta}\left[-2\sum\limits_{i=1}^n (x_iY_i) + 2\beta \sum\limits_{i=1}^n x_i^2\right]\\[6mm]
+&= 2\sum\limits_{i=1}^n  x_i^2
+\end{array}$$
+
+Cette quantité est toujours positive.}
+
+\end{enumerate}
+
+\end{document}
+

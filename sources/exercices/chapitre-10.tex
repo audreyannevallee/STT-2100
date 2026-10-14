@@ -1,0 +1,48 @@
+\documentclass[letterpaper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[french]{babel}
+\usepackage[margin=1in,headheight=28pt]{geometry}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{amsmath,amssymb,amsthm,bm,enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[small,compact]{titlesec}
+\usepackage{fancyhdr,fancyvrb}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\pagestyle{fancy}
+\fancyhead[L]{STT-2100 \\ Régression}
+\fancyhead[R]{A.-A. Vallée \\ Université Laval}
+\fancyfoot[C]{\thepage}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\fvset{fontsize=\small,frame=single,framesep=2mm}
+\newcommand{\esp}{\mathbb{E}}
+\newcommand{\var}{\operatorname{Var}}
+\newcommand{\bo}[1]{\bm{#1}}
+\newcommand{\N}{\mathcal{N}}
+% Définir \avecsolutions avant l'input pour une version corrigée.
+\newcommand{\prof}[1]{\ifdefined\avecsolutions\par{\color{blue}\textbf{Solution :} #1}\par\fi}
+\begin{document}
+\begin{center}{\Large Exercices - Chapitre 10}\end{center}
+On note $p'$ le nombre de coefficients, incluant la constante. Les seuils ci-dessous sont des repères exploratoires.
+\begin{enumerate}[leftmargin=*,wide,label=\bfseries Exercice \arabic*:]
+\item Distinguez une observation aberrante, une observation à grand levier et une observation influente. Une observation à grand levier est-elle nécessairement influente? Donnez un exemple verbal pour chaque cas.
+\prof{Aberrante : réponse éloignée de celle attendue selon le modèle. Grand levier : profil explicatif éloigné du centre des profils observés. Influente : retrait changeant sensiblement ajustement ou conclusions. Un profil éloigné qui suit bien la relation peut avoir un grand levier sans grande distance de Cook.}
+\item Avec $n=50$, $p'=4$, $s^2=9$, une observation possède $h_{ii}=0{,}30$ et $e_i=6$. Calculez le résidu standardisé, le résidu studentisé externe et la distance de Cook. Comparez le levier à $2p'/n$ et Cook à $4/(n-p')$.
+\prof{$r_i=6/\sqrt{9(0{,}7)}=2{,}3905$. $s_{(i)}^2=(46(9)-36/0{,}7)/45=8{,}0571$, d'où $T_i=2{,}5265$. $D_i=(36/(4(9)))\,0{,}30/(0{,}7)^2=0{,}6122$. Les repères sont $0{,}16$ et $0{,}0870$; l'observation mérite examen.}
+\item Pour la même observation, calculez DFFITS et COVRATIO avec
+\[
+DFFITS_i=T_i\sqrt{\frac{h_{ii}}{1-h_{ii}}},\qquad
+COVRATIO_i=\left(\frac{s_{(i)}^2}{s^2}\right)^{p'}\frac1{1-h_{ii}}.
+\]
+Quelle information chacune de ces quantités apporte-t-elle?
+\prof{DFFITS vaut environ $1{,}6540$, au-delà du repère $2\sqrt{4/50}=0{,}5657$. COVRATIO vaut environ $0{,}9176$; il est dans l'intervalle exploratoire $1\pm3(4)/50=[0{,}76;1{,}24]$. DFFITS examine la variation d'ajustement au profil $i$; COVRATIO examine le déterminant de la covariance des coefficients.}
+\item Un modèle de $n=30$ observations comporte $p'=3$ coefficients. Pour dépister simultanément des observations aberrantes au seuil de 5\,\%, écrivez le quantile de Student corrigé de Bonferroni pour les résidus studentisés externes. Pourquoi les degrés de liberté diffèrent-ils de ceux des tests de coefficients?
+\prof{Comparez $|T_i|$ à $t_{26;1-0{,}05/(2\cdot30)}$. La variance est estimée après retrait d'une observation; il reste $n-1-p'=26$ degrés de liberté.}
+\item Un coefficient change de signe lorsqu'une observation est retirée. Décrivez les vérifications à faire avant de décider de son inclusion. Comment présenter une analyse de sensibilité si la mesure est valide?
+\prof{Vérifier saisie, mesure, unités, population ciblée, forme du modèle, levier et résidus. Pour une mesure valide, présenter les ajustements avec et sans l'observation, expliquer les changements et motiver le modèle utilisé. Un seuil de Cook n'est pas une justification automatique de retrait.}
+\item Avec \texttt{mtcars}, ajustez \texttt{mpg \string~ wt + hp}. Classez les trois plus grandes distances de Cook. Pour l'observation la plus influente, comparez coefficients et prédiction au profil \texttt{wt=3}, \texttt{hp=110} avec et sans cette observation. Utilisez les noms des lignes pour identifier les voitures.
+\prof{Utilisez \texttt{order(cooks.distance(mod), decreasing=TRUE)}, puis réajustez sur \texttt{donnees[-i, ]}. \texttt{dfbetas()} fournit les changements standardisés de chaque coefficient. Comparez les résultats et leur contexte sans supposer que la mesure doit être supprimée.}
+\end{enumerate}
+\end{document}

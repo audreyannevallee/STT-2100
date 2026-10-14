@@ -1,0 +1,83 @@
+\documentclass[letterpaper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[french]{babel}
+\usepackage[margin=1in,headheight=28pt]{geometry}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{amsmath,amssymb,amsthm,bm,enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[small,compact]{titlesec}
+\usepackage{fancyhdr,fancyvrb}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\pagestyle{fancy}
+\fancyhead[L]{STT-2100 \\ Régression}
+\fancyhead[R]{A.-A. Vallée \\ Université Laval}
+\fancyfoot[C]{\thepage}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\fvset{fontsize=\small,frame=single,framesep=2mm}
+\newcommand{\esp}{\mathbb{E}}
+\newcommand{\var}{\operatorname{Var}}
+\newcommand{\bo}[1]{\bm{#1}}
+\newcommand{\N}{\mathcal{N}}
+% Définir \avecsolutions avant l'input pour une version corrigée.
+\newcommand{\prof}[1]{\ifdefined\avecsolutions\par{\color{blue}\textbf{Solution :} #1}\par\fi}
+\begin{document}
+\begin{center}{\Large Inférence pour la RLM avec R}\end{center}
+Cette fiche accompagne les notes du chapitre 6. Les noms des objets peuvent être adaptés à vos données. Les exemples utilisent des données incluses dans R ou des données simulées; aucun fichier externe n’est requis.
+
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\subsection*{Ajuster et faire de l’inférence sur les coefficients}
+Les tests de coefficients sont partiels : chaque pente est testée en présence des autres variables du modèle. Les IC et tests supposent les postulats normaux de la RLM.
+\begin{Verbatim}
+donnees <- mtcars
+mod <- lm(mpg ~ wt + hp, data = donnees)
+summary(mod)
+confint(mod, level = 0.95)
+vcov(mod)
+# Tester H0 : beta_hp = 0 contre H1 : beta_hp != 0
+summary(mod)$coefficients["hp", ]
+\end{Verbatim}
+
+\end{minipage}\par
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\subsection*{Comparer des modèles emboîtés}
+Ajustez les deux modèles sur exactement les mêmes lignes et la même réponse. Le test porte ici sur l'ajout de hp après wt. Avec un seul terme numérique ajouté, le test F est le carré du test t correspondant.
+\begin{Verbatim}
+mod_reduit <- lm(mpg ~ wt, data = donnees)
+anova(mod_reduit, mod, test = "F")
+# Une seule formule produit des tests sequentiels,
+# dans l'ordre des termes : ce ne sont pas les tests partiels.
+anova(mod)
+\end{Verbatim}
+
+\end{minipage}\par
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\subsection*{Réponse moyenne et nouvelle observation}
+Un intervalle de confiance vise la réponse moyenne à ce profil; un intervalle de prévision vise une nouvelle observation indépendante. Il est donc plus large. Vérifiez que le profil correspond au domaine des données.
+\begin{Verbatim}
+profil <- data.frame(wt = 3, hp = 110)
+predict(mod, newdata = profil, interval = "confidence")
+predict(mod, newdata = profil, interval = "prediction")
+\end{Verbatim}
+
+\end{minipage}\par
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\subsection*{Une combinaison linéaire des coefficients}
+Exemple de calcul pour une combinaison dont les unités sont compatibles avec votre question. Le vecteur a suit exactement l'ordre de coef(mod). Le calcul ci-dessous vise la moyenne au profil précédent.
+\begin{Verbatim}
+a <- c(1, 3, 110)
+theta <- drop(a %*% coef(mod))
+se_theta <- sqrt(drop(t(a) %*% vcov(mod) %*% a))
+q <- qt(0.975, df.residual(mod))
+c(estimation = theta, bas = theta - q * se_theta,
+  haut = theta + q * se_theta)
+\end{Verbatim}
+
+\end{minipage}\par
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\subsection*{Aide}
+Dans R, utilisez \texttt{?lm} et l’aide des fonctions présentées. Voir aussi \href{https://stat.ethz.ch/R-manual/R-devel/library/stats/html/anova.lm.html}{la documentation de \texttt{anova.lm}}.
+\end{minipage}\par
+\end{document}

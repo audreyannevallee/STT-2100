@@ -1,0 +1,95 @@
+\documentclass[letterpaper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[french]{babel}
+\usepackage[margin=1in,headheight=28pt]{geometry}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{amsmath,amssymb,amsthm,bm,enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[small,compact]{titlesec}
+\usepackage{fancyhdr,fancyvrb}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\pagestyle{fancy}
+\fancyhead[L]{STT-2100 \\ Régression}
+\fancyhead[R]{A.-A. Vallée \\ Université Laval}
+\fancyfoot[C]{\thepage}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\fvset{fontsize=\small,frame=single,framesep=2mm}
+\newcommand{\esp}{\mathbb{E}}
+\newcommand{\var}{\operatorname{Var}}
+\newcommand{\bo}[1]{\bm{#1}}
+\newcommand{\N}{\mathcal{N}}
+% Définir \avecsolutions avant l'input pour une version corrigée.
+\newcommand{\prof}[1]{\ifdefined\avecsolutions\par{\color{blue}\textbf{Solution :} #1}\par\fi}
+\begin{document}
+\begin{center}{\Large Observations aberrantes et influentes avec R}\end{center}
+Cette fiche accompagne les notes du chapitre 10. Les noms des objets peuvent être adaptés à vos données. Les exemples utilisent des données incluses dans R ou des données simulées; aucun fichier externe n’est requis.
+
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\subsection*{Calculer les diagnostics}
+Un grand levier concerne le profil explicatif; un grand résidu concerne l'écart de réponse au modèle; la distance de Cook mesure l'effet sur l'ajustement. Les seuils ci-dessous signalent des observations à examiner.
+\begin{Verbatim}
+donnees <- mtcars
+mod <- lm(mpg ~ wt + hp, data = donnees)
+n <- nobs(mod)
+pprime <- length(coef(mod))
+diagnostic <- data.frame(
+  voiture = rownames(model.frame(mod)),
+  levier = hatvalues(mod),
+  standardise = rstandard(mod),
+  studentise = rstudent(mod),
+  cook = cooks.distance(mod),
+  dffits = dffits(mod),
+  covratio = covratio(mod))
+diagnostic$signal <- with(diagnostic,
+  levier > 2 * pprime / n | abs(studentise) > 2 |
+  cook > 4 / (n - pprime))
+diagnostic[order(diagnostic$cook, decreasing = TRUE), ]
+\end{Verbatim}
+
+\end{minipage}\par
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\subsection*{Changements des coefficients}
+dfbeta() donne les différences non standardisées; dfbetas() donne les différences standardisées. Ces quantités ne sont pas interchangeables.
+\begin{Verbatim}
+dfbeta(mod)
+dfbetas(mod)
+influence.measures(mod)
+par(mfrow = c(1, 2))
+plot(mod, which = 4)
+plot(mod, which = 5)
+par(mfrow = c(1, 1))
+\end{Verbatim}
+
+\end{minipage}\par
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\subsection*{Analyse de sensibilité}
+Le retrait ci-dessous sert à mesurer l'effet de l'observation ayant la plus grande distance de Cook. Vérifiez la donnée et le contexte avant toute décision de retrait définitif.
+\begin{Verbatim}
+i <- which.max(cooks.distance(mod))
+rownames(donnees)[i]
+mod_sans <- lm(mpg ~ wt + hp, data = donnees[-i, ])
+cbind(avec = coef(mod), sans = coef(mod_sans))
+profil <- data.frame(wt = 3, hp = 110)
+rbind(avec = predict(mod, newdata = profil),
+      sans = predict(mod_sans, newdata = profil))
+\end{Verbatim}
+
+\end{minipage}\par
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\subsection*{Dépistage simultané des valeurs aberrantes}
+La correction de Bonferroni contrôle le seuil familial sous les postulats du modèle. Le résidu studentisé externe utilise une variance estimée après retrait, avec n-pprime-1 degrés de liberté.
+\begin{Verbatim}
+alpha <- 0.05
+seuil <- qt(1 - alpha / (2 * n), df = n - pprime - 1)
+diagnostic[abs(diagnostic$studentise) > seuil, ]
+\end{Verbatim}
+
+\end{minipage}\par
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\subsection*{Aide}
+Dans R, utilisez \texttt{?lm} et l’aide des fonctions présentées. Voir aussi \href{https://stat.ethz.ch/R-manual/R-devel/library/stats/html/influence.measures.html}{la documentation des diagnostics d’influence}.
+\end{minipage}\par
+\end{document}

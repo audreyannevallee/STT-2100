@@ -1,0 +1,312 @@
+\section{Notions d'algèbre linéaire}
+
+\subsection{Définitions et opérations sur les matrices}
+
+
+\begin{defn}
+Une \textbf{matrice} réelle $m\times n$ est un tableau ordonné de nombres réels arrangés en $m$ lignes et $n$ colonnes. On appelle ce tableau matrice de dimension $m \times n$. 
+Une matrice $\boldA$ et ses éléments $a_{ij}$, $i = 1, \dots, m$ et $j=1, \dots, n$, peuvent s'écrire
+$$
+\boldA=\left[ \begin{array}{ccccc}
+a_{11} & \cdots & a_{1j} & \cdots & a_{1n} \\
+\vdots &         & \vdots &           & \vdots \\
+a_{i1} &  \cdots       &  a_{ij} & \cdots & a_{in} \\
+\vdots &         & \vdots &           & \vdots \\
+a_{m1} &  \cdots & a_{mj}& \cdots & a_{mn}
+\end{array}
+\right].
+$$
+\end{defn}
+
+\begin{defn}
+Soit $\boldA$ une matrice de dimension $m\times n$ quelconque, alors la \textbf{matrice transposée} de $\boldA$, notée $\boldA^\top$ ou $\boldA'$, est de dimension $n\times m$ et comprend les éléments $\alpha_{ji}=a_{ij},\;\;i=1,\ldots,m; \; j=1,\ldots,n.$
+\end{defn}
+
+\begin{defn}
+    Une matrice carrée (de dimension $n\times n$) $\boldA$ est \textbf{symétrique} si ses éléments sont tels que
+    $$ a_{ij} = a_{ji}$$
+    pour $i, j = 1, \dots, n$. Une matrice symétrique est égale à sa transposée, $\boldA = \boldA^\top$.
+\end{defn}
+
+\begin{defn}
+    Soit une matrice $\boldA$ carrée de dimension $n\times n$. La \textbf{matrice inverse} de $\boldA$, notée $\boldA^{-1}$ est la matrice qui satisfait
+    $$ \boldA \boldA^{-1} = \boldA^{-1}\boldA = \bold{I}_n,$$
+    où $\bold{I}_n$ est la matrice identité de dimension $n$.
+\end{defn}
+
+\begin{defn}
+    Soit une matrice $\boldA$ carrée de dimension $n\times n$. La matrice $\boldA$ est \textbf{idempotente} si la multiplication par elle-même ne la modifie pas,  
+     $\boldA \boldA = \boldA.$
+\end{defn}
+
+\begin{defn}
+La \textbf{somme matricielle} $\bold{C}=\boldA+\bold B$ de deux matrices $\boldA$ ($m\times n$) et $\bold B$ ($m\times n$) est la matrice $C$ (de même dimension que $\boldA$ et $\bold B$) dont les éléments sont
+$$c_{ij}=a_{ij}+b_{ij}\qquad\;\;i=1,\ldots,m; \; j=1,\ldots,n.$$
+\end{defn}
+
+\begin{defn}
+Le produit du scalaire $k, k\in\R$, et de la matrice $\boldA$ de dimension $m\times n$ est la matrice $\bold C$ de dimension $m\times n$, $\bold{C}=k\boldA$, dont les éléments sont
+$$c_{ij}=k a_{ij}\;\;i=1,\ldots,m; \; j=1,\ldots,n.$$
+\end{defn}
+
+\begin{defn}
+Soient $\boldA$ et $\bold B$ deux matrices de dimensions respectives $m\times r$ et $r\times n$. Le \textbf{produit matriciel} $\bold{C}=\bold A\bold B$ correspond à la matrice $\bold C$ de dimension $m\times n$ dont les éléments sont
+$$c_{ij}=\sum_{k=1}^r a_{ik}b_{kj}, \quad i=1,\ldots,m; \; j=1,\ldots,n.$$
+Il est à noter que le produit matriciel n'est défini que si le nombre de colonnes de $\boldA$ est égal au nombre de lignes de $\bold B$. L'élément $c_{ij}$ correspond au produit scalaire euclidien du i$^\text{ème}$ vecteur ligne de $\boldA$ par le j$^\text{ème}$ vecteur colonne de $\bold B$.
+\end{defn}
+
+
+
+\subsection{Propriétés du calcul matriciel}
+\label{sec:prop_calc_mat}
+
+En supposant des matrices compatibles pour les opérations en question, on a que
+
+\begin{enumerate}[label=(\roman*)]
+\item Commutativité de la somme : $\boldA + \bold B  =  \bold B + \bold A$
+\item Associativité de la somme : $(\bold A+\bold B)+\bold C  =  \bold A+ (\bold B+\bold C)$
+\item Associativité du produit:  $(\bold A\bold B)\bold C=\bold A(\bold B\bold C)$
+\item Divers types de distributivité :
+\begin{align*}
+  \bold A(\bold B+\bold C)&=\bold A\bold B+\bold A\bold C \\
+(\bold A+\bold B)\bold C&=\bold A\bold C+\bold B\bold C \\
+k(\bold A+\bold B)&=k\bold A+k\bold B \\
+(k_1+k_2)\bold A&=k_1\bold A+k_2\bold A 
+\end{align*}
+
+\item Divers types d'associativité : 
+\begin{align*}
+    k_1(k_2\bold C)&=k_1k_2\bold C \\
+    k(\bold A\bold  B)&=(k\bold A) \bold B=\bold A(k\bold B)
+\end{align*}
+\end{enumerate}
+
+
+\subsection{Propriétés de la transposition et de l'inversion}
+\label{sec:prop_transp}
+\begin{enumerate}[label=(\roman*)]
+\item $(\bold A+\bold B)^\top=\bold A^\top+\bold B^\top$
+\item $(k\bold A)^\top=k\bold A^\top$
+\item $(\bold A\bold B)^\top=\bold B^\top \bold A^\top$
+\item $(\bold A^\top)^\top=\bold A$
+\item $(\bold A^{-1})^{-1}=\bold A$
+\item $(\bold A^\top)^{-1}=\bold (\bold A^{-1})^\top$
+\item $(\bold A\bold B)^{-1}=\bold B^{-1} \bold A^{-1}$
+\end{enumerate}
+
+
+\subsection{Projection orthogonale}
+
+Soit $\bold V$ un sous-espace vectoriel de $\mathbb{R}^n$ et une matrice $\bold X$ dont les colonnes forment une base de $\bold V$. La \textbf{matrice de projection orthogonale} sur l'espace engendré par les colonnes de $\bold X$ est 
+$$ \bold P_{\bold X} = \boX \left( \boX^\top \boX\right)^{-1} \boX^\top. $$
+Cette matrice de projection est idempotente et symétrique. Ainsi, $\bold P_{\boX} = \bold P_{\boX}^\top = \bold P_{\boX} \bold P_{\boX}$.
+
+Soit un vecteur $\bold y \in \mathbb{R}^n$. Sa projection sur $\bold V$ est obtenue le multipliant à la matrice de projection, soit $\bold P_{\boX} \bold y$.
+
+\subsection{Dériver une fonction d'un vecteur}
+\label{sec:Deriver}
+
+Soit une fonction scalaire $f: \mathbb{R}^n \rightarrow \mathbb{R}$ et un vecteur $\boldx = \left( x_1, \dots, x_n\right)^\top$. Pour dériver $f(\boldx)$ par rapport à $\boldx$, il faut appliquer la dérivée partielle à $f(\boldx)$ par rapport à chaque composante du vecteur $\boldx$. Ainsi,
+\begin{align*}
+\frac{\partial f(\boldx)}{ \partial \boldx} =
+    \begin{pmatrix}
+       \displaystyle \frac{\partial f(\boldx)}{\partial x_1} \\[4mm]
+       \displaystyle \frac{\partial f(\boldx)}{\partial x_2} \\[4mm]
+       \displaystyle \vdots\\[4mm]
+       \displaystyle \frac{\partial f(\boldx)}{\partial x_n} 
+    \end{pmatrix}.
+\end{align*}
+
+\begin{exemple}
+    Soit un vecteur $\boldx = \left( x_1, \dots, x_n\right)^\top$, un vecteur $\boldu = \left(u_1, \dots, u_n\right)^\top$ et une matrice symétrique $\boldA$ de dimension $n\times n$.
+
+    \begin{enumerate}[label=(\roman*)]
+        \item Calculons $\partial \boldx^\top \boldu \big/ \partial \boldx$. On a
+        \begin{align*}
+        \boldx^\top \boldu &=
+         \begin{pmatrix}
+             x_1 & \cdots & x_n
+         \end{pmatrix}
+         \begin{pmatrix}
+             u_1 \\
+             \vdots \\
+             u_n
+         \end{pmatrix}
+         =
+         x_1 u_1 + \dots x_n u_n
+         \intertext{et}
+         \frac{\partial \boldx^\top \boldu}{\partial x_1}
+         &= u_1, \quad \dots \;, \quad \frac{\partial \boldx^\top \boldu}{\partial x_n} = u_n.
+         \intertext{Ainsi,}
+         \frac{\partial \boldx^\top \boldu}{\partial \boldx}
+         &= 
+         \begin{pmatrix}
+             \displaystyle \frac{\partial \boldx^\top \boldu}{\partial x_1} \\[4mm]
+             \displaystyle\vdots \\[4mm]
+             \displaystyle\frac{\partial \boldx^\top \boldu}{\partial x_n}
+         \end{pmatrix}
+         = \begin{pmatrix}
+             u_1 \\[4mm]
+             \vdots \\[4mm]
+             u_n
+         \end{pmatrix}
+         = \boldu.
+    \end{align*}
+
+    \item Calculons $\partial \boldx^\top \boldA \boldx \big/ \partial \boldx$. On a
+        \begin{align*}
+        \boldx^\top \boldA \boldx &=
+         \begin{pmatrix}
+             x_1 & \cdots & x_n
+         \end{pmatrix}
+         \begin{pmatrix}
+             a_{11} & \cdots & a_{1n} \\[4mm]
+             \vdots & \ddots & \vdots \\[4mm]
+             a_{n1} & \cdots & a_{nn}
+         \end{pmatrix}
+         \begin{pmatrix}
+             x_1 \\
+             \vdots \\
+             x_n
+         \end{pmatrix}
+         =
+         \sum_{i=1}^n\sum_{j=1}^n x_i x_j a_{ij}
+         \intertext{qui peut s'écrire}
+         \boldx^\top \boldA \boldx &=
+         \sum_{i=1}^n\sum_{\substack{j=1 \\ i\neq j}}^n x_i x_j a_{ij} + \sum_{i=1}^n x_i^2 a_{ii}.
+         \intertext{Alors}
+         \frac{\partial  \boldx^\top \boldA \boldx }{\partial x_1}
+         &= \sum_{i=2}^n x_i a_{i1} + \sum_{j=2}^n x_j a_{1j} + 2 x_1 a_{11} \\
+         &= \sum_{i=1}^n x_i a_{i1} + \sum_{j=1}^n x_j a_{1j} \\
+         &= 2\sum_{j=1}^n x_j a_{1j}  \quad\text{puisque $A$ est symétrique.}
+         \intertext{Ainsi,}
+         \frac{\partial \boldx^\top \boldA \boldx }{\partial \boldx}
+         &= 
+         \begin{pmatrix}
+             \displaystyle \frac{\partial \boldx^\top \boldA \boldx }{\partial x_1} \\[4mm]
+             \displaystyle\vdots \\[4mm]
+             \displaystyle\frac{\partial \boldx^\top \boldA \boldx }{\partial x_n}
+         \end{pmatrix}
+         = 2 \begin{pmatrix}
+             \sum\limits_{j=1}^n x_j a_{1j} \\[4mm]
+             \vdots \\[4mm]
+             \sum\limits_{j=1}^n x_j a_{nj}
+         \end{pmatrix}
+         = 2 \boldA \boldx.
+    \end{align*}
+    \end{enumerate}
+\end{exemple}
+
+
+
+
+\section{Espérance et variance de variables aléatoires}
+
+ Soit $\boX=\left(X_1, X_2, \dots, X_n\right)^\top$, un vecteur de
+$n$ variables al\'eatoires et $\bo{A}$ et $\bo{B}$, des matrices de constantes. L'espérance de $\boX$ est
+\begin{align*}
+\esp\left(\boX\right)&=
+\begin{pmatrix}
+    \esp(X_1)\\[4mm]
+    \esp(X_2)\\[4mm]
+    \vdots \\[4mm] 
+    \esp(X_n)
+\end{pmatrix}
+\intertext{et la variance de $\boX$ est}
+\var\left(\boX\right)&=
+\begin{pmatrix}
+    \var(X_1) & \cov(X_1,X_2) & \cdots & \cov(X_1,X_n) \\[4mm]
+\cov(X_2,X_1) & \var(X_2) & \cdots & \cov(X_2,X_n) \\[4mm]
+\vdots & \vdots & \ddots & \vdots \\[4mm]
+\cov(X_n,X_1) & \cov(X_n,X_2) & \cdots & \var(X_n)
+\end{pmatrix}.
+\end{align*}
+Les propriétés de l'espérance et de la variance sous forme matricielle sont
+\begin{enumerate}[label=(\roman*)]
+    \item $\esp\left(\bo{A}\boX+\bo{B}\right)
+    =\bo{A}\esp\left(\boX\right)+\bo{B} $
+    \item $\var\left(\bo{A}\boX\right) 
+    =  \bo{A}\var\left(\boX\right)\bo{A}'$
+    \item $\var\left(\bo{A}\boX+\bo{B}\right) 
+    =  \bo{A}\var\left(\boX\right)\bo{A}'.$
+\end{enumerate} 
+
+
+
+%%%%%%%%%%
+
+
+\section{La loi normale multivariée}
+\label{LaLoiNormaleMultivariée}
+
+Dans le cas d'une variable aléatoire $Z$ distribuée selon une loi normale centrée réduite, $Z\sim\N(0,1)$, la densité de $Z$ s'écrit 
+\begin{eqnarray*}
+ f_Z(z) = \frac{1}{\sqrt{2\pi}} \exp\left( \frac{-z^2}{2}\right).
+\end{eqnarray*}
+Une variable aléatoire $X$ de distribution normale avec une moyenne $\mu$ et une variance $\sigma^2$ peut s'écrire $X=\sigma Z+\mu$. On dit dans ce cas que $X \sim \N (\mu,\sigma^2)$. La densité de cette variable $X$ s'écrit
+\begin{eqnarray*}
+	f_X(x) =  \frac{1}{\sqrt{2\pi} \sigma} \exp\left\{-\frac{1}{2} \left(\frac{x- \mu}{\sigma}\right)^2\right\}.
+\end{eqnarray*}
+
+On considère maintenant la généralisation pour $n\geq 1$.  Posons $\bo{Z}=\left( Z_1, \dots, Z_n \right)^\top$, un vecteur de variables aléatoires indépendantes et identiquement distribuées suivant chacune une loi  $\N(0,1)$. On a que la densité conjointe des $Z_i$ peut  s'écrire comme
+\begin{eqnarray}
+f(\bo Z) = f(Z_1, ..., Z_n) &=& \prod_{i=1}^p f(Z_i) \nonumber\\
+&=&  \left(\frac{1}{\sqrt{2\pi}}\right)^n \exp\left(-\sum_{i=1}^n \frac{z_i^2}{2}\right)\nonumber\\
+ &=& \left(\frac{1}{\sqrt{2\pi}}\right)^n \exp\left(-\frac{1}{2} \bo{Z}'\bo{Z}\right).
+\end{eqnarray}
+Cette densité conjointe est celle d'une loi normale multivariée de dimension $n$, dont le vecteur des espérances est \textbf{0}, un vecteur $n\times 1$ de zéros, et dont la matrice de variances-covariances est $\I_n$, la matrice identité de dimension ($n \times n$). On peut écrire
+\begin{eqnarray*}
+\begin{pmatrix}
+Z_1 \\[4mm]
+Z_2 \\[4mm]
+\vdots \\[4mm]
+Z_n \\[4mm]    
+\end{pmatrix}
+\sim \N_n (\textbf{0}, \boI_n) \quad\text{ ou encore, }\bo{Z}\sim \N_n (\textbf{0}, \boI_n).
+\end{eqnarray*}
+%où $p$ désigne le nombre de variables aléatoires, 
+
+Considérons la transformation de variables $\boX=\bo\mu + \bo\Sigma^{(1/2)}\bo{Z}$, où $\bo\mu$ désigne le vecteur contenant les espérances des $n$ variables et $\bo\Sigma$ dénote la matrice de variances-covariances de $\boX$ (de dimension $n \times n$). La densité conjointe des $X_i$ est alors donnée par
+\begin{eqnarray}
+f(\bo X) = f(X_1, ..., X_n) 
+  &=& \left(\frac{1}{\sqrt{2\pi}}\right)^n \frac{1}{\left|\bo\Sigma\right|^{1/2}} \exp\left\{-\frac{1}{2} (\boX- \bo\mu)' (\bo\Sigma^{-1/2})' \bo\Sigma^{-1/2} (\boX- \bo\mu)\right\}\nonumber\\
+ &=& \left(\frac{1}{\sqrt{2\pi}}\right)^n \frac{1}{\left|\bo\Sigma\right|^{1/2}} \exp\left\{-\frac{1}{2} (\boX- \bo\mu)' \bo\Sigma^{-1} (\boX- \bo\mu)\right\}.
+\label{normalemulti}
+\end{eqnarray}
+Cette densité est celle d'une loi normale multivariée de dimension $n$, et on peut écrire
+\begin{eqnarray*}
+\begin{pmatrix}
+X_1 \\[4mm]
+X_2 \\[4mm]
+\vdots \\[4mm]
+X_n \\[4mm]    
+\end{pmatrix} \sim \N_n \left(\bo\mu, \bo\Sigma\right) \quad\text{ ou encore, }\bo{X}\sim \N_n \left(\bo\mu, \bo\Sigma\right) .
+\end{eqnarray*}
+
+
+\begin{remarque}
+   On a posé $\boX=\bo\mu + \bo\Sigma^{(1/2)}\bo{Z}$. 
+On peut déterminer l'espérance et la variance de $\boX$ à partir de celles de $\bo{Z}$.
+\begin{eqnarray*}
+	\esp[\boX] &=& \esp[\bo{\mu} + \bo\Sigma^{1/2}\bo{Z}]\\
+	& =& \esp[\bo\mu]+ \bo\Sigma^{1/2}\esp[\bo{Z}] \\
+	&=& \bo\mu,
+\end{eqnarray*}
+\begin{eqnarray*}
+	\var[\boX] &=& \var[\bo\Sigma^{1/2}\bo Z] \\
+	& = & (\bo\Sigma^{1/2})' \var[\bo Z] \bo\Sigma^{1/2} \\
+	&=& (\bo\Sigma^{1/2})' \boI_p \bo\Sigma^{1/2} \\
+	&=& \bo\Sigma.
+\end{eqnarray*} 
+\end{remarque}
+
+\begin{remarque}
+    On pourrait appliquer la transformation inverse et déduire le vecteur des variables aléatoires centrées réduites  comme suit: $$\bo Z =  \bo\Sigma^{(-1/2)} (\boX-\bo\mu).$$
+\end{remarque}
+
+Finalement, il est possible de transformer une variable aléatoire normale. Voici un cas particulier d'intérêt pour le cours.
+
+\begin{theorem}
+\label{thmNormalChi2}
+Si $\boX \sim \N_n(\bo 0,\boI_n)$ et $\bo A$ est une matrice symétrique, alors $\boX^\top\bo A\boX \sim \chi^2_r$ si et seulement si $\bo A$ est idempotente de rang r.
+\end{theorem}

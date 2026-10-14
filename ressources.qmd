@@ -35,7 +35,14 @@ Pour consulter l’aide d’une fonction, ajoutez `?` devant son nom :
 - [Chapitre 3 : inférence](documents/chapitre-03-fiche-r.pdf)
 - [Chapitre 5 : régression linéaire multiple](documents/chapitre-05-fiche-r.pdf)
 
-Ces documents ont été mis à jour en 2026.
+- [Chapitre 6 : inférence pour la RLM](documents/chapitre-06-fiche-r.pdf)
+- [Chapitre 7 : variables catégoriques et interactions](documents/chapitre-07-fiche-r.pdf)
+- [Chapitre 8 : choix et validation de modèle](documents/chapitre-08-fiche-r.pdf)
+- [Chapitre 9 : multicolinéarité](documents/chapitre-09-fiche-r.pdf)
+- [Chapitre 10 : observations influentes](documents/chapitre-10-fiche-r.pdf)
+- [Chapitre 11 : techniques avancées](documents/chapitre-11-fiche-r.pdf)
+
+Les PDF et les scripts correspondants sont regroupés dans [Chapitres](cours.qmd).
 
 ## Crédits
 

@@ -1,0 +1,103 @@
+
+\section{Un peu d'histoire}
+
+L'origine du mot \textit{régression} vient de Sir Francis Galton (1822--1911), un scientifique britannique. Cousin de Charles Darwin, Galton était un touche-à-tout intuitif qui fut anthropologue, explorateur, géographe, inventeur, météorologue, généticien, psychométricien et statisticien.
+%\footnote{Plus d'informations sur la biographie de Sir Francis Galton sont disponibles à l'adresse \url{http://fr.wikipedia.org/wiki/Francis_Galton}}.
+En 1886, en travaillant sur l'hérédité, il s'est intéressé à la taille des enfants par rapport à celle de leurs parents. Il constata que lorsque les parents étaient plus grands que la moyenne, leurs enfants avaient tendance à être plus petits qu'eux et que, inversement, lorsque les parents étaient plus petits que la moyenne leurs enfants tendaient à être plus grands qu'eux. Il publia sa découverte  dans l'article \emph{Regression towards mediocrity in hereditary stature} \citep{Gal:1886}. Il utilisa le terme régression dans le sens où les parents de taille extrême (petits et grands) voient en moyenne la taille de leurs enfants régresser vers la moyenne.
+
+Par extension, on utilise maintenant le terme \textbf{analyse de régression} pour désigner l'étude des relations qui existent entre des variables mesurables à partir d’observations (données) prises sur ces variables.
+
+L'analyse de la relation entre plusieurs variables est toutefois bien plus ancienne et remonte au milieu du XVIII$^\text{ème}$ siècle. En 1757, Ru\=der Josip Bo\v scovi\'c (1711--1787) exposa une méthode minimisant la somme des valeurs absolues entre un modèle et les observations. Plus tard Adrien-Marie Legendre (1752--1833), célèbre mathématicien français, développa dans son mémoire \emph{Nouvelles méthodes pour la détermination des orbites des comètes} \citep{Leg:1805}, la méthode d'estimation par moindres carrés des paramètres d'un tel modèle, donnant le nom à cette méthode. Parallèlement, Carl Friedrich Gauss (1777-1855) publia en 1809 le développement de la méthode des moindres carrés \citep{Gau:1809}.
+%le tome 2 de ses travaux sur la mécanique céleste.
+
+
+\section{Modèle de régression}
+
+La régression est l'étude des relations qui existent entre des variables mesurables. C'est en fait une technique de modélisation qui vise à expliquer une variable $Y$ en fonction d'une ou de plusieurs variables $x_1,\ldots,x_p$. Cela peut s'exprimer mathématiquement par
+\begin{equation}
+Y=f(x_1,\ldots,x_p).
+\end{equation}
+
+La variable $Y$ est appel\'ee \textbf{variable endogène}. Ce terme signifie, selon le Larousse, \og qui est produit par la structure elle-même en dehors de tout apport extérieur \fg . On appelle également la variable $Y$ variable réponse ou variable dépendante. À l'opposé, les variables $x_1,\ldots,x_p$ ne sont pas expliquées par le modèle et on les nomme donc \textbf{variables exogènes}, qui signifie \og qui provient du dehors, de l'extérieur du phénomène, par opposition à endogène \fg. On utilise également les termes variables explicatives, facteurs, covariables et variables indépendantes pour faire référence aux variables $x_1,\ldots,x_p$.
+
+
+Dans certains cas, la relation entre les variables est exacte et donc la valeur de $Y$ est uniquement déterminée par les valeurs de $x_1,\ldots,x_p$. Le mod\`ele de r\'egression est alors un modèle dit \textbf{déterministe}. On peut imaginer par exemple que la variable exogène soit la longueur de l'arête d'un carré, et que la variable endogène soit l'aire de ce carré. Un grand nombre de lois physiques sont également déterministes. 
+
+\begin{exemple}
+    Le modèle d'atmosphère standard de l'Organisation de l'aviation civile internationale (OACI), couvrant les altitudes jusqu'à 80 km et ne prenant pas en compte la vapeur d'eau, exprime la relation entre la pression et l'altitude de la manière suivante:
+$$p=p_0(1-2,26\times10^{-5}h),$$ où $p_0$ désigne la pression au niveau de la mer en hPa ($p_0=1013,25\,hPa)$ et $h$ note l'altitude en $m$. Dans un modèle déterministe comme celui-ci, la valeur de la (ou des) variable(s) exogène(s) détermine exactement celle de la variable endogène.
+\end{exemple}
+
+
+Dans d'autres situations, il est possible que les données soient entachées d'une erreur de mesure (expérimentale) ou encore, que les facteurs utilisés dans le modèle ne permettent pas d'expliquer complètement la variable réponse. Les valeurs de $x_1,\ldots,x_p$ expliquent dans ce cas une partie de $Y$, alors que l'autre partie demeure inexpliquée. On parle alors de modèle \textbf{stochastique}. Par exemple, on peut vouloir prédire le poids d'un bébé à la naissance en fonction du nombre de jours de gestation. Bien qu'il y ait une relation entre ces deux variables,  deux bébés nés avec la même durée de gestation n'auront pas nécessairement exactement le même poids à la naissance.
+
+Dans plusieurs domaines où on s'intéresse à l'effet des variables les unes sur les autres, le modèle stochastique est le plus approprié. Pensons par exemple à l'effet de la pollution par l'ozone (O$_3$) sur la santé, au lien entre le revenu moyen d'un pays et l'espérance de vie de sa population, ou encore à l'effet de la température en hiver sur l'achalandage dans une station de ski. Dans ce cours, on s'intéressera uniquement aux modèles de régression stochastique.
+
+
+
+\section{Régression linéaire}
+
+
+Avec un nombre fini d'observations, on doit faire des hypothèses sur la fonction de régression $f(x_1,\ldots,x_p)$ pour pouvoir l'estimer. Dans ce cours nous nous intéressons principalement aux modèles de régression linéaire.
+Dans un tel modèle la valeur de la variable endogène est une fonction linéaire des paramètres:
+\begin{equation}\label{eq:regresslin}
+Y=\beta_0+\beta_1f_1(x_1)+\beta_2f_2(x_2)+\cdots+\beta_pf_p(x_p)+
+\mbox{fluctuation},
+\end{equation}
+où 
+\begin{itemize}
+    \item $Y$ dénote la variable endogène, 
+    \item $x_1,\ldots,x_p$ représentent les variables exogènes, 
+    \item $f_1,\ldots,f_{p}$ sont des transformations connues des variables exogènes et 
+    \item $\beta_0,\ldots,\beta_p$ sont des paramètres de valeur
+inconnue qu'on estimera à l'aide des données.
+\end{itemize}
+La fluctuation indique que le modèle est stochastique, et non déterministe.
+
+La contrainte de linéarité limite le type de relations pouvant être modélisées entre les variables d'intérêt. La régression linéaire est toutefois suffisante pour plusieurs situations, et largement utilisée en pratique pour sa simplicité et son interprétation accessible. Nous décrirons tout de même brièvement au  \autoref{sec:TechniquesAvancees}  quelques méthodes qui peuvent être utilisées si la régression linéaire n'est pas appropriée.
+
+Notons que dans le cas où une seule variable explicative (exogène) est considérée, le modèle est appelé \textbf{régression linéaire simple}. Ce modèle fait l'objet des premiers chapitres de ces notes de cours. Les chapitres suivants présentent le modèle de \textbf{régression linéaire multiple}, lorsque plusieurs variables explicatives sont utilisées pour modéliser la variable réponse.
+
+
+\section{Objectifs de la régression}
+
+Le but d'une analyse de régression est d'étudier les relations qui existent entre des variables mesurables sur des observations (données). Quatre objectifs spécifiques peuvent être identifiés pour une analyse de régression.
+
+\begin{enumerate}
+\item \textbf{La spécification d'un modèle}
+
+L'objectif consiste à décrire le lien entre les variables. On peut également vouloir tester si un modèle de régression linéaire est approprié. 
+
+\begin{exemple}
+    Comment la température de fonctionnement d'un procédé influence-t-elle le rendement du produit ? La relation est-elle linéaire?
+\end{exemple}
+
+
+\item \textbf{L'estimation de paramètres}
+
+Cet objectif va souvent de pair avec le premier, mais on peut aussi vouloir estimer les paramètres d'un modèle déjà connu.
+
+\begin{exemple}
+    La relation de Faber-Jackson est une loi empirique qui relie la luminosité $L$ à la dispersion des vitesses $\sigma$ des étoiles centrales des galaxies elliptiques. Mathématiquement, elle s'exprime comme $L=k\sigma^\gamma$, où $\gamma$ est un indice approximativement égal à 4, selon la catégorie de galaxies considérées, et $k$ est un paramètre du modèle. Il est facile de linéariser la relation en prenant le logarithme à gauche et à droite de l'égalité : $\log L=\gamma\log\sigma+\log k$. Le but consiste à estimer $k$ et $\gamma$ puis à tester si $\gamma$ est significativement différent de 4 avec nos données.
+\end{exemple} 
+
+\item \textbf{La sélection de variables}
+
+On veut identifier la ou les variables exogènes qui expliquent la variable réponse.
+
+\begin{exemple}
+    Parmi des variables météorologiques comme la température, l'humidité, le vent, etc., lesquelles ont une influence significative sur les pics d'ozone ?
+\end{exemple}
+
+\item \textbf{La prévision}
+
+L'objectif est de prédire la variable réponse pour certaines valeurs des variables explicatives. Pour ce faire, il est en général nécessaire de  spécifier le modèle, en estimer les paramètres et associer une marge d'erreur à ces estimations.
+
+\begin{exemple}
+    \'Etant donn\'e la température du mois de décembre 2010, quelle sera la consommation totale en électricité à Québec pour l'hiver 2010--2011 ?
+\end{exemple}
+
+Une analyse de régression permet souvent de répondre à plusieurs de ces objectifs. Nous verrons tout au long des notes de multiples outils pour ce faire.
+
+\end{enumerate}
+

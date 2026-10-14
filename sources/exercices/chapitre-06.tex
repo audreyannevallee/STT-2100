@@ -1,0 +1,59 @@
+\documentclass[letterpaper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[french]{babel}
+\usepackage[margin=1in,headheight=28pt]{geometry}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{amsmath,amssymb,amsthm,bm,enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[small,compact]{titlesec}
+\usepackage{fancyhdr,fancyvrb}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\pagestyle{fancy}
+\fancyhead[L]{STT-2100 \\ Régression}
+\fancyhead[R]{A.-A. Vallée \\ Université Laval}
+\fancyfoot[C]{\thepage}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\fvset{fontsize=\small,frame=single,framesep=2mm}
+\newcommand{\esp}{\mathbb{E}}
+\newcommand{\var}{\operatorname{Var}}
+\newcommand{\bo}[1]{\bm{#1}}
+\newcommand{\N}{\mathcal{N}}
+% Définir \avecsolutions avant l'input pour une version corrigée.
+\newcommand{\prof}[1]{\ifdefined\avecsolutions\par{\color{blue}\textbf{Solution :} #1}\par\fi}
+\begin{document}
+\begin{center}{\Large Exercices - Chapitre 6}\end{center}
+On note $p'=p+1$ le nombre de coefficients du modèle, incluant l'ordonnée à l'origine. Les tests et intervalles supposent des erreurs indépendantes, normales et de variance constante, une moyenne correctement spécifiée et une matrice $\bo X$ de plein rang.
+\begin{enumerate}[leftmargin=*,wide,label=\bfseries Exercice \arabic*:]
+\item Une RLM utilise $n=40$ observations et trois variables explicatives. On obtient $SC_{res}=180$, $\hat\beta_2=1{,}8$ et $(\bo X^\top\bo X)^{-1}_{33}=0{,}04$.
+\begin{enumerate}[label=\alph*)]
+\item Calculez $\hat\sigma^2$ et l'erreur-type de $\hat\beta_2$.
+\item Testez $H_0:\beta_2=0$ contre $H_1:\beta_2\ne0$ au seuil de 5\,\%.
+\item Construisez un intervalle de confiance à 95\,\% en utilisant $t_{36;0{,}975}=2{,}028$.
+\end{enumerate}
+\prof{$p'=4$, $\hat\sigma^2=180/36=5$, $se(\hat\beta_2)=\sqrt{5(0{,}04)}=0{,}4472$. La statistique $t=1{,}8/0{,}4472=4{,}025$ dépasse $2{,}028$ en valeur absolue; on rejette $H_0$. L'intervalle est $1{,}8\pm2{,}028(0{,}4472)=[0{,}893;2{,}707]$.}
+\item Le même modèle a $SC_{tot}=600$. Complétez la table d'ANOVA (sources, sommes de carrés, degrés de liberté, carrés moyens et statistique $F$). Énoncez l'hypothèse du test global et expliquez ce qu'un rejet permet de conclure.
+\prof{$SC_{reg}=420$. Régression : $dl=3$, $CM=140$. Résidus : $dl=36$, $CM=5$. Total : $dl=39$, $SC=600$. $F=28\sim F_{3,36}$ sous $H_0:\beta_1=\beta_2=\beta_3=0$. Un rejet indique qu'au moins une pente diffère de zéro; il ne démontre pas que chaque variable est utile.}
+\item On compare, sur les mêmes 40 observations, un modèle réduit à deux coefficients et un modèle complet à quatre coefficients. Leurs sommes de carrés résiduels sont respectivement $SC_{res,R}=240$ et $SC_{res,C}=180$.
+\begin{enumerate}[label=\alph*)]
+\item Calculez le test $F$ de réduction de modèle et ses degrés de liberté.
+\item Que concluez-vous si $F_{2,36;0{,}95}=3{,}259$?
+\item Pourquoi ne peut-on pas appliquer ce test à deux modèles non emboîtés?
+\end{enumerate}
+\prof{$F=((240-180)/2)/(180/36)=6$. On rejette l'hypothèse que les deux coefficients ajoutés sont simultanément nuls. La décomposition en sommes de carrés et la loi $F$ utilisée supposent l'emboîtement des espaces de modèles.}
+\item Pour un profil $\bo x^*$, on obtient $\hat y^*=12$ et $\bo x^{*\top}(\bo X^\top\bo X)^{-1}\bo x^*=0{,}10$.
+\begin{enumerate}[label=\alph*)]
+\item Construisez un intervalle de confiance à 95\,\% pour la réponse moyenne.
+\item Construisez un intervalle de prévision à 95\,\% pour une nouvelle observation indépendante au même profil.
+\item Expliquez la différence de largeur et le danger d'une extrapolation.
+\end{enumerate}
+\prof{Avec $s^2=5$ et $t=2{,}028$, l'IC est $12\pm2{,}028\sqrt{0{,}5}=[10{,}566;13{,}434]$; l'IP est $12\pm2{,}028\sqrt{5{,}5}=[7{,}244;16{,}756]$. L'IP inclut la variabilité de la nouvelle erreur. Hors du domaine observé, la validité de la forme de la moyenne n'est pas garantie.}
+\item On estime $\hat\beta_1=2$, $\hat\beta_2=1$, avec $se(\hat\beta_1)=0{,}5$, $se(\hat\beta_2)=0{,}4$ et $\widehat{\operatorname{Cov}}(\hat\beta_1,\hat\beta_2)=0{,}10$.
+Calculez l'estimation et l'erreur-type de $\theta=\beta_1-\beta_2$. Écrivez la statistique de test de $H_0:\theta=0$. Pourquoi faut-il conserver la covariance?
+\prof{$\hat\theta=1$, $\widehat{\var}(\hat\theta)=0{,}25+0{,}16-2(0{,}10)=0{,}21$, d'où $se=0{,}4583$ et $t=2{,}182$. La covariance intervient parce que les deux estimateurs proviennent du même ajustement.}
+\item Dans R, ajustez \texttt{lm(mpg \string~ wt + hp,} \\texttt{data = mtcars)}. Obtenez les IC des coefficients, comparez au modèle contenant seulement \texttt{wt}, puis construisez un IC et un IP à \texttt{wt=3}, \texttt{hp=110}. Identifiez les hypothèses testées et les unités des variables (\texttt{?mtcars}).
+\prof{Utilisez \texttt{confint(mod)}, \texttt{anova(modR, mod)} et \texttt{predict(mod, newdata=profil, interval="confidence")} ou \texttt{interval="prediction"}. La comparaison teste l'ajout de \texttt{hp} après \texttt{wt}; \texttt{wt} est en milliers de livres, \texttt{hp} en chevaux et \texttt{mpg} en milles par gallon américain.}
+\end{enumerate}
+\end{document}
