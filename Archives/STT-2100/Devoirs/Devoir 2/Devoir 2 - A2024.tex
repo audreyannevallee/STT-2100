@@ -1,0 +1,276 @@
+% Pour toute question sur l'utilisation de cette classe, écrivez à jerome.soucy(at)ulaval.ca
+% Nécessite la classe Evaluation.sty dans le même dossier ou dans le PATH de votre système
+% Nécessite le fichier logo_ul.pdf dans le même dossier un dans le PATH de votre système
+\def\Ponderation{10}
+\def\SigleNumero{STT-2100}
+\def\NomCours{Régression}
+\def\DateEvaluation{2 mars 2023}
+\def\DateRemise{5 décembre 2024}
+\def\HeureRemise{23h59}
+\def\HeureEvaluation{}
+\def\Session{Été 2021}
+\def\NomEvaluation{Devoir 2}
+
+% Ne rien mettre entre les accolades si l'enseignant (ou l'enseignante) est aussi le coordonnateur (ou la coordonnatrice)
+\def\Coordonnatrice{}
+\def\Coordonnateur{}
+
+% Ne rien mettre entre les accolades s'il y a plus d'une section
+\def\Enseignant{}
+\def\Enseignante{Audrey-Anne Vallée}
+
+% Ne rien mettre entre les accolades s'il s'agit d'un cours à section unique
+% Mettre le nom de chacun des enseignants et enseignantes entre les accolades
+% Une case à cocher sera générée pour chacune des sections
+\def\SectionA{}
+\def\SectionB{}
+\def\SectionC{}
+\def\SectionD{}
+
+
+\def\Directives{
+\begin{enumerate}
+\item Le devoir compte \numquestions ~exercices pour un total de \numpoints{}~points et est à faire individuellement ou en équipe de deux personnes. 
+
+\item Vous devez remettre \underline{deux fichiers} par équipe:
+\begin{itemize}
+\item Un fichier PDF avec vos réponses aux questions 1 à 2. Vous pouvez rédiger à l'ordinateur dans \LaTeX, à la main sur un papier que vous numérisez ou sur une tablette. Ce fichier est à remettre sur Gradescope, à l'aide des instructions données au point 4. de cette page.
+\item Un script \texttt{SAS} avec les codes utilisés pour la question 2. À remettre dans la boîte de dépôt du site du cours.
+\end{itemize}
+
+\item Remise sur \textit{Gradescope}:
+\begin{itemize}
+\item Rendez-vous au www.gradescope.com;
+\item Connectez-vous en utilisant votre adresse courriel de l'Université (idul@ulaval.ca) ainsi que votre mot de passe habituel. Il faut faire «Log in», utiliser «School credentials» et chercher Université Laval dans la liste . Vous devriez déjà avoir un compte, par le biais de l’université. 
+\item Une fois sur le site, choisissez STT-2100;
+\item En sélectionnant le Devoir 2, vous ajoutez le PDF qui contient vos réponses;
+\item Vous devez identifier les différentes sous-questions sur les pages de votre devoir. Si cette étape n'est pas bien faite, une pénalité de 5 points peut être attribuée.
+\end{itemize}
+
+\item Il est \textit{\textbf{nécessaire}} de justifier toutes les démarches. Une réponse qui n'a pas une démarche \textit{\textbf{complète}} ne pourra avoir tous les points. 
+\item La qualité de la langue sera évaluée, incluant l'orthographe, la grammaire et la syntaxe. Un maximum de 10 points pourra être retranché pour mauvaise qualité du français. 
+\item Les travaux remis en retard recevront la note 0.
+
+\end{enumerate}
+}
+
+% Veuillez indiquer le type d'évaluation entre crochets
+% Examen : option à choisir pour un examen présentiel qui sera corrigé de manière classique. Un tableau des points sera affiché sur la page couverture.
+% Gradescope : option à choisir pour un examen qui sera corrigé via Gradescope. Aucun tableau de pointage n'apparaîtra et il y a quelques différences au niveau de la mise en page
+% TPS :
+% TPF :
+% Devoir :
+\documentclass[Devoir]{Evaluation}
+\usepackage{multicol,graphicx}
+\begin{document}
+
+\begin{questions}  
+\question 
+Soit le modèle de régression linéaire 
+
+$$\boldsymbol{Y}^*=\boldsymbol{X}^*\boldsymbol{\beta}+\boldsymbol{\varepsilon}^*,$$
+
+où 
+$\boldsymbol{Y}^* = \boldsymbol{A} \boldsymbol{Y}$, 
+$ \boldsymbol{X}^* = \boldsymbol{A}\boldsymbol{X}$, 
+$\boldsymbol{\varepsilon}^* = \boldsymbol{A}\boldsymbol{\varepsilon}$,
+$\mathrm{E}(\boldsymbol{\varepsilon}) = {\bf 0}$ et 
+$\mathrm{Var}(\boldsymbol{\varepsilon})=\sigma^2 \mathbb{I}_n $, avec
+$\mathbb{I}_n$  la matrice identité de dimension $n\times n$ et $\boldsymbol{A}$ est une matrice connue de dimension $n\times n$. 
+L'estimateur des moindres carrés de $\boldsymbol{\beta}$ est 
+
+$$\widehat{\boldsymbol{\beta}}^* = \left(\boldsymbol{X}^{*\top}\boldsymbol{X}^*\right)^{-1} \boldsymbol{X}^{*\top} \boldsymbol{Y}^*.$$
+
+\begin{parts}
+\part Supposons que $\boldsymbol{A}$ est une matrice orthogonale connue de dimension $n\times n$.
+	\begin{subparts}
+		\subpart[8] Montrez que $\mathrm{E}(\boldsymbol{\varepsilon}^*) = 0$ et que $\mathrm{Var}(\boldsymbol{\varepsilon}^*) = \sigma^2 \mathbb{I}_n$. Justifiez toutes les étapes de votre démarche.
+		\subpart[6] Montrez que $\widehat{\boldsymbol{\beta}}^* = \widehat{\boldsymbol{\beta}}$, où $\widehat{\boldsymbol{\beta}} = \left(\boldsymbol{X}^{\top}\boldsymbol{X}\right)^{-1} \boldsymbol{X}^{\top} \boldsymbol{Y}$. Justifiez toutes les étapes de votre démarche.
+	\end{subparts}
+\part Supposons maintenant que $\boldsymbol{A}$ est une matrice connue de dimension $n\times n$ telle que $\boldsymbol{A}^\top\boldsymbol{A} = {\boldsymbol \Omega}$ et où ${\boldsymbol \Omega}$ est une matrice idempotente.
+		\begin{subparts}
+		\subpart[8] Montrez que $\widehat{\boldsymbol{\beta}}^*$ est un estimateur sans biais de $\boldsymbol{\beta}$. Justifiez toutes les étapes de votre démarche.
+		\subpart[10]  Montrez que la variance de $\widehat{\boldsymbol{\beta}}^*$ est telle que $\mathrm{Var}\left(\widehat{\boldsymbol{\beta}}^*\right) = \sigma^2 \left( \boldsymbol{X}^\top {\boldsymbol \Omega} \boldsymbol{X} \right)^{-1}$. Justifiez toutes les étapes de votre démarche.
+		\end{subparts}
+\end{parts}
+
+\begin{solution}
+    \begin{parts}
+        \part
+        \begin{subparts}
+            \subpart 
+            \begin{align*}
+                \mathrm{E}(\boldsymbol{\varepsilon}^*) 
+                &= \mathrm{E} (\boldsymbol{A}\boldsymbol{\varepsilon}) \cr
+                &= \boldsymbol{A}\mathrm{E}(\boldsymbol{\varepsilon}) \cr
+                &= \boldsymbol{}{A}\bf{0} \cr
+                &= \bf{0} \cr
+                %
+                \mathrm{Var}(\boldsymbol{\varepsilon}^*) 
+                &= \mathrm{Var} (\boldsymbol{A}\boldsymbol{\varepsilon}) \cr
+                &= \boldsymbol{A}\mathrm{Var}(\boldsymbol{\varepsilon}) \boldsymbol{A}^T \cr
+                &= \boldsymbol{A} \sigma^2 \mathbb{I}_n  \boldsymbol{A}^T \cr
+                &= \sigma^2  \boldsymbol{A} \boldsymbol{A}^T  \cr
+                &= \sigma^2  \boldsymbol{A} \boldsymbol{A}^T \cr
+                &= \sigma^2  \mathbb{I}_n  \text{, car matrice orthogonale.}
+            \end{align*}
+            
+            \subpart
+            \begin{align*}
+                \widehat{\boldsymbol{\beta}}^* 
+                &= \left(\boldsymbol{X}^{*\top}\boldsymbol{X}^*\right)^{-1} \boldsymbol{X}^{*\top} \boldsymbol{Y}^* \cr
+                &= \left((\boldsymbol{A} \boldsymbol{X})^\top\boldsymbol{A} \boldsymbol{X}\right)^{-1} (\boldsymbol{A} \boldsymbol{X})^{\top} \boldsymbol{A} \boldsymbol{Y} \cr
+                &= \left(\boldsymbol{X}^{\top}\boldsymbol{A} ^\top \boldsymbol{A} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{A}^\top \boldsymbol{A} \boldsymbol{Y} \cr
+                &= \left(\boldsymbol{X}^{\top}\mathbb{I}_n \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\mathbb{I}_n \boldsymbol{Y} \cr
+                 &= \left(\boldsymbol{X}^{\top} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top} \boldsymbol{Y}  \cr
+                 &= \boldsymbol{\beta}
+            \end{align*}
+            
+        \end{subparts}
+        \part
+        \begin{subparts}
+            \subpart
+                \begin{align*}
+                \mathrm{E}\left[\widehat{\boldsymbol{\beta}}^* \right]
+                &= \mathrm{E}\left[\left(\boldsymbol{X}^{*\top}\boldsymbol{X}^*\right)^{-1} \boldsymbol{X}^{*\top} \boldsymbol{Y}^* \right]\cr
+                &= \left((\boldsymbol{A} \boldsymbol{X})^{\top}\boldsymbol{A} \boldsymbol{X}\right)^{-1} (\boldsymbol{A} \boldsymbol{X})^{\top} \mathrm{E}\left[\boldsymbol{A} \boldsymbol{Y} \right]\cr
+                &= \left(\boldsymbol{X}^{\top}\boldsymbol{A} ^\top\boldsymbol{A} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{A}^\top \mathrm{E}\left[\boldsymbol{A} \boldsymbol{Y}\right] \cr
+                &= \left(\boldsymbol{X}^{\top}\boldsymbol{A} ^\top\boldsymbol{A} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{A}^\top \mathrm{E}\left[\boldsymbol{A} \boldsymbol{X}\boldsymbol{\beta} + \boldsymbol{A} \boldsymbol{\varepsilon}\right] \cr
+                &= \left(\boldsymbol{X}^{\top}\boldsymbol{A} ^\top\boldsymbol{A} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{A}^\top \left[\boldsymbol{A} \boldsymbol{X}\boldsymbol{\beta} + \boldsymbol{A} \mathrm{E}(\boldsymbol{\varepsilon})\right] \cr
+                &= \left(\boldsymbol{X}^{\top}\boldsymbol{A} ^\top\boldsymbol{A} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{A}^\top \left[\boldsymbol{A} \boldsymbol{X}\boldsymbol{\beta} + \boldsymbol{A} \boldsymbol{0}\right] \cr
+                &= \left(\boldsymbol{X}^{\top}\boldsymbol{A} ^\top\boldsymbol{A} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{A}^\top \boldsymbol{A} \boldsymbol{X}\boldsymbol{\beta} \cr
+                &= \left(\boldsymbol{X}^{\top}\boldsymbol{\Omega} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{\Omega} \boldsymbol{X}\boldsymbol{\beta} \cr
+                 &= \boldsymbol{\beta} 
+            \end{align*}
+            \subpart
+            \begin{align*}
+                \mathrm{Var}\left[\widehat{\boldsymbol{\beta}}^* \right]
+                &= \mathrm{Var}\left[\left(\boldsymbol{X}^{*\top}\boldsymbol{X}^*\right)^{-1} \boldsymbol{X}^{*\top} \boldsymbol{Y}^* \right]\cr
+                &= \left((\boldsymbol{A} \boldsymbol{X})^{\top}\boldsymbol{A} \boldsymbol{X}\right)^{-1} (\boldsymbol{A} \boldsymbol{X})^{\top} \mathrm{Var}\left[\boldsymbol{A} \boldsymbol{Y} \right] \left\{ \left((\boldsymbol{A} \boldsymbol{X})^{\top}\boldsymbol{A} \boldsymbol{X}\right)^{-1} (\boldsymbol{A} \boldsymbol{X})^{\top} \right\}^\top\cr
+                &= \left(\boldsymbol{X}^{\top}\boldsymbol{A} ^\top\boldsymbol{A} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{A}^\top \mathrm{Var}\left[\boldsymbol{A} \boldsymbol{Y}\right] \left\{ \left(\boldsymbol{X}^{\top}\boldsymbol{A} ^\top\boldsymbol{A} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{A}^\top \right\}^\top\cr
+                &= \left(\boldsymbol{X}^{\top}\boldsymbol{A} ^\top\boldsymbol{A} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{A}^\top \mathrm{Var}\left[\boldsymbol{A} \boldsymbol{X}\boldsymbol{\beta} + \boldsymbol{A} \boldsymbol{\varepsilon}\right] \left\{ \left(\boldsymbol{X}^{\top}\boldsymbol{A} ^\top\boldsymbol{A} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{A}^\top \right\}^\top\cr
+                &= \left(\boldsymbol{X}^{\top}\boldsymbol{A} ^\top\boldsymbol{A} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{A}^\top \mathrm{Var}\left[\boldsymbol{A} \boldsymbol{\varepsilon}\right] \left\{ \left(\boldsymbol{X}^{\top}\boldsymbol{A} ^\top\boldsymbol{A} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{A}^\top \right\}^\top\cr
+                &= \left(\boldsymbol{X}^{\top}\boldsymbol{A} ^\top\boldsymbol{A} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{A}^\top \boldsymbol{A}\mathrm{Var}\left[ \boldsymbol{\varepsilon}\right] \boldsymbol{A}^\top\left\{ \left(\boldsymbol{X}^{\top}\boldsymbol{A} ^\top\boldsymbol{A} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{A}^\top \right\}^\top\cr
+                &= \left(\boldsymbol{X}^{\top}\boldsymbol{A} ^\top\boldsymbol{A} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{A}^\top \boldsymbol{A}\sigma^2 \mathbb{I}_n\boldsymbol{A}^\top\left\{ \left(\boldsymbol{X}^{\top}\boldsymbol{A} ^\top\boldsymbol{A} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{A}^\top \right\}^\top\cr
+                &= 
+                \sigma^2 \left(\boldsymbol{X}^{\top}\boldsymbol{\Omega} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{\Omega}\boldsymbol{A}^\top\left\{ \left(\boldsymbol{X}^{\top}\boldsymbol{\Omega} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{A}^\top \right\}^\top \cr
+                &= 
+                \sigma^2 \left(\boldsymbol{X}^{\top}\boldsymbol{\Omega} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{\Omega}\boldsymbol{A}^\top \boldsymbol{A} \boldsymbol{X} \left(\boldsymbol{X}^{\top}\boldsymbol{\Omega} \boldsymbol{X}\right)^{-1}  \cr
+                &= 
+                \sigma^2 \left(\boldsymbol{X}^{\top}\boldsymbol{\Omega} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{\Omega}\boldsymbol{\Omega} \boldsymbol{X} \left(\boldsymbol{X}^{\top}\boldsymbol{\Omega} \boldsymbol{X}\right)^{-1}  \cr
+                &= 
+                \sigma^2 \left(\boldsymbol{X}^{\top}\boldsymbol{\Omega} \boldsymbol{X}\right)^{-1}  \boldsymbol{X}^{\top}\boldsymbol{\Omega} \boldsymbol{X} \left(\boldsymbol{X}^{\top}\boldsymbol{\Omega} \boldsymbol{X}\right)^{-1}  \cr
+                &= 
+                \sigma^2 \left(\boldsymbol{X}^{\top}\boldsymbol{\Omega} \boldsymbol{X}\right)^{-1}
+            \end{align*}
+        \end{subparts}
+    \end{parts}
+\end{solution}
+
+\vspace{1cm}
+
+\question
+
+Vous devez répondre à cette question en utilisant le logiciel SAS. Vous remettrez votre programme annoté dans un fichier .sas (sur monportail), mais toutes les réponses aux questions doivent être présentées dans un fichier pdf (sur Gradescope), en identifiant clairement la question associée à votre réponse (par exemple (i)
+a)). Pour toutes vos réponses dans le fichier pdf, vous devez rapporter les valeurs et les graphiques qui ont été utilisées pour répondre aux questions. \\
+
+Vous trouverez sur le site du cours, sur la page du Devoir 2, un fichier nommé {\it golf.txt}.
+On s'intéresse ici à l'argent remporté par des joueurs de golf professionnels. Votre jeu de données contient des renseignements sur 125 joueurs de golf en 2009. Les variables suivantes sont à votre disposition: \\
+
+\begin{itemize}
+	\item Argent gagné (en dizaines de milliers dollars); % C'est faux. Pour Automne 2021, j'ai pris le log du salaire en dollars. donc dans golf.txt, le salaire correspond au log du salaire de golf_0.txt
+	\item Distance moyenne des premiers coups (en verges);
+	\item Pourcentage de coups sur l'allée;
+	\item Pourcentage de verts atteints en coups réglementaires (i.e. en deçà d'une limite de coups propre à chaque trou);
+	\item Nombre moyen de coups roulés par partie;
+	\item Pourcentage de coups dans le sable récupérés (2 coups pour se rendre dans le trou);
+	\item Nombre de tournois où le joueur était inscrit;
+	\item Nombre moyen de coups roulés sur le vert par trou;
+	\item Nombre de tournois complétés;
+	\item Rang centile moyen par tournoi (un chiffre élevé est meilleur);
+	\item Nombre de parties complétées.
+\end{itemize}
+
+\newpage
+
+Votre objectif est de modéliser le montant d'argent remporté par un joueur dans une année à l'aide d'un modèle de régression linéaire multiple approprié. Ne transformez pas les variables pour ce devoir. Utilisez $\alpha = 0,05$ lorsque nécessaire.\\
+
+
+\begin{parts}
+\part[12] Étudiez brièvement les relations entre l'argent gagné des joueurs et chacune des autres variables présentes individuellement. Résumez brièvement votre étude. Si vous ne pouviez choisir qu'une seule variable pour prédire l'argent gagné des joueurs, laquelle choisiriez-vous et pourquoi?
+%
+\part[9] Vérifiez la présence éventuelle de multicolinéarité. Résumez vos conclusions et vos justifications et vos recommandations.  
+%
+\part[32] À partir de toutes les variables explicatives disponibles, sélectionnez le modèle qui vous semble le plus approprié pour prédire l'argent gagné des joueurs. Ne transformez pas les variables.
+    \begin{itemize}
+    \item[i.] Dans votre code, laissez des traces de votre démarche (modèles et méthodes explorés). N'oubliez pas de commenter le code.
+    \item[ii.] Assurez-vous brièvement que les postulats du modèle sont rencontrés. Ne montrez que la validation du modèle final.
+    \item[iii.] Écrivez l'équation de la régression estimée. Interprétez la valeur des coefficients en contexte.
+    \end{itemize}
+\part[15]  Répondez aux questions suivantes avec le modèle incluant les variables suivantes:
+\begin{enumerate}[1.]
+	\item la constante,
+	\item la distance moyenne des premiers coups (en verges),
+	\item le pourcentage de coups dans le sable récupérés (2 coups pour se rendre dans le trou),
+	\item le rang centile moyen par tournoi (un chiffre élevé est meilleur),
+	\item l'interaction entre la variable en 2. et la variable en 3.,
+	\item l'interaction entre la variable en 2. et la variable en 4.,
+	\item l'interaction entre la variable en 3. et la variable en 4..
+\end{enumerate}
+    \begin{itemize}
+    	\item[i.] Il semble logique que le premier coup soit très important pour un joueur. Combien d'argent un joueur peut-il espérer gagner de plus s'il augmente de 5 verges la distance moyenne de ses premiers coups?
+    	\item[ii.] Est-ce que d'augmenter le pourcentage de coups dans le sable récupéré a significativement le même effet sur l'argent gagné pour un mauvais joueur que pour un bon joueur, tel que mesuré par le rang centile moyen par tournoi?
+    	\item[iii.] Un autre joueur, qui n'est pas dans vos jeux de données, a les valeurs suivantes pour les variables données dans l'énoncé principal : 
+    	\begin{verbatim} 
+    	256.4   64.5   67.8   30.8   27  17   1.84   11   53.43  46 
+    	\end{verbatim}
+    	Combien d'argent le modèle prédit-il qu'il ait gagné en 2009? \\
+    	% Vraie valeur est 67616
+    \end{itemize}
+\end{parts}
+
+\newpage
+
+\begin{solution}
+    \begin{parts}
+        \part \begin{itemize}
+            \item 6 points les relations
+            \item 6 points le choix de variable (Rang, F et R2 plus élevés F= 592.42, R2=0.8292
+        \end{itemize}
+        \part \begin{itemize}
+            \item (-3) points ne pas recommander de retirer
+            les variables 
+            \item (-2) dire qu'il faut enlever spécifier quelles variables
+            \item (-6) VIF uniquement
+            \item Indice collin: Nbcoups 0,80 et Nbvert 0,90
+            \item Retrait nbvert (vif plus grand, F plus petite)
+            \item Pverts (0,61) et Nbcoups (0,88)
+            \item Nbverts vif plus elevé 
+
+        \end{itemize}
+        \part \begin{itemize}
+            \item 16 choix modèle et démarche
+            \begin{itemize}
+                \item (-2) pas parler d'interaction
+                \item (-1) choix de critère pas clair, mais exploration correcte
+                \item (-3) choix final de critère pas clair et exploration moins claire 
+                \item (-4) mauvais choix de critère
+            \end{itemize}
+            \item 9 postulats
+            \item 3 équation
+            \item 4 interprétation
+        \end{itemize}
+        \part
+        \begin{subparts}
+            \subpart $5 \times 0.014982660 = 5 \times 0.000718921 \times Psable - 5 \times 0.000748938 \times Rang$
+            \subpart test interaction Psable*rang valeur-p=0.6541. Oui., même effet.
+            \subpart 11.6885
+        \end{subparts}
+    \end{parts}
+\end{solution}
+
+\end{questions}
+
+\end{document}
+
+

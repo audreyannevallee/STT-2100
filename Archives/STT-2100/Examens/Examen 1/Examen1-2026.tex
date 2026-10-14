@@ -1,0 +1,341 @@
+% Pour toute question sur l'utilisation de cette classe, écrivez à jerome.soucy(at)ulaval.ca
+% Nécessite la classe Evaluation.sty dans le même dossier ou dans le PATH de votre système
+% Nécessite le fichier logo_ul.pdf dans le même dossier un dans le PATH de votre système
+\def\Ponderation{30}
+\def\SigleNumero{STT-2100}
+\def\NomCours{Régression}
+\def\DateEvaluation{8 octobre 2026}
+\def\DateRemise{}
+\def\HeureRemise{}
+\def\HeureEvaluation{10h30 à 12h20}
+\def\NomEvaluation{Examen 1}
+
+% Ne rien mettre entre les accolades si l'enseignant (ou l'enseignante) est aussi le coordonnateur (ou la coordonnatrice)
+\def\Coordonnatrice{}
+\def\Coordonnateur{}
+
+% Ne rien mettre entre les accolades s'il y a plus d'une section
+\def\Enseignant{}
+\def\Enseignante{Audrey-Anne Vallée}
+
+% Ne rien mettre entre les accolades s'il s'agit d'un cours à section unique
+% Mettre le nom de chacun des enseignants et enseignantes entre les accolades
+% Une case à cocher sera générée pour chacune des sections
+\def\SectionA{}
+\def\SectionB{}
+\def\SectionC{}
+\def\SectionD{}
+
+
+\def\Directives{
+\begin{enumerate}
+\item Matériel autorisé:
+\begin{itemize}
+\item Calculatrice scientifique {\bf autorisée par la FSG};
+\item Le feuillet de formules est fourni avec l'examen. Celui-ci inclut les tables de lois. Veuillez ne rien écrire sur le feuillet de formules.
+\end{itemize}
+\item Assurez-vous que cette évaluation comporte \numquestions ~exercices répartis sur \numpages{}~pages, pour un total de \numpoints{}~points.\
+\item \textbf{Veuillez ne pas dégrafer votre examen.}
+\item Ajoutez vos initiales dans le bas de chaque page de l'examen.
+\item Veuillez déposer votre carte d'identité \textbf{admise} avec photo sur votre bureau.\
+\item {\bf Vous devez justifier chaque réponse, soit par une démarche, soit par une (des) phrase(s). Justifiez toutes les étapes de vos démarches.}
+\item  Le verso des feuilles peut être utilisé comme brouillon, \textbf{mais ne sera pas corrigé}. Attention à ne rien dégrafer.
+\end{enumerate}
+}
+\providecommand{\Gradescope}{.}
+\documentclass[Examen]{Evaluation}
+\usepackage{multicol,graphicx}
+\begin{document}
+\pageblanche 
+\begin{questions}  
+
+\question
+Pour chaque énoncé qui suit, justifiez brièvement votre réponse. Il peut s'agir d'une justification mathématique ou d'une phrase. \\
+
+\begin{parts}
+\part[5] Dans le modèle de régression linéaire simple, à quoi sert le postulat 4 sur la normalité des termes d’erreur ?
+
+\vspace{4 cm}
+
+\part[5] Pourquoi la marge d’erreur d’une prévision individuelle en $x_0$ est-elle différente de la marge d’erreur associée à l'estimation de la moyenne de $Y$ en $x_0$ ? Ne pas répondre uniquement par une formule, interprétez dans vos mots.
+
+\vspace{4.5 cm }
+
+\part[5] Montrez que la matrice de projetion $\bold P_{\bold X} = \bold X \left( \bold X^\top \bold X\right)^{-1} \bold X^\top$ est idempotente.
+
+\vspace{4 cm}
+
+\part[5] On prévoit estimer un modèle de régression linéaire simple et on aimerait avoir des intervalles de prédiction précis pour de nouvelles observations. Donnez deux conseils pour l'étape de la sélection de l'échantillon en considérant $\alpha$ et $\sigma^2$ fixes.
+
+\vspace{3 cm}
+
+%\part[5] Dans votre analyse des résidus, vous remarquez qu'il y a un problème avec le postulat de la normalité. Que suggérez-vous de faire suite à ce diagnostique?
+
+
+
+
+
+\end{parts}
+
+\pageblanche 
+
+\question 
+Pour chaque énoncé qui suit, indiquez s'il est vrai ou faux.
+\textbf{Justifiez} brièvement votre réponse. Il peut s'agir d'une justification mathématique ou d'une phrase. \\
+\textit{Aucun point ne sera accordé pour une réponse sans justification ou une mauvaise justification.}
+
+\vspace{0.3cm}
+\begin{parts}
+\part[4] Si nous centrons les variables explicatives, l'ordonnée à l'origine représente la valeur moyenne de $Y$ lorsque $x=0$.
+
+     \begin{oneparcheckboxes}
+		\choice VRAI
+		\correctchoice FAUX
+\end{oneparcheckboxes}
+
+\vspace{2.7 cm}
+
+\part[4] Dans le contexte de régression linéaire simple, la covariance entre ${\beta}_0$ et $\beta_1$ est toujours nulle.
+
+     \begin{oneparcheckboxes}
+		\correctchoice VRAI
+		\choice FAUX
+\end{oneparcheckboxes}
+
+
+\vspace{2.7 cm}
+
+\begin{comment}
+
+\part[4] Si le postulat de l'homoscédasticité de la variance des termes d'erreur n'est pas respecté, les estimateurs des moindres carrés seront nécessairement biaisés.
+
+     \begin{oneparcheckboxes}
+		\choice VRAI
+		\correctchoice FAUX
+\end{oneparcheckboxes}
+
+\vspace{2.7 cm}
+
+\part[4] La somme des carrés de l'erreur résiduelle ($SC_{res}$) est égale à l'estimateur de la variance des termes d'erreur ($\widehat{\sigma}^2$).
+
+     \begin{oneparcheckboxes}
+		\choice VRAI
+		\correctchoice FAUX
+\end{oneparcheckboxes}
+
+\vspace{2.7 cm}
+
+\part[4] La droite de régression $\widehat{Y}_i = \widehat{\beta}_0 + \widehat{\beta}_1 x_i$ passe toujours par le point ($\overline{x}$, $\overline{y}$).
+
+     \begin{oneparcheckboxes}
+		\correctchoice VRAI
+		\choice FAUX
+\end{oneparcheckboxes}
+
+\end{comment}
+\end{parts}
+
+
+
+\question[6]
+Soit un vecteur aléatoire $\mathbf X=(X_1,X_2,X_3)^\top$ qui suit une loi normale multivariée, ainsi $\mathbf X \sim \mathcal{N}_3 \left( \boldsymbol{\mu}_X, \, \boldsymbol{\Sigma}_X \right)$. On a que
+\begin{align*}
+E(X_1)&=E(X_2)=\mu,\quad E(X_3)=0, \\
+\operatorname{Var}(X_1)&=4,\quad \operatorname{Var}(X_2)=9,\quad
+\operatorname{Var}(X_3)=16, \\
+\operatorname{Cov}(X_1,X_2)&=1,\quad
+\operatorname{Cov}(X_1,X_3)=\operatorname{Cov}(X_2,X_3)=0.
+\end{align*}
+Le paramètre $\mu$ est une constante réelle.
+Donnez la composition exacte du vecteur d'espérance $\boldsymbol{\mu}_X$ et de la matrice de variances-covariances $\boldsymbol{\Sigma}_X$. 
+
+\begin{solution}
+\[
+\boldsymbol\mu_X=\begin{pmatrix}\mu\\\mu\\0\end{pmatrix},\qquad
+\boldsymbol\Sigma_X=\begin{pmatrix}4&1&0\\1&9&0\\0&0&16\end{pmatrix}.
+\]
+\end{solution}
+
+\pageblanche 
+
+\question
+Soit un vecteur aléatoire $\mathbf W=(W_1,W_2)^\top$ qui suit une loi normale multivariée, ainsi $\mathbf W \sim \mathcal{N}_2 \left( \boldsymbol{\mu}_W, \, \boldsymbol{\Sigma}_W \right)$. On a que
+\begin{align*}
+\boldsymbol\mu_W=\begin{pmatrix}1\\0\end{pmatrix},\qquad
+\boldsymbol\Sigma_W=\begin{pmatrix}2&1\\1&4\end{pmatrix}.
+\end{align*}
+\begin{parts}
+\part[4] Les composantes de $\mathbf W$ sont-elles homoscédastiques? Justifiez.
+
+\vspace{3cm}
+
+\part[4] Les composantes de $\mathbf W$ sont-elles indépendantes? Justifiez.
+
+\vspace{3cm}
+
+\part[4] Soit
+\[ \mathbf V=\mathbf C\mathbf W,\qquad
+\mathbf C=\begin{pmatrix}1&0\\0&1\end{pmatrix}.\]
+Calculez et donnez les valeurs de $E(\mathbf V)$ et de $\operatorname{Var}(\mathbf V)$. Justifiez vos réponses.
+\end{parts}
+
+\begin{solution}
+\begin{parts}
+\part Les composantes ne sont pas homoscédastiques puisque leurs variances diffèrent. $\mathrm{Var}(W_1) = 2 \neq 4 = \mathrm{Var}(W_2)$.
+\part Elles ne sont pas indépendantes puisque $\operatorname{Cov}(W_1,W_2)=1\ne0$.
+
+\part
+\[E(\mathbf W)=\mathbf C\boldsymbol\mu_W=\begin{pmatrix}1\\0\end{pmatrix},\]
+\[\operatorname{Var}(\mathbf W)=\mathbf C\boldsymbol\Sigma_W\mathbf C^\top
+=\begin{pmatrix}1&0\\0&1\end{pmatrix}\begin{pmatrix}2&1\\1&4\end{pmatrix}\begin{pmatrix}1&0\\0&1\end{pmatrix}
+=\begin{pmatrix}2&1\\1&4\end{pmatrix}.\]
+\end{parts}
+\end{solution}
+
+\pageblanche
+
+\question
+Soit le modèle de régression 
+\begin{align*}
+    Y_i=\beta x_i + \varepsilon_i, \ \ i=1,\hdots, n,
+\end{align*}
+où $\varepsilon_i\sim \mathcal{N}(0, \sigma^2)$ et $\varepsilon_i$ est indépendant de $\varepsilon_j$, pour $i\neq j$.
+
+\begin{parts}
+    \part[6] Donnez la loi, l'espérance et la variance de $Y_i$. Justifiez vos réponses.
+    \vspace{4.5cm}
+    \part[9] Utilisez la méthode des moindres carrés pour trouver l'estimateur de $\beta$. Justifiez toutes les étapes de votre démarche.
+    \vspace{10cm}
+\end{parts}
+
+\pageblanche
+
+\question[11]
+Soit le modèle de régression linéaire simple 
+\begin{equation*}
+    Y_i = \beta_0\,+\,\beta_1\, x_i \,+\, \varepsilon_i,
+\end{equation*}
+dans lequel les 4 postulats sont respectés, $\varepsilon_i \overset{iid}{\sim} \mathcal{N}(0, \sigma^2), \text{ pour } i=1,\ldots,n$.
+Les résidus du modèle sont tels que 
+\begin{equation*}
+\widehat{\varepsilon}_i \sim \mathcal{N} \left\{0, \, (1-h_{ii})\sigma^2\right\}, \quad \mbox{ où } h_{ii}=\frac{1}{n}+\frac{(x_i - \bar x)^2}{S_{xx}},
+\end{equation*}
+pour $i=1,\ldots,n$.
+
+%\begin{parts}
+%\part[10] 
+Montrer que $ \displaystyle \widehat\sigma_{MV}^2=\frac{\displaystyle 1}{\displaystyle n}\sum\limits_{i=1}^n \widehat\varepsilon_i^2$
+est un estimateur  biaisé de  $\sigma^2$. Justifiez toutes les étapes de votre démarche.
+
+%\vspace{10cm}
+
+%\part[5] En utilisant le résultat de (a), montrez que $ \displaystyle \widehat\sigma^2=\frac{\displaystyle 1}{\displaystyle n-2}\sum\limits_{i=1}^n \widehat\varepsilon_i^2$ est un estimateur sans biais de $\sigma^2$.
+%\end{parts}
+
+\begin{solution}
+  %  \begin{parts}
+  %      \part  
+  \begin{align*}
+            \mathrm{E}\left(\widehat{\sigma}_{MV}^2\right)
+            &=\mathrm{E}\left(\frac{1}{n} \sum\limits_{i=1}^n \widehat\varepsilon_i^2\right) \cr
+            &= \frac{1}{n} \sum\limits_{i=1}^n \mathrm{E}\left(\widehat\varepsilon_i^2\right) \cr
+             &= \frac{1}{n} \sum\limits_{i=1}^n \left[ \mathrm{Var}\left(\widehat\varepsilon_i\right) + \mathrm{E}\left(\widehat\varepsilon_i\right)^2 \right]\cr
+             &= \frac{1}{n} \sum\limits_{i=1}^n \left[ \left(1- \frac{1}{n} - \frac{(x_i - \overline{x})^2}{S_{xx}}\right)\sigma^2+ 0\right]\cr
+             &= \frac{\sigma^2}{n} \sum\limits_{i=1}^n \left[ 1- \frac{1}{n} - \frac{(x_i - \overline{x})^2}{S_{xx}}\right]\cr
+             &= \frac{\sigma^2}{n}  \left[ n- 1 - 1\right]\cr
+             &= \sigma^2 \frac{n-2}{n}
+        \end{align*}
+ %       \part \begin{align*}
+  %          \mathrm{E}\left(\widehat{\sigma}^2\right)
+  %          &= \mathrm{E}\left(\frac{n}{n-2}\widehat{\sigma}_{MV}^2\right) 
+  %          = \frac{n}{n-2} \mathrm{E}\left(\widehat{\sigma}_{MV}^2\right) 
+  %          = \frac{n}{n-2}\frac{n-2}{n}\sigma^2 
+  %              = \sigma^2.
+  %          \end{align*}
+ %   \end{parts}
+\end{solution}
+
+
+\pageblanche
+
+\question
+
+À partir des données de 28 équipes de la Ligue majeure de baseball (MLB) de la saison 2002, on ajuste une régression linéaire simple du nombre de points marqués (\texttt{RS}) en fonction de la moyenne de puissance (\texttt{SLG}). Pour répondre aux questions suivantes, utilisez $\alpha = 0,05$, la Figure \ref{fig:MLB} et la sortie  \texttt{R} (trouée) suivante:
+\begin{verbatim}
+> mod <- lm(RS ~ SLG, data=Baseball)
+> summary(mod)
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-57.166 -18.772   2.641  21.342  56.223 
+
+Coefficients:
+            Estimate   Std. Error   t value   Pr(>|t|)    
+(Intercept)   ????          119.2    ????      0.0002
+SLG           3129.7        284.9    10.985    0.0001 
+---
+Residual standard error: 31.18 on 26 degrees of freedom
+Multiple R-squared:  0.8227,	Adjusted R-squared:  0.8159 
+F-statistic: 120.7 on 1 and 26 DF,  p-value: 2.896e-11
+
+> summary(Baseball[, c("RS", "SLG")])
+       RS             SLG        
+ Min.   :627.0   Min.   :0.3810  
+ 1st Qu.:705.8   1st Qu.:0.4030  
+ Median :744.0   Median :0.4185  
+ Mean   :754.5   Mean   :0.4180  
+ 3rd Qu.:813.2   3rd Qu.:0.4323  
+ Max.   :897.0   Max.   :0.4550  
+\end{verbatim}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{Examens/Examen 1/MLB.pdf}
+    \caption{\texttt{RS} en fonction de \texttt{SLG} pour 28 équipes de la MLB en 2002}
+    \label{fig:MLB}
+\end{figure}
+
+\pageblanche 
+
+\begin{parts}
+ \part[4] Donnez la valeur de $\widehat{\beta}_0$. Justifiez votre réponse.
+    
+    \vspace{4.5cm}
+    
+    \part[4] L'interprétation mathématique de la pente est: si \texttt{SLG} augmente d'une unité, en moyenne, \texttt{RS} augmente de 3129,7 points. Expliquez pourquoi cette interprétation n'est pas informative (ou plutôt est farfelue) dans le contexte. Si vous utilisez des valeurs pour répondre à la question, rapportez-les dans votre démarche.
+
+    \vspace{5.5cm}
+    
+    \part[2] Donnez la valeur de l'estimateur de la variance des termes d'erreur ($\sigma^2$). Justifiez votre réponse.
+    \vspace{2.5cm}
+   
+    
+   
+    
+    \part[6] Y a-t-il une relation linéaire significative entre les points marqués (\texttt{RS}) et la moyenne de puissance (\texttt{SLG})? Si vous utilisez des valeurs pour répondre à la question, rapportez-les dans votre démarche.
+    \vspace{5cm}
+
+     \pageblanche
+    \part[7] Construisez un intervalle de confiance pour $\beta_1$ et interprétez-le dans le contexte. Justifiez votre réponse.
+    \vspace{10cm}
+
+   
+    \part[5] Les Cubs de Chicago et les Tigers de Détroit n'ont pas été inclus dans le jeu de données ayant servi à estimer le modèle. En 2002, les Cubs de Chicago ont eu une moyenne de puissance (\texttt{SLG}) de 0,413 et les Tigers de Détroit en ont eu une de 0,379. On souhaite comparer les intervalles de prédiction de niveau 90\% des points marqués pour ces deux équipes. Est-ce que l'intervalle de prédiction pour les points marqués des Cubs de Chicago sera plus long ou plus court que celui pour les points marqués des Tigers de Détroit? Expliquez votre réponse dans vos mots. Si vous utilisez des valeurs pour répondre à la question, rapportez-les dans votre démarche.
+    Notez que vous n'avez pas besoin d'obtenir les intervalles pour connaître la réponse. 
+\end{parts}
+
+
+
+
+\end{questions}
+
+\pageblanche
+
+
+\end{document}
+
+
+\newpage
+
+\clearpage\thispagestyle{empty}\addtocounter{page}{-1} 
+\includepdf[fitpaper=true, pages=-]{Examens/Examen 1/STT-2100-Formules-Examen1-2026.pdf}
+\clearpage

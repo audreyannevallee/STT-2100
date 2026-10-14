@@ -1,0 +1,457 @@
+
+\documentclass[11pt]{article}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \oddsidemargin  -0.2in
+    \evensidemargin -0.2in
+    \textwidth      6.4in
+    \headheight     -0.2in
+    \topmargin      -0.2in
+    \textheight=9.0in
+    \parindent=0in
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{amsthm,amsfonts,amssymb,amsmath}
+\usepackage{graphicx, bbold}   %To include graphics
+\usepackage[small,compact]{titlesec}
+\usepackage{verbatim} %To write multi-line comments easily
+
+
+\usepackage[utf8]{inputenc} 
+\usepackage[francais]{babel}
+
+\newcommand{\var}{\mathbb{V}\text{ar}}
+\newcommand{\cov}{\mathbb{C}\text{ov}}
+\newcommand{\esp}{\mathbb{E}}
+
+\newcommand{\bm}{\boldmath}
+\newcommand{\um}{\unboldmath}
+\newcommand{\botheta}{\mbox{\bm$\theta$\um}}
+\newcommand{\boTheta}{\mbox{\bm$\Theta$\um}}
+\newcommand{\boY}{\mbox{\bm$Y$\um}}
+\newcommand{\bobeta}{\mbox{\bm$\beta$}}
+\newcommand{\boeps}{\mbox{\bm$\varepsilon$\um}}
+\newcommand{\boSigma}{\mbox{\bm$\Sigma$\um}}
+\newcommand{\boldx}{\mbox{\bm$x$\um}}
+\newcommand{\boX}{\mbox{\bm$X$\um}}
+\newcommand{\boR}{\mbox{\bm$R$\um}}
+\newcommand{\boM}{\mbox{\bm$M$\um}}
+\newcommand{\boN}{\mbox{\bm$N$\um}}
+\newcommand{\boP}{\mbox{\bm$P$\um}}
+\newcommand{\boA}{\mbox{\bm$A$\um}}
+\newcommand{\boB}{\mbox{\bm$B$\um}}
+\newcommand{\boun}{\mbox{\bm$1$\um}}
+\newcommand{\boz}{\mbox{\bm$0$\um}}
+\newcommand{\bolambda}{\mbox{\bm$\lambda$\um}}
+\newcommand{\bov}{\mbox{\bm$v$\um}}
+\newcommand{\boV}{\mbox{\bm$V$\um}}
+\newcommand{\bou}{\mbox{\bm$u$\um}}
+\newcommand{\boe}{\mbox{\bm$e$\um}}
+\newcommand{\hbobeta}{\hat{\bobeta}}
+\newcommand{\bo}[1]{\mbox{\bm$#1$\um}}
+\newcommand{\bozero}{\mbox{\bm$0$\um}}
+\newcommand{\bomu}{\mbox{\bm$\mu$\um}}
+\newcommand{\ident}{\mbox{\bm$I$\um}}
+\newcommand{\eproof}{\hfill$\sqcap\!\!\!\!\sqcup$}
+\newcommand{\boy}{\mbox{\bm$y$\um}}
+\newcommand{\boZ}{\mbox{\bm$Z$\um}}
+\newcommand{\bogamma}{\mbox{\bm$\gamma$}}
+
+\begin{document}
+
+\begin{center}
+{\bf STT-2100 Régression }\\
+\end{center}
+\begin{center}
+{\bf Examen 2 - 20 décembre 2022 }\\
+\end{center}
+
+
+\vspace{0.2 in}
+Cet examen dure 110 minutes. \\
+
+Vous avez droit à une calculatrice parmi la liste des calculatrices acceptées par la FSG. Si les valeurs exactes que vous recherchez ne sont pas dans la table, prendre la valeur la plus proche.\\
+
+Vous pouvez utiliser le verso des pages de l'examen comme papier brouillon.
+
+\vspace{0.4 in}
+
+{\bf Matricule:} \quad\rule{2in}{.01in}
+
+\vspace{.5in}
+
+{\bf Nom:}\quad\rule{2in}{.01in}{\bf Prénom:}\quad\rule{2in}{.01in}\\
+
+%{\bf Your Section Name:}\quad\rule{2in}{.01in}\\
+
+{\bf Signature:}\quad\rule{3in}{.01in}\\
+
+\sf {
+
+
+\vspace{0.3in}
+
+\begin{center}
+{\def\arraystretch{1.5}\tiny\normalsize
+\begin{tabular}[t]{|l|r|r|}
+\hline
+Question & Total & Correct \\
+\hline
+\hline
+PARTIE 1     &  16   &      \\\hline
+PARTIE 2     &  20    &       \\ \hline             
+PARTIE 3 - Q1   &  8   &       \\ \hline 
+PARTIE 3 - Q2     &  8   &       \\ \hline
+PARTIE 3 - Q3   &  8  &       \\   \hline 
+PARTIE 3 - Q4   &  12   &       \\   \hline 
+PARTIE 3 - Q5   &  28   &       \\   \hline                  
+%7     &      &       \\ \hline 
+Total   & 100  &                \\ \hline
+\end{tabular}
+}
+
+\vspace{1 in}
+{\bf{ *** Attendre le signal avant de tourner cette page.***}}
+
+\vspace{0.5 in }
+
+{\bf ASSUREZ-VOUS D'AVOIR LES PAGES 1 à 11}
+
+\vspace{0.5 in}
+
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%{\bf Your ANDREW ID:} \IDboxes
+%\vspace{.2in}
+
+
+\section*{PARTIE 1 - VRAI OU FAUX?}
+
+\textbf{Pour chaque énoncé ci-dessous indiquez s'il est vrai ou faux. \underline{Justifiez} brièvement votre réponse. \\
+Chaque question vaut 4 points. Aucun point ne sera accordé pour une réponse sans justification. }
+\vspace{0.05 in}
+\begin{enumerate}
+\item Yves veut modéliser le temps requis pour cuire un gâteau au chocolat en fonction de différentes variables explicatives. Il cuisine plusieurs gâteaux en faisant varier les valeurs des variables explicatives. Pour un des gâteaux, il a noté un temps de cuisson de 530 minutes plutôt que 53 minutes. Cette observation, lorsqu'incluse dans l'estimation du modèle de régression linéaire multiple, sera forcément influente.
+\vspace{1.5 in}
+\item  La valeur minimale du facteur d'inflation de la variance est 0. 
+
+\vspace{1.6 in}
+
+\item La méthode de sélection de modèle pas-à-pas avec le critère BIC permet de trouver le modèle avec le plus petit BIC parmi tous les modèles possibles.
+
+\vspace{1.6 in}
+%
+\item  Dans un modèle de régression linéaire multiple, la valeur p du test F ajusté associé à une variable explicative est toujours plus grande que celle du test t partiel de cette même variable.
+
+\vspace{1.2 in}
+
+
+%
+
+
+%
+\end{enumerate}
+
+
+\newpage
+
+% SHORT-ANSWER QUESTIONS
+
+% quoi faire si transformation de variable ne fonctionne pas (jeu)
+
+
+\vspace*{-0.7 in}
+\section*{PARTIE 2 - RÉPONSES COURTES (5 points par question)}
+\vspace{0.1 in}
+\begin{enumerate}
+\item Nous avons trois variables explicatives à disposition pour modéliser une variable réponse. Quel graphique représenterait le mieux l’utilité de $X_3$ lorsque $X_1$ et $X_2$ sont déjà dans le modèle? Donnez le nom du graphique et décrivez ses axes avec précision.
+\vspace{2.1 in}
+\item Que puis-je faire si j’ai un problème de linéarité que je n’arrive pas à
+corriger avec des transformations des variables?
+\vspace{1.8 in}
+\item  Pourquoi doit-on utiliser un intervalle de confiance différent quand on estime la valeur moyenne de $Y$ en $X = x_o$ que quand on estime la valeur de $Y$ pour une observation future en $X = x_0$ alors que l’estimateur est identique dans les deux cas?
+\vspace{1.8 in}
+\item La régression Lasso mène à des estimateurs des coefficients de régression biaisés. Donnez deux avantages à utiliser la régression Lasso.
+\end{enumerate}
+
+
+\newpage 
+
+%LONG QUESTIONS
+
+\section*{PARTIE 3}
+
+\begin{enumerate}
+
+\item (8 points)
+
+Voici un jeu de données (dans lequel certaines valeurs sont remplacées par des lettres), ainsi que la matrice $(X'X)^{-1}$ et la matrice des corrélations entre toutes les variables.
+\bigskip
+
+\hspace{-1cm}
+$\begin{array}{ccc}
+X_1 & X_2 & Y\\\hline
+1 & 0 & 1 \\
+a & 5 & 0 \\
+0 & b & 1 \\
+2 & 0 & 3 \\
+\end{array}\qquad
+(X'X)^{-1}=\left[
+\begin{array}{ccc}
+  0.71 &-0.34 & 0.03\\
+ -0.34 & 0.35& -0.12\\
+  0.03 &-0.12 & 0.10\\
+\end{array}\right]\qquad
+Corr=\begin{array}{c}
+X_1 \\
+X_2  \\
+Y \\
+\end{array}\left[
+\begin{array}{rrr}
+  1.00 & 0.65& -0.10\\
+  0.65 & 1.00 &-0.72\\
+ -0.10 &-0.72 & 1.00\\
+\end{array}\right]
+$
+
+\begin{enumerate}
+    \item (5 points)  Quelle est la valeur du levier de l'observation 1 ? Justifiez votre réponse.
+    \vspace{4 in}
+    \item (3 points)  Donnez la valeur du facteur d'inflation de la variance de $x_1$, dans un modèle contenant $x_1$ et $x_2$ pour prédire $Y$ ? Justifiez votre réponse.
+\end{enumerate}
+
+\newpage
+
+
+%%
+
+\item (8 points)
+
+La S\^uret\'e du Qu\'ebec vous demande d'analyser des donn\'ees
+recueillies lors d'op\'erations radar. On vous donne une base de donn\'ees contenant des
+renseignements sur les caract\'eristiques et la vitesse mesur\'ee
+au radar de 257 voitures. Les donn\'ees pour la $i$\`eme voiture
+sont de la forme ($V_i,c_i,m_i$), o\`u $V_i$ est la vitesse
+mesur\'ee (en km/h), $c_i$ est la couleur (une parmi ``rouge",
+ ``noire" ou ``autre") et $m_i$ est la force du moteur
+(en chevaux-vapeur). Afin de pouvoir analyser ces donn\'ees \`a
+l'aide d'un mod\`ele de r\'egression lin\'eaire, vous d\'efinissez
+les deux variables indicatrices suivantes:
+$$r_i=\left\{\begin{array}{ll}
+1, & \mbox{si }  c_i=\mbox{``rouge"}\\
+0, & \mbox{sinon}\end{array}\right.\ n_i=\left\{\begin{array}{ll}
+1, & \mbox{si } c_i=\mbox{``noire"}\\
+0, & \mbox{sinon.}\end{array}\right.$$ Consid\'erez le mod\`ele
+$$V_i=\beta_0+\beta_rr_i+\beta_nn_i+\beta_mm_i+
+\beta_{rm}r_im_i+\beta_{nm}n_im_i+\varepsilon_i, \mbox{ où } \varepsilon_i \overset{iid}{\sim} N(0,\sigma^2).$$
+
+
+%\begin{enumerate}
+
+%\item (5 pts) 
+Illustrez ce que chacun des coefficients
+$\beta_0,\ldots,\beta_{nm}$ repr\'esente \`a l'aide d'un graphique de
+$E[V_i]$ en fonction de $m_i$.
+Supposez que tous les coefficients sont non nuls et de valeurs différentes.
+%\vspace{2.5 in}
+
+%\item Écrivez les hypoth\`eses suivantes en termes d'hypoth\`eses sur la valeur des coefficients $\beta_0,\ldots,\beta_{nm}$:
+%\begin{enumerate}
+%    \item[(i)] (5 points) L'ajout de $k$ chevaux-vapeur \`a une voiture noire a le m\^emebeffet sur la vitesse moyenne que l'ajout de $k$ chevaux-vapeur \`a une voiture rouge.\\[66 pt]
+%    \item[(ii)] (5 points) Une voiture rouge de 150 chevaux-vapeur roule en moyenne \`a la m\^eme vitesse qu'une voiture noire de 180 chevaux-vapeur.\\[12pt]
+%\end{enumerate}
+%\end{enumerate}
+
+
+\newpage
+%%%
+
+\item (8 points)
+
+Soit le mod\`ele de r\'egression lin\'eaire 
+$$\boldsymbol{Y} = \boldsymbol{X} \boldsymbol{\beta} + {\boldsymbol{\varepsilon}},$$
+o\`u $\mathrm{E}({\boldsymbol{\varepsilon}}) = {\bf 0}$ et $\mathrm{Var}({\boldsymbol{\varepsilon}})=\sigma^2 \mathbb{1}_n $, $\sigma>0$ et $\mathbb{1}_n$ est la
+matrice identit\'e de dimension $n\times n$. On considère la matrice $\boldsymbol{H}=\boldsymbol{X}(\boldsymbol{X}'\boldsymbol{X})^{-1}\boldsymbol{X}'$, le vecteur $\widehat{\boldsymbol{Y}}=\boldsymbol{H}\boldsymbol{Y}$ et le vecteur $\widehat{\boldsymbol{\varepsilon}}= \boldsymbol{Y} - \widehat{\boldsymbol{Y}}$.
+
+\begin{enumerate}
+	\item (2 points) Choisissez tous les énoncés qui sont vrais. (Faites un X dans la case $\square$ pour un énoncé vrai. Des points seront enlevés pour un énoncé choisi à tort, pour un total de points minimal de 0.)\vspace{0.1in}
+	\begin{enumerate}
+		\item[$\square$]  Le vecteur $\widehat{\boldsymbol{Y}}$ est toujours perpendiculaire au vecteur $\widehat{\boldsymbol{\varepsilon}}$. \vspace{0.1in}
+		\item[$\square$]  Le vecteur $\boldsymbol{Y}$ est toujours perpendiculaire au vecteur $\widehat{\boldsymbol{\varepsilon}}$.\vspace{0.1in}
+		\item[$\square$] Le vecteur $\boldsymbol{Y}$ est toujours perpendiculaire au vecteur $\widehat{\boldsymbol{Y}}$.
+	\end{enumerate}	 \vspace{0.2in}
+	\item (3 points) Que représente la ligne $i$ de la matrice $\boldsymbol{H}$ par rapport à $\widehat{\boldsymbol{Y}}$? 
+ \vspace{2in}
+	\item (3 points) Que représente $h_{ii}$, soit le $i$ème élément de la diagonale de la matrice $\boldsymbol{H}$? Interprétez en mots la valeur de $h_{ii}$.
+ \vspace{2in}
+\end{enumerate}
+
+%
+
+%\begin{parts}
+%	\part Vrais: 1.
+%	\part Les coefficients de la combinaison linéaire des $Y$ pour $Y_i$.
+%	\part Le levier de l'unité $i$. Il s'agit de l'influence de $Y_i$ sur sa prédiction. L'unité $i$ est influente.
+%\end{parts}
+
+\newpage
+
+%%
+
+\item (12 points)
+
+Soit le mod\`ele de r\'egression lin\'eaire 
+$$\boldsymbol{Y} = \boldsymbol{X} \boldsymbol{\beta} + {\boldsymbol{\varepsilon}},$$
+o\`u $\mathrm{E}({\boldsymbol{\varepsilon}}) = {\bf 0}$ et $\mathrm{Var}({\boldsymbol{\varepsilon}})=\sigma^2 \mathbb{1}_n $, $\sigma>0$ et $\mathbb{1}_n$ est la matrice identit\'e de dimension $n\times n$. On considère l'estimateur  $$\widetilde{\boldsymbol{\beta}} = (\boldsymbol{X}'\boldsymbol{X} + \boldsymbol{\Omega} )^{-1} \boldsymbol{X}'\boldsymbol{Y},$$ 
+où   $\boldsymbol{\Omega}$ est une matrice constante de dimension $p' \times p'$.
+
+\begin{enumerate}
+	\item (5 points) Calculez l'espérance de $\widetilde{\boldsymbol{\beta}}$ et donnez son expression. Justifiez toutes les étapes de votre démarche.
+ \vspace{2in}
+	\item (2 points) À partir de l'espérance obtenue en (a), donnez la composition de la matrice $\boldsymbol{\Omega}$ pour laquelle  $\widetilde{\boldsymbol{\beta}}$ est un estimateur sans biais de  ${\boldsymbol{\beta}}$. Justifiez toutes les étapes de votre démarche.
+ \vspace{2in}
+    \item (5 points) Calculez la variance de $\widetilde{\boldsymbol{\beta}}$ et donnez son expression. Justifiez toutes les étapes de votre démarche.
+\end{enumerate}
+
+%
+\begin{comment}
+	\begin{parts}
+		\part $\mathrm{E}( \widetilde{\boldsymbol{\beta}} ) 
+		= \mathrm{E}( (\boldsymbol{X}'\boldsymbol{X} + k \mathbb{1}_{p'} )^{-1} \boldsymbol{X}'\boldsymbol{Y})
+		=  (\boldsymbol{X}'\boldsymbol{X} + k \mathbb{1}_{p'} )^{-1} \boldsymbol{X}'\mathrm{E}(\boldsymbol{Y})
+		=  (\boldsymbol{X}'\boldsymbol{X} + k \mathbb{1}_{p'} )^{-1} \boldsymbol{X}'\boldsymbol{X}\boldsymbol{\beta}$
+		\part Si $k=0$, $\mathrm{E}( \widetilde{\boldsymbol{\beta}} ) 
+		= (\boldsymbol{X}'\boldsymbol{X} + k \mathbb{1}_{p'} )^{-1} \boldsymbol{X}'\boldsymbol{X}\boldsymbol{\beta}
+		= (\boldsymbol{X}'\boldsymbol{X} + 0 \mathbb{1}_{p'} )^{-1} \boldsymbol{X}'\boldsymbol{X}\boldsymbol{\beta}
+		= (\boldsymbol{X}'\boldsymbol{X} )^{-1} \boldsymbol{X}'\boldsymbol{X}\boldsymbol{\beta}
+		=\boldsymbol{\beta}$
+	\end{parts}
+\end{comment}
+\newpage
+
+%%
+
+\item (28 points)
+
+On s'intéresse à la qualité de différents vins (mesurée par une note). On a collecté les variables suivantes (toutes continues) pour un échantillon aléatoire de vins:
+\begin{center}
+\begin{tabular}{lll}
+     acidité fixe &  chlorures & pH \\
+     acidité volatile &  anhydride sulfureux libre & sulfates \\
+     acide citrique &   dioxyde de soufre total & alcool \\
+     sucre résiduel & densité & 
+\end{itemize}\end{center}
+Vous faites l'hypothèses d'une relation linéaire entre la qualité du vin et les autres variables. Utilisez cette sortie \texttt{R}  pour répondre aux questions suivantes. {\bf Justifiez toutes vos réponses.}
+\begin{verbatim}
+Coefficients:
+                       Estimate   Std. Error   t value   Pr(>|t|)    
+(Intercept)             21.9700      21.1900     1.036     0.3002    
+acidite.fixe             0.0250       0.0260     0.963     0.3357    
+acidite.volatire        -1.0840       0.1211    -8.948    < 2e-16 
+acide.citrice           -0.1826       0.1472    -1.240     0.2150    
+sucre.residuel           0.0163       0.0150     1.089     0.2765    
+chlorures               -1.8740       0.4193    -4.470   8.37e-06 
+anhydrire.sulf.libre     0.0044       0.0022     2.009     0.0447 
+dioxyde.soufre.total    -0.0033       0.0007    -4.480   8.00e-06 
+densite                -17.8800      21.6300    -0.827     0.4086    
+pH                      -0.4137       0.1916    -2.159     0.0310 
+sulfates                 0.9163       0.1143     8.014   2.13e-15 
+alcool                   0.2762       0.2648    10.429    < 2e-16 
+
+Residual standard error:   ?   on  1587  degrees of freedom
+Multiple R-squared:    ? ,	Adjusted R-squared:   0.3561 
+F-statistic:  81.35  on  11  and  1587  DF,  p-value:  < 2.2e-16    
+\end{verbatim}
+
+\begin{enumerate}
+    \item (2 points) Combien de vins font partie de l'échantillon?
+    \vspace{1in}
+    \item (4 points) On pense qu'un vin avec une quantité d'anhydride sulfureux libre (\texttt{anhydrire.sulf.libre}) supérieure à celle d'un autre vin a en moyenne une qualité supérieure. Au seuil 5\%, est-ce que les résultats du modèle confirment cette hypothèse?
+    \vspace{2in}
+    \item (4 points) Calculez le pourcentage de la variabilité de la qualité du vin qui est expliquée par le modèle.
+    \vspace{2.6in}
+    \item (3 points) Écrivez l'énoncé suivant sous forme d'une hypothèse sur les coefficients de régression du modèle:
+    Toutes autres choses étant égales, l'espérance de la qualité d'un vin pour lequel l'acidité fixe est de 7,4 est la même que celle d'un vin pour lequel l'acidité fixe est de 9,4 et pour lequel l'acidité volatile vaut 0,10 de plus.
+    \vspace{2in}
+    \newpage
+    \item (6 points) Voici de l'information sur l'observation avec le plus grand résidu studentisé en valeur absolue.
+    
+    \begin{verbatim}
+    h     RStudent     DFFITS    CovRatio     Cook
+0.011       -4.194     -0.438       0.892    0.016
+    \end{verbatim}
+    Répondez aux questions suivantes. Des réponses non justifiées ne recevront aucun points.
+    
+    \begin{enumerate}
+%        \item Est-ce que cette observation a de l'influence sur l'estimation des coefficients de régression? \vspace{2in}
+        \item Est-ce que cette observation fait augmenter ou diminuer la variance du vecteur de coefficients de régression estimés?\vspace{2.5in}
+        \item Est-ce que la présence de cette observation fait augmenter ou diminuer la valeur de sa propre prédiction? Quantifiez cette augmentation ou diminution.\vspace{2in}
+    \end{enumerate}
+    \newpage
+    \item (5 points) Lorsque vous magasinez votre vin, vous aimeriez choisir des vins en fonction de leur qualité. Vous aimeriez construire le meilleur modèle de régression possible afin de prédire avec justesse la valeur de la qualité en fonction des variables exogènes disponibles. Après quelques manipulations, vous obtenez les résultats suivants:
+	\begin{center}\begin{tabular}{|c|c|c|c|c|c|}\hline
+		Mod\`ele & $R^2$ & $R_{a}^2$ & AIC & BIC & $PRESS$\\ \hline\hline
+		Modèle 1 & 0.3606 & 0.3561 & 3164.277 & 3234.179 & 679.2157 \\\hline
+            Modèle 2 & 0.3603 & 0.3562 & 3162.965 & 3227.490 & 678.3656 \\\hline
+            Modèle 3 & 0.3602 & 0.3565 & 3161.224 & 3220.372 & 677.3349 \\\hline
+            Modèle 4 & 0.3599 & 0.3567 & 3158.839 & 3207.610 & 676.3202 \\\hline
+            Modèle 5 & 0.3595 & 0.3566 & 3159.977 & 3213.371 & 675.8162 \\\hline
+            Modèle 6 & 0.3594 & 0.3527 & 3173.829 & 3216.847 & 681.8370 \\\hline
+	\end{tabular}\end{center}
+    Sur la base de ce tableau, quel modèle est préférable pour la mise en situation de cette sous-question? Justifiez votre réponse, un choix de modèle non justifié ne recevra aucun points. 
+    \vspace{2in}
+    \item (4 points) On ajuste un modèle avec trois variables explicatives uniquement. Voici une sortie obtenue avec ce modèle:
+    \begin{verbatim}
+  Eigenvalue  Condition Index   intercept        x1        x2        x3
+1     3.4486           1.0000      0.0110    0.0152    0.0123    0.0133
+2     0.3456           3.1589      0.0359    0.2965    0.1019    0.1311
+3     0.1122           5.5442      0.2722    0.2247    0.3764    0.6967
+4     0.0936           6.0699      0.6809    0.4636    0.5095    0.1589
+    \end{verbatim}
+    Interprétez cette sortie. Est-ce qu'un problème est détecté? Si oui, expliquez quel est le problème, quelles variables sont impliquées et ce que vous feriez par la suite. Si non, expliquez pourquoi il ne semble pas y avoir de problème. Dans vos explications, rapportez des nombres de la sortie pour justifier vos conclusions.
+\end{enumerate}
+
+\newpage
+%%%%%%%
+
+
+
+
+
+
+
+
+
+ 
+	
+\end{enumerate}
+
+
+
+\end{enumerate}
+
+
+
+\end{document}
+
+%%
+
+\item (10 points)
+
+On voudrait modéliser la relation entre le salaire et l'âge d'un employé, dans un certain domaine, en distinguant selon le sexe (Homme=0, Femme=1). Un diagramme des observations recueillies après un échantillonnage aléatoire est le suivant (nous avons ajouté deux droites de régression).
+\bigskip
+
+\includegraphics[width=7cm]{salaire.png}
+\medskip
+
+\begin{enumerate}
+\item (5 pts) Quelle est l'équation du modèle pour cette situation ?
+\vspace{2cm}
+\item (4 pts) Précisez le signe (positif ou négatif) de chacun des paramètres du modèle spécifié en a).
+\vfill
+\item (6 pts) Écrivez l'hypothèse nulle selon laquelle le salaire moyen d'un homme de 60 ans (dans ce domaine) vaut le double du salaire moyen d'une femme de 45 ans. Donnez votre réponse sous la forme d'une combinaison linéaire des coefficients.
+\vfill
+\end{enumerate}

@@ -1,0 +1,130 @@
+%\RequirePackage{easymat} %Pour \begin{MAT} au chapitre 3
+%Je ne réussis pas à utiliser ce package; il y a toujours un message d'erreur
+%D'après mes recherches en ligne, c'est une interaction avec un autre package qui est le problème, mais je ne sais pas lequel...
+
+
+
+ %% Encodage utilisé pour les caractères accentués dans les fichiers
+  %% source du document. Les gabarits sont encodés en UTF-8. Inutile avec
+  %% XeLaTeX, qui gère Unicode nativement.
+  \ifxetex\else \usepackage[utf8]{inputenc} \fi
+
+
+\usepackage{amsmath} % Pour utiliser la commande \boldsymbol qui permet de mettre des lettres grecs en gras
+\usepackage{amsfonts} % Permet l'utilisation de plus de polices de caractères en mode mathématique
+\usepackage{amsthm, amssymb} % Pour faciliter l'écriture de théorèmes mathématiques
+\usepackage{natbib} % Le style natbib pour les références bibliographiques
+\usepackage{epsfig} % Pour utiliser la commande \epsfig
+\usepackage{graphicx} % Pour utiliser la commande \includegraphics
+\usepackage{multirow} % Pour faire des tableaux contenant des lignes fusionnées
+\usepackage{verbatim} % Permet d'insérer un fichier ASCII brut
+\usepackage{rotating} % Perment l'utilisation de l'environnement sideways
+
+
+\usepackage{epstopdf} %permet d'insérer les eps avec le compilateur pdflatex
+\usepackage{ccaption}
+\usepackage{url}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+%Aucune idée quel est tout ce texte, mais ça permet d'inclure easymat; il y a une sorte de bug
+%Solution trouvée ici : http://tex.stackexchange.com/questions/5996/using-easybmat-and-beamer-together
+\makeatletter
+\def\alloc@#1#2#3#4#5%
+ {\ifnum\count1#1<#4% make sure there's still room
+    \allocationnumber\count1#1
+    \global\advance\count1#1\@ne
+    \global#3#5\allocationnumber
+    \wlog{\string#5=\string#2\the\allocationnumber}%
+  \else\ifnum#1<6
+    \def\etex@dummy@definition{}% <-- code added
+    \begingroup \escapechar\m@ne
+    \expandafter\alloc@@\expandafter{\string#2}#5%
+  \else\errmessage{No room for a new #2}\fi\fi
+ }
+\makeatother
+\usepackage{easymat}
+
+
+  %% Gestion des hyperliens dans le document. S'assurer que hyperref
+  %% est le dernier paquetage chargé.
+ \usepackage{hyperref}
+  \hypersetup{colorlinks,allcolors=ULlinkcolor}
+
+  %% Options de mise en forme du mode français de babel. Consulter la
+  %% documentation du paquetage babel pour les options disponibles.
+  %% Désactiver (effacer ou mettre en commentaire) si l'option
+  %% 'nobabel' est spécifiée au chargement de la classe.
+  \frenchbsetup{%
+    StandardItemizeEnv=true,       % format standard des listes
+    ThinSpaceInFrenchNumbers=true, % espace fine dans les nombres
+    og=«, fg=»                     % caractères « et » sont les guillemets
+  }
+
+
+  %% Style de la bibliographie.
+  \bibliographystyle{francais}
+
+% Changer les caption
+\makeatletter
+\renewcommand{\fnum@figure}{\sffamily\small{\figurename~\thefigure}} %des figures
+\renewcommand{\fnum@table}{\sffamily\small{{\textsc{Tableau} }{\thetable}}} %des tableaux
+\makeatother
+
+
+%Inclure les sous-sous sections dans la TOC
+\setcounter{tocdepth}{2}
+
+
+
+\newtheorem{remarque}{Remarque}
+\newtheorem{theorem}{Théorème}
+\newtheorem{corol}[theorem]{Corollaire}
+\newtheorem{exemple}{Exemple}[chapter]
+\newtheorem{defn}{Définition}[chapter]
+
+
+%Raccourcis mathématiques
+
+\newcommand{\esp}{\mathbb{E}}
+\newcommand{\var}{\mathbb{V}\text{ar}}
+\newcommand{\cov}{\mathbb{C}\text{ov}}
+\newcommand{\corr}{\mathbb{C}\text{orr}}
+\newcommand{\prob}{\mathbb{P}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\iid}{\overset{iid}{\sim}}
+
+
+\def\I{\mathbb{I}}
+\def\R{\mathbb{R}}
+\def\P{{\mathbb P}}
+
+
+\newcommand{\bm}{\boldmath}
+\newcommand{\um}{\unboldmath}
+\newcommand{\botheta}{\mbox{\bm$\theta$\um}}
+\newcommand{\boTheta}{\mbox{\bm$\Theta$\um}}
+\newcommand{\boY}{\mbox{\bm$Y$\um}}
+\newcommand{\bobeta}{\mbox{\bm$\beta$}}
+\newcommand{\boeps}{\mbox{\bm$\varepsilon$\um}}
+\newcommand{\boldx}{\mbox{\bm$x$\um}}
+\newcommand{\boR}{\mbox{\bm$R$\um}}
+\newcommand{\boun}{\mbox{\bm$1$\um}}
+\newcommand{\boz}{\mbox{\bm$0$\um}}
+\newcommand{\bolambda}{\mbox{\bm$\lambda$\um}}
+\newcommand{\bov}{\mbox{\bm$v$\um}}
+\newcommand{\boalpha}{\mbox{\bm$\alpha$\um}}
+\newcommand{\bo}[1]{\mbox{\bm$#1$\um}}
+\newcommand{\boX}{\bo{X}}
+\newcommand{\boV}{\bo{V}}
+\newcommand{\hbobeta}{\hat{\bobeta}}
+\newcommand{\hboeps}{\hat{\boeps}}
+\newcommand{\hY}{\hat{\boY}}
+\newcommand{\boH}{\bo{H}}
+\newcommand{\boI}{\bo{\I}}
+\newcommand{\eproof}{\hfill$\sqcap\!\!\!\!\sqcup$}
+\newcommand{\bou}{\mbox{\bm$u$\um}}
+
+
+%Pour écrire XXX en rouge aux endroits où je dois indiquer quelque chose
+\def\X{\textcolor{red}{XXX}}

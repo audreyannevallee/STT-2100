@@ -1,0 +1,178 @@
+% Pour toute question sur l'utilisation de cette classe, écrivez à jerome.soucy(at)ulaval.ca
+% Nécessite la classe Evaluation.sty dans le même dossier ou dans le PATH de votre système
+% Nécessite le fichier logo_ul.pdf dans le même dossier un dans le PATH de votre système
+\def\Ponderation{10}
+\def\SigleNumero{STT-2100}
+\def\NomCours{Régression}
+\def\DateEvaluation{2 mars 2023}
+\def\DateRemise{6 décembre 2023}
+\def\HeureRemise{23h59}
+\def\HeureEvaluation{}
+\def\Session{Été 2021}
+\def\NomEvaluation{Devoir 2}
+
+% Ne rien mettre entre les accolades si l'enseignant (ou l'enseignante) est aussi le coordonnateur (ou la coordonnatrice)
+\def\Coordonnatrice{}
+\def\Coordonnateur{}
+
+% Ne rien mettre entre les accolades s'il y a plus d'une section
+\def\Enseignant{Julien Miron}
+\def\Enseignante{}
+
+% Ne rien mettre entre les accolades s'il s'agit d'un cours à section unique
+% Mettre le nom de chacun des enseignants et enseignantes entre les accolades
+% Une case à cocher sera générée pour chacune des sections
+\def\SectionA{}
+\def\SectionB{}
+\def\SectionC{}
+\def\SectionD{}
+
+
+\def\Directives{
+\begin{enumerate}
+\item Le devoir compte \numquestions ~exercices pour un total de \numpoints{}~points et est à faire individuellement ou en équipe de deux personnes. 
+
+\item Vous devez remettre \underline{deux fichiers} par équipe:
+\begin{itemize}
+\item Un fichier PDF avec vos réponses aux questions 1 à 3. Vous pouvez rédiger à l'ordinateur dans \LaTeX, à la main sur un papier que vous numérisez ou sur une tablette. Ce fichier est à remettre sur Gradescope, à l'aide des instructions données au dernier point de cette page.
+\item Un script \texttt{R} avec les codes utilisés pour la question \ref{prog}. À remettre dans la boîte de dépôt du site du cours.
+\end{itemize}
+
+\item Il est \textit{\textbf{nécessaire}} de justifier toutes les démarches. Une réponse qui n'a pas une démarche \textit{\textbf{complète}} ne pourra avoir tous les points. Pour certaines parties du devoir, une démarche peut être une justification en mots.
+\item La qualité de la langue sera évaluée, incluant l'orthographe, la grammaire et la syntaxe. Un maximum de 10 points pourra être retranché pour mauvaise qualité du français. 
+\item Les travaux remis en retard recevront la note 0.
+
+\item Remises sur \textit{Gradescope}:
+\begin{itemize}
+\item Rendez-vous au www.gradescope.com;
+\item Connectez-vous en utilisant votre adresse courriel de l'Université (idul@ulaval.ca) ainsi que votre mot de passe habituel. Il faut faire «Log in», utiliser «School credentials» et chercher Université Laval dans la liste . Vous devriez déjà avoir un compte, par le biais de l’université. 
+\item Une fois sur le site, choisissez STT-2100;
+\item En sélectionnant le Devoir 2, vous ajoutez le PDF qui contient vos réponses;
+\item Vous devez identifier les différentes sous-questions sur les pages de votre devoir.
+\end{itemize}
+\end{enumerate}
+}
+
+% Veuillez indiquer le type d'évaluation entre crochets
+% Examen : option à choisir pour un examen présentiel qui sera corrigé de manière classique. Un tableau des points sera affiché sur la page couverture.
+% Gradescope : option à choisir pour un examen qui sera corrigé via Gradescope. Aucun tableau de pointage n'apparaîtra et il y a quelques différences au niveau de la mise en page
+% TPS :
+% TPF :
+% Devoir :
+\documentclass[Devoir]{Evaluation}
+\usepackage{multicol,graphicx}
+\begin{document}
+
+\begin{questions}  
+\question Soit le modèle de régression linéaire multiple 
+\begin{equation*}\label{oldmod}
+    \boldsymbol{Y}=\boldsymbol{X\beta}+\boldsymbol{\varepsilon},
+\end{equation*}
+où $\boldsymbol{\varepsilon}=(\varepsilon_1,\hdots,\varepsilon_n)^T$, avec $\varepsilon_j\sim \mathcal{U}(-1;1)$, pour $j=1,\hdots,n$, et $\mathcal{U}(a;b)$ est la loi uniforme continue sur l'intervalle $[a;b]$. Nous supposons aussi que $\varepsilon_i\perp \varepsilon_j$, pour tout $(i,j)\in \{1,\hdots,n\}^2$ et $i\neq j$.
+
+\begin{parts}
+    \part[2] Calculez l'espérance de $\boldsymbol{Y}$.
+    \part[3] Calculez la variance de $\boldsymbol{Y}$.
+    \part[2] Donnez la loi de $Y_j$, un des éléments du vecteur $\boldsymbol{Y}$.
+    \part[8] Les quatre postulats sont-ils respectés par ce modèle? Expliquez brièvement pour chacun des postulats pourquoi vous dites qu'il est respecté ou non.
+    \part[3] Calculez l'estimateur des moindres carrés $\widehat{\boldsymbol{\beta}}_{MC}$ pour $\boldsymbol{\beta}$.
+    \part[5] À quel problème sommes-nous confrontés si nous tentons de trouver l'estimateur du maximum de vraisemblance $\widehat{\boldsymbol{\beta}}_{MV}$?
+\end{parts}
+
+\vspace{1cm}
+
+\question 
+Soit le modèle de régression linéaire multiple 
+\begin{equation}\label{oldmod}
+    \boldsymbol{Y}=\boldsymbol{X\beta}+\boldsymbol{\varepsilon},
+\end{equation}
+où $=\boldsymbol{\varepsilon}\sim\mathcal{N}_n(\boldsymbol{0},\sigma^2 \mathbbm{1}_n)$, $\sigma>0$ et $\mathbbm{1}_n$ est la
+matrice identité de dimension $n\times n$. 
+Pour les besoins de l'exercice, nous écrivons $\boldsymbol{X}=(\boldsymbol{x}_1^T,\hdots,\boldsymbol{x}_n^T)^T$, où $\boldsymbol{x}_i=(1, x_{i1},\hdots, x_{ip})^T$, pour $i=1\hdots,n$. 
+Nous aurons donc que $\boldsymbol{\beta}\in \mathbbm{R}^{p+1}$.
+
+En supposant que certaines observations ont des valeurs explicatives «aberrantes», il pourrait être intéressant d'en réduire l'impact dans l'estimation.
+Des poids individuels $w_i$ seront donc appliqués aux $\boldsymbol{x}_i$ de façon à avoir $\boldsymbol{X}^*=(w_1\boldsymbol{x}_1^T,\hdots,w_n\boldsymbol{x}_n^T)^T$, où $w_i\boldsymbol{x}_i=(w_i, w_ix_{i1},\hdots, w_ix_{ip})^T$ et $w_i \in [0,1]$, pour $i=1\hdots,n$.  
+Le nouveau modèle sera 
+\begin{equation}\label{newmod}
+    \boldsymbol{Y}=\boldsymbol{X}^* \boldsymbol{\beta}+\boldsymbol{\varepsilon},
+\end{equation}
+où nous supposons que les $\boldsymbol{\varepsilon}$ sont les mêmes que dans le modèle \eqref{oldmod}.
+\begin{parts}
+    \part[5] Réécrivez le modèle \eqref{newmod} en fonction de $\boldsymbol{X}$ et identifiez bien toutes les matrices et/ou tous les vecteurs qui sont différents du modèle \eqref{oldmod}.
+    \part[3] À l'aide du modèle \eqref{newmod}, nous utilisons $\widehat{\boldsymbol{\beta}}^*=\boldsymbol{(X^{*T}X^*)^{-1}X^{*T}Y}$ comme estimateur de $\boldsymbol{\beta}$. Réécrivez cet estimateur en utilisant la notation que vous avez établie en (a).
+    \part[6] Calculez le biais de $\widehat{\boldsymbol{\beta}}^*$.
+
+    \part[7] Calculez la variance de $\widehat{\boldsymbol{\beta}}^*$ et comparez-la avec la variance de $\widehat{\boldsymbol{\beta}}$, l'estimateur des moindres carrés ordinaire trouvé avec le modèle \eqref{oldmod}. Cette comparaison semble-t-elle logique? Expliquez dans vos mots. \textit{Pour comparer, vous pouvez étudier les variances des estimateurs d'un seul coefficient de $\boldsymbol{\beta}$, puis généraliser}.
+
+\end{parts}
+\newpage
+
+\question\label{prog}
+\textbf{Cet exercice est à compléter sur \texttt{R}. }
+Dans le jeu de données fourni pour ce devoir, vous retrouvez les variables $\boldsymbol{Y}$, $\boldsymbol{r}$, $\boldsymbol{s}$ et $\boldsymbol{z}$. Le modèle étudié sera 
+\begin{equation}\label{totmod}
+    \boldsymbol{Y}=\boldsymbol{X\beta}+\boldsymbol{\varepsilon},
+\end{equation}
+où $\boldsymbol{X}=(\boldsymbol{1}, \boldsymbol{r}, \boldsymbol{s}, \boldsymbol{z})$ et $\boldsymbol{\varepsilon}\sim \mathcal{N}_{n}(\boldsymbol{0}, \sigma^2 \mathbbm{1}_n)$. Les composants des vecteurs de variables explicatives sont toutes des réalisations de la loi normale centrée-réduite et sont toutes indépendantes. Nous avons aussi que les trois variables explicatives sont indépendantes.
+
+\vspace{0.5cm}
+
+\begin{parts}
+    \part[4] Si vous ajustez le modèle \eqref{totmod}, à quelle variable (en excluant l'ordonnée à l'origine) correspond la valeur-p la plus élevée parmi les tests-$t$ sur les coefficients? À noter, lorsqu'on utilise \texttt{summary(modele)\$coefficients}, on obtient les valeur-p exactes au lieu de \texttt{<2e-16}, le cas échéant. Donnez la variable et la valeur-p associée.
+    \part[6] Si on vous dit que les données ont bel et bien été générées avec le modèle $$Y_i=\beta_0 + \beta_rr+\beta_ss+\beta_zz +\varepsilon_i,$$ pour $i=1,\hdots,n$, qu'est-ce qui pourrait expliquer que certaines valeurs-p sont supérieures aux seuils standards (e.g. $5\%$)?
+    \part[5] Donnez le $VIF$ pour chacune des trois variables explicatives. Que pouvez-vous dire à propos des ces $VIF$? Ces résultats semblent-ils cohérents?
+
+
+\part[5] À partir d'ici, le modèle étudié sera celui en \eqref{newmod}.
+    Il faudra donc définir un poids $w_i$ pour chaque observation du jeu de données.
+    Le poids utilisé sera trouvé à partir de la distance de Mahalanobis expliquée dans l'encadré ci-bas.
+    Pour ce faire, nous devons utiliser la matrice de design $\boldsymbol{X}$, mais en retirant la colonne de 1. Que vaut la distance de Mahalanobis $d_i$ des cinq premières observations du jeu de données?
+
+    \part[6] Calculez la moyenne des $d_i^2$. Ce résultat vous semble-t-il cohérent avec la théorie? Expliquez.
+    \part[10] Les $d_i$ seront maintenant utilisés pour calculer les poids $w_i$ du modèle \eqref{newmod}. 
+    Vous devez proposer une pondération qui est fonction de ces $d_i$. 
+    Cette pondération n'a pas besoin d'être compliquée, mais on repérera facilement ceux qui utilisent ChatGPT. Donnez la fonction utilisée et expliquez bien comment vous calculez les $w_i$.
+    
+    \part[10] Implémentez votre poids prososé en (e) et ajustez le modèle \eqref{newmod} en utilisant ces poids. Comparez les résultats avec ceux du modèle en (a) et faites un lien avec le (d) de l'exercice 2.
+    
+\end{parts}
+\vspace{1.5cm}
+\fbox{
+\parbox{\textwidth}{
+\textbf{Distance de Mahalanobis}
+
+\vspace{0.5cm}
+Soit $\boldsymbol{u}_i=(u_{i1},\hdots,u_{ik})^T $, pour $i=1,\hdots,n$.
+La distance de Mahalanobis $d_i$ de l'observation $i$ est calculée avec
+    \begin{equation*}
+        d_i=\sqrt{(\boldsymbol{u}_i - \overline{\boldsymbol{u}})^T\Sigma (\boldsymbol{u}_i - \overline{\boldsymbol{u}})}, \text{ pour }i=1,\hdots,n,
+    \end{equation*}
+où $\overline{\boldsymbol{u}}=(\overline{u}_{1},\hdots,\overline{u}_{k})^T$, avec $\overline{u}_{j}=\frac{1}{n}\sum_{i=1}^n u_{ij}$, pour $j=1,\hdots,k$, et $\Sigma$ est la matrice de covariance empirique des $\boldsymbol{u}_i$. 
+Nous savons que si les $\boldsymbol{u}_i$ sont des réalisation de variables aléatoires normales, les statistiques $d_i^2$ sont des réalisations d'une variable aléatoire qui suit la loi du khi-carré avec $k$ degrés de liberté, où $k$ est la longueur des vecteurs $\boldsymbol{u}_1,\hdots, \boldsymbol{u}_n$.
+Bien sûr, en \texttt{R}, vous pouvez utiliser la fonction \texttt{mahalanobis()} en utilisant les bons arguments. Il faut toutefois faire attention à la valeur qui est retournée par cette fonction.
+}
+}
+\end{questions}
+
+
+\end{document}
+
+
+
+
+\vspace{0.3in}
+\textbf{Question 4 (10 pts)} (Design d'expérience)\\
+
+On s'intéresse à un médicament sensé réduire le nombre de crises chez les individus atteints d'epilepsie. Vous devez aider à planifier une expérience pour étudier l'effet de la dose du médicament sur le nombre de crises. Puisque vous vous intéressez à la relation entre deux variables quantitatives, vous planifiez analyser les données avec un modèle de régression linéaire simple. \\
+
+Soit $x_1, \ldots, x_n$ les valeurs de la dose pour les 20 individus de votre étude.\\ Pour chacun, vous pouvez attribuer n'importe quelle dose entre 2 mg et 21 mg. \\
+
+\begin{itemize}
+%\item [(a)] Pour le modèle de régression linéaire simple $Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$, prouvez que la variance de $\beta_0$ est minimale si les $x_i$ sont tels que $\bar{x}$ = 0.
+\item [(a)] (5 pts) Quelle est la meilleure fa\c{c}on de choisir les valeurs $x_1,\ldots,x_n$ pour minimiser la variance de votre estimateur $\widehat{\beta_1}$? Justifiez votre réponse.
+\vspace{0.1 in}
+\item [(b)] (5 pts) Pourquoi ne serait-ce pas vraiment une bonne idée de choisir les valeurs de $x_i$ de cette façon, même si cela minimise la variance de votre estimateur?
+\end{itemize}
+
+\end{document} 

@@ -1,0 +1,253 @@
+% Pour toute question sur l'utilisation de cette classe, écrivez à jerome.soucy(at)ulaval.ca
+% Nécessite la classe Evaluation.sty dans le même dossier ou dans le PATH de votre système
+% Nécessite le fichier logo_ul.pdf dans le même dossier un dans le PATH de votre système
+\def\Ponderation{10}
+\def\SigleNumero{STT-2100}
+\def\NomCours{Régression}
+\def\DateEvaluation{2 mars 2023}
+\def\DateRemise{8 octobre 2023}
+\def\HeureRemise{23h59}
+\def\HeureEvaluation{}
+\def\Session{Été 2021}
+\def\NomEvaluation{Devoir 1}
+
+% Ne rien mettre entre les accolades si l'enseignant (ou l'enseignante) est aussi le coordonnateur (ou la coordonnatrice)
+\def\Coordonnatrice{}
+\def\Coordonnateur{}
+
+% Ne rien mettre entre les accolades s'il y a plus d'une section
+\def\Enseignant{Julien Miron}
+\def\Enseignante{}
+
+% Ne rien mettre entre les accolades s'il s'agit d'un cours à section unique
+% Mettre le nom de chacun des enseignants et enseignantes entre les accolades
+% Une case à cocher sera générée pour chacune des sections
+\def\SectionA{}
+\def\SectionB{}
+\def\SectionC{}
+\def\SectionD{}
+
+
+\def\Directives{
+\begin{enumerate}
+\item Le devoir compte \numquestions ~questions pour un total de \numpoints{}~points et \numbonuspoints{}~points bonus.
+\item À faire individuellement ou en équipe de deux personnes. 
+\item Vous devez remettre \underline{trois fichiers} par équipe (il faut remplacer {\tt X} dans les fichiers par le numéro de votre équipe):
+\begin{itemize}
+\item Un fichier PDF nommé {\tt ÉquipeX-1234.pdf} avec vos réponses aux questions 1 à 4. Vous pouvez rédiger à l'ordinateur dans \LaTeX, à la main sur un papier que vous numérisez ou sur une tablette. 
+\item Un fichier PDF nommé {\tt ÉquipeX-5.pdf} avec vos réponses de la question \ref{prog}. Celui-ci doit être rédigé à l'ordinateur et être d'une longueur maximale de 3 pages. 
+\item Un document {\tt ÉquipeX.R}, ou {\tt ÉquipeX.sas} avec les codes utilisés pour la question \ref{prog}.
+\end{itemize}
+\item Un ou des fichier(s) mal identifié(s) occasionne(nt) une pénalité de 5\%.
+\item Il est \textit{\textbf{nécessaire}} de justifier toutes les démarches. Une réponse qui n'a pas une démarche \textit{\textbf{complète}} ne pourra avoir tous les points. Vous ne pouvez pas utiliser les résultats du cours directement, à moins que ce soit indiqué (par exemple, aux points (b) et (c) de la question 4).
+\item La qualité de la langue sera évaluée, incluant l'orthographe, la grammaire et la syntaxe. Un maximum de 10 points pourra être retranché pour mauvaise qualité du français. 
+\item Les travaux remis en retard recevront la note 0.
+\item Veuillez relire le point 7, il n'y aura aucune exception.
+\end{enumerate}
+}
+
+% Veuillez indiquer le type d'évaluation entre crochets
+% Examen : option à choisir pour un examen présentiel qui sera corrigé de manière classique. Un tableau des points sera affiché sur la page couverture.
+% Gradescope : option à choisir pour un examen qui sera corrigé via Gradescope. Aucun tableau de pointage n'apparaîtra et il y a quelques différences au niveau de la mise en page
+% TPS :
+% TPF :
+% Devoir :
+\documentclass[Devoir]{Evaluation}
+\usepackage{multicol,graphicx}
+\begin{document}
+
+\fbox{%
+    \parbox{\textwidth}{%
+
+Pour certains exercices, nous référerons au modèle de régression linéaire simple donné par
+
+\begin{equation}\label{mod:reglin}
+    Y_i = \beta_0\,+\,\beta_1\, x_i \,+\, \varepsilon_i\qquad \text{ pour } i=1,\ldots,n.
+\end{equation}
+
+Dans ce modèle, à moins d'avis contraire, les 3 postulats sont respectés et nous avons $\varepsilon_i\sim \mathcal{N}(0, \sigma^2), \text{ pour } i=1,\ldots,n$
+    }%
+}
+
+
+
+\vspace{1cm}
+\begin{questions}  
+\begin{comment}
+\question
+Lorsque nous utilisons les estimateurs des moindres carrés, nous avons que
+$$   \widehat{Y}_0 = \widehat{\beta}_0 + \widehat{\beta}_1 x_0 = \sum_{i=1}^n \left(\frac{1}{n} - d_i\right) Y_i, $$
+où 
+\begin{align*}
+    d_i = a_i \overline{x} - a_i x_0, & &
+    a_i = \frac{x_i-\overline{x}}{S_{xx}}.
+\end{align*}
+
+\begin{parts}
+\part[8]   Montrez que $\displaystyle \sum_{i=1}^n \left(\frac{1}{n} - d_i\right)^2 = \frac{1}{n} + \frac{(\overline{x}-x_0)^2}{S_{xx}}.$  
+\vspace{0.1 in}
+\part[4] \textbf{À l'aide du résultat obtenu en (a)}, montrez que     
+$\displaystyle \mathrm{Var}\left( \widehat{Y}_0 \right) = \left[ \frac{1}{n} + \frac{(\overline{x} - x_0)^2}{S_{xx}} \right] \sigma^2.$ 
+
+ 
+
+\end{parts}
+\end{comment}
+
+\question
+
+Soit le modèle de régression
+$$
+Y_i = \beta_0\,+\,\beta_1\, f(x_i) \,+\, \varepsilon_i\qquad \text{ pour } i=1,\ldots,n,
+$$
+où $f:\mathbb{R}\to\mathbb{R}$.
+Nous avons $\varepsilon_i\sim\mathcal{N}(o, \sigma^2)$, pour $i=1,\hdots,n$. 
+On prendra pour acquis les trois informations suivantes.
+
+\begin{itemize}
+\item L'estimateur des moindres carrés de $\beta_1$ est $\widehat{\beta}_1= \dfrac{S_1}{S_2}$, où  
+
+\begin{align*}
+    S_1= \sum\limits_{i=1}^n f(x_i)\,Y_i - \overline{Y}\sum\limits_{i=1}^nf(x_i), & & S_2=\sum\limits_{i=1}^n f(x_i)^2-\frac{1}{n}\left[\sum\limits_{i=1}^nf(x_i)\right]^2.
+\end{align*}
+
+\item $\widehat{\beta}_1$ est un estimateur sans biais de $\beta_1$.
+\item La variance de $\widehat{\beta}_1$ est égale à $\dfrac{\sigma^2}{S_2}$. %$\dfrac{\sigma^2}{\sum\limits_{i=1}^n x_i^4-\frac{1}{n}\left(\sum\limits_{j=1}^nx_j^2\right)^2}$
+\end{itemize}
+
+
+\begin{parts}
+
+\part[4] Calculez l'estimateur des moindres carrés de $\beta_0$. Vous pouvez donner votre réponse en fonction de $\widehat\beta_1$ sans le remplacer par son expression.  
+\part[4] Calculez l'espérance de $\widehat{\beta}_0$.  
+\part[6] Calculez la variance de $\widehat{\beta}_0$. Vous pouvez utiliser le fait que Cov$(\overline Y,\,\widehat{\beta}_1)=0$.  
+
+\end{parts}
+
+\vspace{2cm}
+\question
+
+Soit le modèle de régression donné par l'équation \eqref{mod:reglin} au début du document. Nous tenterons d'estimer $\beta_0$ et $\beta_1$ dans ce modèle à l'aide de $\widehat{\beta}_0^*$ et $\widehat{\beta}_1^*$ que nous définissons comme les valeurs qui minimisent la fonction:
+
+\begin{equation*}
+   Q(\beta_0, \beta_1)= \sum_{i=1}^n(Y_i-\beta_0- \beta_1x_i)^2 + \lambda \beta_1 ^2
+\end{equation*}
+
+où $\lambda \in \mathbb{R}_+$.
+\begin{parts}
+    \part[6] Donnez les expressions de $\widehat{\beta}_0^*$ et de $\widehat{\beta}_1^*$.
+    \part[3] Calculez le biais de $\widehat{\beta}_1^*$.
+    \part[1] Pour quelle(s) valeur(s) de $\lambda$ a-t-on que $\widehat{\beta}_1^*$ est sans biais pour $\beta_1$?
+    \part[6] Pour quelle(s) valeur(s) de $\lambda$ a-t-on $\text{Var}\left(\widehat{\beta}_1^*\right)<\text{Var}\left(\widehat{\beta}_1\right)$, où $\widehat{\beta}_1$ est l'estimateur des moindres carrés ordinaires?
+    \bonuspart[4] \textbf{Bonus}: Quel serait l'intérêt d'utiliser une valeur de $\lambda$ qui induit un biais dans notre estimation de $\beta_1$?
+    
+\end{parts}
+
+\newpage
+\question 
+Soit le modèle de régression donné par l'équation \eqref{mod:reglin} au début du document. Nous tentons d'estimer $\beta_0$ et $\beta_1$ en limitant notre attention à la classe des estimateurs linéaires.
+Les estimateurs $\widehat{\beta}_0$ et $\widehat{\beta}_1$ sont linéaires s'ils sont de la forme 
+\begin{align*}
+    \widehat{\beta}_0=\sum_{i=1}^n  \xi_i Y_i, & & \widehat{\beta}_1=\sum_{i=1}^n  \kappa_i Y_i
+\end{align*}
+où $\xi_1,\hdots,\xi_n, \kappa_1,\hdots, \kappa_n$ sont des constantes connues.
+
+\begin{parts}
+    \part[2] Montrez que $\widehat{\beta}_1$ est sans biais pour $\beta_1$ si les deux conditions suivantes sont respectées:
+    \begin{align*}
+        \sum_{i=1}^n  \kappa_i =0, &   & \sum_{i=1}^n  \kappa_i x_i =1,
+    \end{align*}
+    pour tout $\beta_0$ et $\beta_1$.
+    \part[2] Quelles conditions pouvons-nous imposer aux $\xi_i$ pour que $\widehat{\beta}_0$ soit sans biais pour $\beta_0$, peu importe les valeurs de $\beta_0$ et de $\beta_1$?
+    \part[2] Montrez que l'estimateur linéaire non-biaisé de $\beta_1$ ayant la plus petite variance parmi tous les estimateurs linéaires non-biaisés de $\beta_1$ est celui qui minimise la valeur de $\displaystyle\sum_{i=1}^n\kappa_i ^2$.
+    \part[2] Donnez l'expression de $ \xi_i$, dans le cas de l'estimateur des moindres carrés pour $\beta_0$.
+\end{parts}
+
+\vspace{2cm}
+\question 
+Soit le modèle de régression donné par l'équation \eqref{mod:reglin} au début du document. 
+Nous supposons que les $x_i$ sont des variables binaires, ne pouvant prendre que les valeurs $0$ ou $1$.
+En utilisant la fonction indicatrice $\mathbbm{1}_A(\omega)$ qui vaut 1 si $\omega$ fait partie de $A$ et 0 sinon, nous notons
+\begin{itemize}[label = >]
+    \item $\displaystyle n_0=\sum_{i=1}^n\mathbbm{1}_{\{0\}}(x_i)$;
+    \item $\displaystyle n_1=\sum_{i=1}^n\mathbbm{1}_{\{1\}}(x_i)$;
+    \item $\displaystyle \overline{Y}_0=\frac{1}{n_0}\sum_{i=1}^n\mathbbm{1}_{\{0\}}(x_i)Y_i$ ;
+    \item $\displaystyle\overline{Y}_1=\frac{1}{n_1}\sum_{i=1}^n\mathbbm{1}_{\{1\}}(x_i)Y_i$.
+\end{itemize}
+
+\begin{parts}
+    \part[4] Dans vos mots, dites ce que représentent les quantités $n_0$, $n_1$, $\overline{Y}_0$ et $\overline{Y}_0$.
+    \part[4] Montrez que l'estimateur des moindres carrés pour $\beta_0$ est donné par  $\widehat{\beta}_0=\overline{Y}_0$. Vous pouvez utiliser le résultats $\widehat{\beta}_0= \overline{Y}-\widehat{\beta}_1\overline{x}$.
+    \part[4] Montrez que l'estimateur des moindres carrés pour $\beta_1$ est donné par  $\widehat{\beta}_1=\overline{Y}_1-\overline{Y}_0 $. Vous pouvez utiliser le résultats $\widehat{\beta}_1= \displaystyle\frac{S_{xY}}{S_{xx}}$.
+\end{parts}
+
+\newpage
+
+\question\label{prog}
+On s'intéresse à la relation entre le poids et la taille des poissons d'un lac. On dispose d'un échantillon de poissons pour lesquels on a mesuré le poids (en grammes) et la taille (en centimètres).
+On vous demande de trouver un modèle linéaire pour prédire le poids d'un poisson à partir de sa taille.
+
+Chaque équipe recevra un jeu de données avec les mesures prises pour un échantillon de poissons différent.
+Vous devez rédiger des parties d'un rapport d'analyse de régression en répondant aux questions suivantes. Utilisez $\alpha = 0,01$ pour toutes vos inférences.\\ 
+
+
+{\bf Dans le fichier PDF}: identifiez clairement la question associée à votre réponse (par exemple (i) a)). Donnez les réponses aux questions et les tableaux de résultats obtenus avec votre logiciel qui sont nécessaires pour
+répondre aux questions. Les figures et tableaux inclus dans vos réponses doivent être présentés de façon professionnelle. Ils doivent avoir des titres clairs et pertinents. Chaque figure présentée doit être discutée dans vos réponses. 
+
+\textbf{Sorties statistiques:}
+Vous pouvez faire l'analyse à l'aide de \texttt{R} ou de SAS. 
+Vous devez fournir le programme que vous avez écrits pour obtenir vos réponses.
+Ce programme doit être contenu dans un seul script et doit être annoté par des commentaires.
+Un programme qui ne fonctionne pas ou qui est mal annoté entraînera une pénalité.
+Pour ceux qui seraient intéressés, voici un petit guide qui explique comment bien écrire du code sur \texttt{R}: 
+
+\href{https://web.stanford.edu/class/cs109l/unrestricted/resources/google-style.html}{https://web.stanford.edu/class/cs109l/unrestricted/resources/google-style.html}\\
+
+
+\begin{parts}
+	\part[9] {\bf Description du jeu de données et de l'objectif poursuivi.}
+\begin{enumerate}
+\item Identifiez et définissez les variables qui nous intéressent.
+%\item Mentionner le nombre et la source des observations.
+\item Décrivez {\it brièvement} la loi de chacune des variables (graphiques et statistiques descriptives). Commentez la distribution conjointe des variables à l'aide d'un diagramme de dispersion.  (8 lignes maximum, sans compter les figures).
+
+
+\item Décrire l'objectif de l'analyse de régression. (4 lignes maximum).
+\end{enumerate}
+	\part[14] {\bf Choix de modèle utilisé.}
+\begin{enumerate}
+	\item Vérifiez l'adéquation du modèle RLS et le respect des postulats au moyen de graphiques et de tests pertinents. Modifiez le modèle de façon à ce que vous soyez satisfait de la justesse des postulats. (On ne peut pas toujours modifier les variables pour que tous les postulats soient exactement vérifiés;  choisissez alors le meilleur modèle possible). Dans le fichier réponse, formulez clairement le modèle et les postulats du modèle retenu (i.e. écrire le modèle complet en langage mathématique). Présentez seulement le modèle final, et non tous les modèles ajustés. Motivez le choix de modèle final (8 lignes maximum). Incluez toutes les étapes de votre démarche (différents modèles, vérification des postulats) dans votre programme \texttt{R} ou SAS. 
+\end{enumerate}
+	\part[17] {\bf Présentation des résultats.}
+\begin{enumerate}
+	\item Donnez les estimations des paramètres (${\hat \beta}_0$, ${\hat \beta}_1$, ${\hat \sigma}^2$).
+	\item Fournissez des intervalles de confiance pour les paramètres (${\hat \beta}_0$, ${\hat \beta}_1$) et une interprétation en contexte. (8 lignes maximum pour l'interprétation).
+	\item Discutez de la signification statistique des coefficients ${\hat \beta}_0$ et ${\hat \beta}_1$ à l'aide de tests $t$. (6 lignes maximum).
+	\item L'analyse de variance permet de faire un test d'hypothèses. Donnez les hypothèses de ce test et discutez de sa signification statistique pour vos données. (4 lignes maximum pour la discussion).
+\end{enumerate}
+\end{parts}
+
+
+\end{questions}
+
+
+\end{document}
+
+
+
+
+\vspace{0.3in}
+\textbf{Question 4 (10 pts)} (Design d'expérience)\\
+
+On s'intéresse à un médicament sensé réduire le nombre de crises chez les individus atteints d'epilepsie. Vous devez aider à planifier une expérience pour étudier l'effet de la dose du médicament sur le nombre de crises. Puisque vous vous intéressez à la relation entre deux variables quantitatives, vous planifiez analyser les données avec un modèle de régression linéaire simple. \\
+
+Soit $x_1, \ldots, x_n$ les valeurs de la dose pour les 20 individus de votre étude.\\ Pour chacun, vous pouvez attribuer n'importe quelle dose entre 2 mg et 21 mg. \\
+
+\begin{itemize}
+%\item [(a)] Pour le modèle de régression linéaire simple $Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$, prouvez que la variance de $\beta_0$ est minimale si les $x_i$ sont tels que $\bar{x}$ = 0.
+\item [(a)] (5 pts) Quelle est la meilleure fa\c{c}on de choisir les valeurs $x_1,\ldots,x_n$ pour minimiser la variance de votre estimateur $\hat{\beta_1}$? Justifiez votre réponse.
+\vspace{0.1 in}
+\item [(b)] (5 pts) Pourquoi ne serait-ce pas vraiment une bonne idée de choisir les valeurs de $x_i$ de cette façon, même si cela minimise la variance de votre estimateur?
+\end{itemize}
+
+\end{document} 

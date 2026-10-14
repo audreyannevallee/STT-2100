@@ -1,0 +1,188 @@
+
+\documentclass[letter, 11pt]{article}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \oddsidemargin  0.0in
+    \evensidemargin 0.0in
+    \textwidth      6.8in
+    \headheight     0.0in
+    \topmargin      0.0in
+    \textheight=9.0in
+    \parindent=0in
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\renewcommand{\familydefault}{\sfdefault} % Police 
+
+\usepackage{amsthm,amsfonts,amssymb,amsmath, xcolor, enumitem}
+\usepackage{graphicx}   %To include graphics
+\usepackage[small,compact]{titlesec}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[french]{babel}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\input{Symboles.tex} %Symboles programmés pour simplifier le texte
+
+
+
+\usepackage{version} % Pour faire un texte troué pour les étudiants
+\includeversion{etudiant}\excludeversion{professeur} %version etudiant
+%\includeversion{professeur}\excludeversion{etudiants} %version prof
+\newcommand{\etudiant}[1]{\begin{etudiants}#1 \end{etudiants}}
+\newcommand{\prof}[1]{\begin{professeur}\color{blue} {\bf Solution :} #1 \end{professeur}}
+
+
+\fancyhead[L]{STT-2100 \\ Régression}
+\fancyhead[R]{A.-S. Charest, E. Reny-Nolin, A.-A. Vallée \\ Université Laval}
+
+
+\begin{document}
+
+\vspace*{0.01 cm}
+\begin{center}
+{\Large Exercices - Chapitre 3}
+\end{center}
+
+
+
+
+\begin{enumerate}[leftmargin=*, wide, label=\bf Exercice \arabic*:]
+
+%%%%%%%%%%%%
+% Question 1
+\item Montrez quelques résultats du cours.
+\begin{enumerate}
+    \item L'expression $S_{xy}$ peut s'écrire sous différentes formes. Montrez que ces trois expressions sont égales,
+    $$\sum\limits_{i=1}^n \left(x_i-\overline x\right)\left(Y_i-\overline Y\right) = \sum\limits_{i=1}^n \left(x_i-\overline x\right)Y_i = \sum\limits_{i=1}^n x_i\,Y_i - n\overline x\,\overline Y.$$
+    \item Montrez que $\sum\limits_{i=1}^n (Y_i-\widehat Y_i)(\widehat Y_i-\overline Y) = 0$.
+    \item Montrez que $\text{Cov}(\overline Y,\widehat\beta_1)=0$.
+    \end{enumerate}
+
+\prof{\begin{enumerate}
+\item $$\begin{array}{ll}
+    \sum\limits_{i=1}^n (x_i-\overline x)(Y_i-\overline Y)
+    &= \sum\limits_{i=1}^n (x_i-\overline x)\,Y_i-\sum\limits_{i=1}^n(x_i-\overline x)\,\overline Y\\[3mm]
+    &= \sum\limits_{i=1}^n (x_i-\overline x)\,Y_i-\overline Y \sum\limits_{i=1}^n(x_i-\overline x)\,\\[3mm]
+    &= \sum\limits_{i=1}^n (x_i-\overline x)\,Y_i-\overline Y \left[\sum\limits_{i=1}^n x_i-n\overline x\right]\,\\[3mm]
+     &= \sum\limits_{i=1}^n (x_i-\overline x)Y_i \\[3mm]
+     &= \sum\limits_{i=1}^n x_i\,Y_i-\overline x\sum\limits_{i=1}^n Y_i \\[3mm]
+    &= \sum\limits_{i=1}^n x_i\,Y_i - n\overline x\,\overline Y\\
+    \end{array}$$
+
+\item $$\begin{array}{ll}
+    \sum\limits_{i=1}^n (Y_i-\widehat Y_i)(\widehat Y_i-\overline Y)
+    &= \sum\limits_{i=1}^n Y_i\widehat Y_i- \overline Y\sum\limits_{i=1}^n Y_i- \sum\limits_{i=1}^n \hat Y^2_i+ \overline Y\sum\limits_{i=1}^n \widehat Y_i\\[6mm]
+    &= \sum\limits_{i=1}^n Y_i\widehat Y_i-  \sum\limits_{i=1}^n \hat Y^2_i\\[6mm]
+    &= \sum\limits_{i=1}^n Y_i [\overline Y - \widehat\beta_1\overline x +\widehat\beta_1\,x_i]- \sum\limits_{i=1}^n [\overline Y - \widehat\beta_1\overline x +\widehat\beta_1\,x_i]^2\\[6mm]
+    &= \sum\limits_{i=1}^n Y_i [\overline Y +\widehat\beta_1(x_i-\overline x) ]- \sum\limits_{i=1}^n [\overline Y +\widehat\beta_1(x_i-\overline x) ]^2\\[6mm]
+    &= \overline Y \sum\limits_{i=1}^n Y_i  +\widehat\beta_1\sum\limits_{i=1}^n(x_i-\overline x)Y_i -\left[ \sum\limits_{i=1}^n \overline Y^2 +\widehat\beta_1^2\sum\limits_{i=1}^n(x_i-\overline x)^2 + 2\,\overline Y\,\widehat\beta_1\sum\limits_{i=1}^n(x_i-\overline x)\right]\\[6mm]
+    &= n\overline Y^2 +\widehat\beta_1\,S_{xy}  -\left[n \overline Y^2 +\widehat\beta_1^2\,S_{xx} \right]\\[6mm]
+    &=0  
+    \end{array}$$
+\item  $$\begin{array}{ll}
+    \text{Cov}(\overline Y,\widehat\beta_1)
+    &=  \text{Cov}\left(\sum\limits_{i=1}^n\dfrac{Y_i}{n}, \sum\limits_{j=1}^n \dfrac{(x_j-\overline x)Y_j}{S_{xx}}\right) \\[6mm]
+    &= \dfrac{1}{nS_{xx}}\text{Cov}\left(\sum\limits_{i=1}^n Y_i ,\sum\limits_{j=1}^n (x_j-\overline x)Y_j\right) \\[6mm]
+    &= \dfrac{1}{nS_{xx}}\sum\limits_{i=1}^n\sum\limits_{j=1}^n (x_j-\overline x)\text{Cov}\left( Y_i ,Y_j\right) \\[3mm]
+    \end{array}$$
+
+    La covariance de $Y_i$ et de $Y_j$ est nulle si $i\ne j$ à cause de l'indépendance des observations.
+    
+    Si $i=j$, alors $\text{Cov}( Y_i ,Y_j)=\text{Cov}( Y_i ,Y_i)=\var(Y_i)=\sigma^2$
+
+$$\begin{array}{ll}
+    \text{Cov}(\overline Y,\widehat\beta_1)
+    &= \dfrac{1}{nS_{xx}}\sum\limits_{i=1}^n(x_i-\overline x)\text{Cov}\left( Y_i ,Y_i\right) \\[6mm]
+    &= \dfrac{1}{nS_{xx}}\sum\limits_{i=1}^n(x_i-\overline x)\sigma^2\\[6mm]
+    &=0.
+    \end{array}$$
+    \end{enumerate}}
+
+
+
+%%%%%%%%%%%%
+% Question 2
+\item On s\rq{}intéresse à la concentration de quinine d\rq{}une solution. Il peut être difficile de mesurer cette concentration, et plus facile de prélever une mesure de fluorescence. Étudions la relation linéaire entre ces variables, nommée courbe de calibration.\footnote{Source: Statistics and Chemometrics for Analytical Chemistry  de James N. Miller et Jane C. Miller.}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{l|rrrrrr|r|r}
+&\multicolumn{6}{|c|}{Observations}&Moyenne&Variance\\\hline
+Concentration (ng/ml) & 0 & 10 & 20 & 30 & 40 & 50&25,0&350,0\\\hline
+Fluorescence  & 4 & 22 & 44 & 60 & 75 & 104&51,5&1312,7
+\end{tabular}
+\end{table}
+
+\begin{enumerate}
+\item  Écrivez le modèle de régression linéaire correspondant à l\rq{}estimation de la courbe de calibration.
+\item  Calculez les estimations des paramètres $\beta_0,\; \beta_1, \; \sigma^2$.
+\item  Testez l\rq{}hypothèse $H_0 : \beta_1 =  0$ contre $H_1 : \beta_1 \ne 0$.
+\item   Calculez le coefficient de détermination et interprétez cette valeur selon le contexte.
+\item   On observe une fluorescence de 47 pour une solution dont on ignore la concentration. Calculez un intervalle de niveau 95$\%$ pour la concentration de quinine de cette solution.
+\item   Le responsable du laboratoire n\rq{}est pas satisfait des résultats: il trouve que l\rq{}intervalle calculé est trop grand. Comment pourrait-on réduire la taille de cet intervalle, tout en gardant un niveau de confiance de 95\%?\\
+\end{enumerate}
+
+\prof{ \begin{enumerate}[a) ]\itemsep3mm
+\item  La variable indépendante est la fluorescence, notée $x_i$ et la variable dépendante est la concentration, notée $Y_i$. Le modèle de la régression linéaire est 
+
+$$ Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i \qquad\mbox{ où } \;\;\varepsilon_i \overset{iid}{\sim}N(0,\sigma^2). $$
+
+\item On calcule d'abord
+\begin{align*}
+%\overline{x} &= (4+22+44+60+75+104)/6 = 51.5\\
+%\overline{y} &= (0+10+20+30+40+50)/6 = 25 \\
+S_{xx} &= (n-1)\,s^2_x = 5\times 1312,7=6563,5 \\
+S_{yy} &= (n-1)\,s^2_y = 5\times 350=1750 \\
+S_{xy} &= \sum x_iY_i-n\overline x\overline Y=(4\times0 + \ldots + 104\times 50) -6\times 51,5\times 25 = 3375.
+\end{align*}
+Donc,
+\begin{align*}
+\widehat{\beta}_1 &= 3375 / 6563,5 = 0,5142 \\
+\widehat{\beta}_0 &= 25 - 51,5\times0,5142 = -1,4817.
+\end{align*}
+Pour calculer l'estimateur de $\sigma^2$, il nous faut les valeurs prédites:
+\begin{align*}
+\widehat{y}_1 &= -1.4817 + 4 \times 0.5142 = 0.5752 \\
+\widehat{y}_2 &= -1.4817 + 22 \times 0.5142 = 9.8309 \\
+\widehat{y}_3 &= -1.4817 + 44 \times 0.5142 = 21.1435 \\
+\widehat{y}_4 &= -1.4817 + 60 \times 0.5142 = 29.3708 \\
+\widehat{y}_5 &= -1.4817 + 75 \times 0.5142 = 37.0839 \\
+\widehat{y}_6 &= -1.4817 + 104 \times 0.5142 = 51.9959.
+\end{align*}
+Donc,
+$$ \widehat\sigma^2 = \dfrac{1}{n-2} \left[(0-0.5752)^2 + \ldots +(50-51.9959)^2 = \frac{14.55}{4} \right]= 3.6375. $$
+
+
+\item On calcule d'abord
+ $$ \widehat{\var(\widehat{\beta}_1)}  = \frac{\widehat\sigma^2}{S_{xx}} = \frac{3.6375}{6563.5} = 0.00055.$$
+La statistique du test est
+$$ t_{obs} = \frac{0.5142 - 0}{\sqrt{0.00055}} =  21.84.$$
+On rejette $H_0$ si cette statistique est plus grande en valeur absolue  que $t_{n-2,1-\alpha/2} = t_{4,0.025} = 2.776$. On a que $t_{obs} = 21,84 > 2,776$ et on rejette l'hypothèse nulle. Le coefficient $\beta_1$ est significativement différent de 0.
+
+\item
+$$ R^2 = \dfrac{SC_{reg}}{SC_{tot}} = \dfrac{S^2_{xy}/S_{xx}}{S_{yy}}=\frac{(0.5752 -25)^2 + \ldots + (51.9959 - 25)^2}{S_{yy}} = \frac{1735.45}{1750} = 0.9917. $$
+Donc, 99,17\% de la variation dans les valeurs de concentration est expliquée par la différence de fluorescence des solutions. 
+
+\item On s'intéresse à une solution en particulier, et donc on veut un intervalle de prévision.% On utilise la formule (2.20) dans les notes et on obtient
+\begin{align*}
+ (-1.4817  + 0.5142\times 47) & \pm 2.776 * \sqrt{3.6375} \sqrt{ 1 + \frac{1}{6} + \frac{(51.5-47)^2}{6563.5} }\\
+ 22.6860 & \pm 5.7262.
+\end{align*}
+L'intervalle est   $(16.95, 28.41)$.
+
+
+\item Il faudrait augmenter le nombre de solutions testées et utiliser des valeurs de fluorescence variées. 
+
+\end{enumerate}
+}
+
+
+
+\end{enumerate}
+
+\end{document}
+

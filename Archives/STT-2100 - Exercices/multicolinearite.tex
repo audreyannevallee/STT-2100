@@ -1,0 +1,42 @@
+\item Une entreprise cherche à expliquer le salaire annuel à l'aide du nombre
+d'années d'expérience $x_1$, du nombre de mois d'expérience $x_2$ et du niveau
+d'études $x_3$.
+
+\begin{enumerate}[label=\alph*)]
+  \item Expliquez pourquoi $\bX\trans\bX$ ne sera pas inversible si
+        $x_2=12x_1$ pour chaque employé.
+  \item Quelle modification simple du modèle proposez-vous?
+  \item Donnez un autre exemple de variables explicatives qui produiraient une
+        dépendance linéaire exacte entre les colonnes de $\bX$.
+  \item Le fait d'avoir deux variables fortement corrélées, mais non
+        parfaitement corrélées, rend-il nécessairement
+        $\bX\trans\bX$ non inversible?
+\end{enumerate}
+
+\prof{
+\begin{enumerate}[label=\alph*)]
+  \item La colonne de $\bX$ associée à $x_2$ est exactement 12 fois la colonne
+        associée à $x_1$. Les colonnes de $\bX$ sont donc linéairement
+        dépendantes. Ainsi, $\bX$ n'est pas de plein rang colonne et
+        $\bX\trans\bX$ est singulière.
+
+  \item Il suffit de retirer l'une des deux variables $x_1$ et $x_2$, puisqu'elles
+        contiennent exactement la même information exprimée dans des unités
+        différentes. Le choix de l'unité peut être guidé par la facilité
+        d'interprétation.
+
+  \item Par exemple, si un modèle contient simultanément la température en
+        degrés Celsius $x_C$, la température en degrés Fahrenheit $x_F$ et une
+        ordonnée à l'origine, alors
+        \[
+          x_F=32\mathbf{1}+\frac{9}{5}x_C.
+        \]
+        La colonne de $x_F$ est une combinaison linéaire de la colonne de 1 et
+        de celle de $x_C$.
+
+  \item Non. Une forte corrélation ne constitue pas une dépendance linéaire
+        exacte. La matrice peut demeurer inversible, mais être proche d'une
+        matrice singulière. Les estimations peuvent alors être instables et
+        leurs variances élevées : c'est un problème de multicolinéarité.
+\end{enumerate}
+}

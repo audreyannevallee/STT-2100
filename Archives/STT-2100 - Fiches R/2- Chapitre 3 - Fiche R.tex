@@ -1,0 +1,103 @@
+
+
+\documentclass[letter, 11pt]{article}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \oddsidemargin  0.0in
+    \evensidemargin 0.0in
+    \textwidth      6.8in
+    \headheight     0.0in
+    \topmargin      0.0in
+    \textheight=9.0in
+    \parindent=0in
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\familydefault}{\sfdefault} % Police 
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsthm,amsfonts,amssymb,amsmath, enumitem}
+\usepackage{graphicx}   %To include graphics
+\usepackage[small,compact]{titlesec}
+
+\usepackage{textcomp}
+\newcommand{\mytilde}{$\sim$}
+\usepackage{fancyvrb}
+\fvset{framesep=1mm,fontfamily=courier,framerule=.3mm,numbersep=1mm,commandchars=\\\{\}}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[french]{babel}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{version} % Pour faire un texte troué pour les étudiants
+%\includeversion{etudiant}\excludeversion{professeur} %version etudiant
+\includeversion{professeur}\excludeversion{etudiants} %version prof
+\newcommand{\etudiant}[1]{\begin{etudiants}#1 \end{etudiants}}
+\newcommand{\prof}[1]{\begin{professeur}\color{blue} {\bf Solution :} #1 \end{professeur}}
+
+
+\fancyhead[L]{STT-2100 \\ Régression}
+\fancyhead[R]{A.-S. Charest, E. Reny-Nolin, A.-A. Vallée \\ Université Laval}
+
+
+\begin{document}
+
+\vspace*{0.01 cm}
+\begin{center}
+{\Large Inférence  et prévision en RLS avec R }
+\end{center}
+
+Les mots en rouge indiquent les noms choisis par l'utilisateur.\\
+
+Pour créer un objet de type "modèle linéaire" :
+\begin{Verbatim}[commandchars=\\\{\}]
+{\textcolor{red}{mod}}<- lm({\textcolor{red}{varY}} \mytilde {\textcolor{red}{varX}}, data = {\textcolor{red}{nomDuJeuDeDonnees}})
+\end{Verbatim}
+
+\subsection*{Intervalle de confiance de niveau $1-\alpha=0,90$ pour les paramètres:}
+\begin{Verbatim}
+confint({\textcolor{red}{mod}}, level = {\textcolor{red}{0.90}})
+\end{Verbatim}
+
+\subsection*{Test d’hypothèses bilatéral avec $c=0$, soit $H_0:\beta_j=0$ contre $H_0:\beta_j\neq 0$  :}
+\begin{Verbatim}
+summary({\textcolor{red}{mod}}) {\textcolor{ForestGreen}{#Vous avez les statistiques observées et les valeurs p}}
+\end{Verbatim}
+
+\subsection*{Tableau d’analyse de variance :}
+\begin{Verbatim}
+anova({\textcolor{red}{mod}}) {\textcolor{ForestGreen}{#Vous avez le coefficient de détermination et l'estimation de }}
+{\textcolor{ForestGreen}{#la variance des erreurs}}
+\end{Verbatim}
+
+\subsection*{Prédiction pour toutes les observations dans le jeu de données :}
+\begin{Verbatim}
+predict({\textcolor{red}{mod}})
+\end{Verbatim}
+
+\subsection*{Prédiction pour d’autres observations :}
+
+Créer d'abord un nouveau jeu de données contenant les valeurs de $x$ pour lesquelles on souhaite une prédiction, disons 12,  20 et 54. Attention : ce nouveau jeu doit être un data frame avec les mêmes noms que celui utilisé dans \texttt{lm()}, et aucune valeur spécifiée pour $Y$.
+\begin{Verbatim}[commandchars=\\\{\}]
+{\textcolor{red}{nouveau}} <- data.frame( {\textcolor{red}{varX}} = c(12, 20, 54))
+\end{Verbatim}
+On peut ensuite calculer des prédictions basées sur le modèle: 
+\begin{Verbatim}
+predict({\textcolor{red}{mod}}, new = {\textcolor{red}{nouveau}})
+\end{Verbatim}
+
+
+\subsection*{Intervalle de confiance/prévision pour les prédictions :
+}
+\begin{Verbatim}
+predict({\textcolor{red}{mod}}, new = {\textcolor{red}{nouveau}}, interval = "confidence") {\textcolor{ForestGreen}{#Pour la moyenne}}
+predict({\textcolor{red}{mod}}, new = {\textcolor{red}{nouveau}}, interval = "prediction") {\textcolor{ForestGreen}{#Pour une prévision}}
+{\textcolor{ForestGreen}{#Voir help(predict.lm) pour plus de détails.}}
+\end{Verbatim}
+
+
+
+\end{document}
+

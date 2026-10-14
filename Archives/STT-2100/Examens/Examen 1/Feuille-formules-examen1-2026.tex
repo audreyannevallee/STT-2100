@@ -1,0 +1,107 @@
+
+\documentclass[a4paper, 11pt]{article}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \oddsidemargin  0.0in
+    \evensidemargin 0.0in
+    \textwidth      6.2in
+    \headheight     0.0in
+    \topmargin      0.0in
+    \textheight=9.4in
+    \parindent=0in
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{MathCommands}
+
+\usepackage{amsthm,amsfonts,amssymb,amsmath, enumitem}
+\usepackage{graphicx}   %To include graphics
+\usepackage[small,compact]{titlesec}
+
+\usepackage[utf8]{inputenc} 
+
+\usepackage[francais]{babel}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\renewcommand{\headrulewidth}{2pt}
+\fancyhead[C]{STT-2100 Régression} 
+\fancyhead[L]{}
+\fancyhead[R]{}
+
+
+\begin{document}
+
+%\vspace*{0.2 in}
+\begin{center}
+{\Large Feuille de formules - Examen 1}
+\end{center}
+
+
+\underline{On suppose ici le modèle de régression linéaire simple avec erreurs normales.}
+
+%\vspace{0.2in}
+%\textbf{Estimateurs des paramètres: }
+\begin{itemize}
+
+\item[$\bullet$]
+
+$ \displaystyle
+S_{xy}=\sum_{i=1}^n (x_i-\overline x)\,(Y_i-\overline{Y}) = \sum_{i=1}^n (x_i-\overline x)\,Y_i=\sum_{i=1}^nx_iY_i-\frac{1}{n}\left(\sum_{i=1}^n x_i\right)\left(\sum_{i=1}^n Y_i\right).
+$
+
+\item[$\bullet$]
+$\displaystyle S_{xx}=\sum_{i=1}^n(x_i-\overline x)^2=\sum_{i=1}^n(x_i-\overline x)x_i=\sum_{i=1}^nx_i^2-\frac{1}{n}\left(\sum_{i=1}^n x_i\right)^2.$
+
+\item[$\bullet$]
+
+$ \displaystyle
+\widehat{\beta}_1 = \frac{S_{xy}}{S_{xx}}; \; \; \; \; \; \; \; \; \; \;
+ \widehat{\beta}_0 = \overline{Y} - \widehat{\beta}_1\overline{x}; 
+ \; \; \; \; \; \; \; \; \; \;
+  \widehat{\sigma}^2 = \frac{1}{n-2}\sum_{i=1}^n \widehat{\varepsilon}_i^2;
+ $
+
+%\textbf{Variance des estimateurs}
+
+$ \displaystyle \widehat{\mbox{Var}(\widehat{\beta}_0)} = \widehat{\sigma}^2 \left( {1\over n}+{\overline{x}^2\over S_{xx}} \right);   
+\; \; \; \; \; \; \; \; \; \; \widehat{\mbox{Var}(\widehat{\beta}_1)} = \frac{\widehat{\sigma}^2}{S_{xx}}. $
+
+
+\item[$\bullet$] Intervalle de confiance de niveau $(1-\alpha)\%$ pour $\beta_j$ (pour $\beta_0$ ou $\beta_1$):
+
+
+$$\left[\widehat{\beta_j} \pm t_{n-2, 1-\alpha/2} \sqrt{\widehat{\mbox{Var}(\widehat{\beta_j})}} \right]. $$
+
+\item[$\bullet$]
+Test d'hypothèse bilatéral au seuil $\alpha$ pour $\beta_j$ (pour $\beta_0$ ou $\beta_1$): Soit $H_0 : \beta_j = \beta_{H_0}$ versus $H_1 : \beta_j \neq \beta_{H_0}$ . 
+On rejette $H_0$ si $$ \left| \frac{\widehat{\beta}_j - \beta_{H_0} }{\sqrt{\widehat{\mbox{Var}(\widehat{\beta_j})}}} \right| > t_{n-2, 1- \alpha/2}.$$
+
+\item[$\bullet$]
+Sommes des carrés:
+\begin{itemize}
+    \item $\displaystyle SC_{tot}=\sum_{i=1}^n (Y_i - \overline Y)^2;$
+    \item $\displaystyle SC_{res}=\sum_{i=1}^n (Y_i - \widehat Y_i)^2;$
+    \item $\displaystyle SC_{reg}=\sum_{i=1}^n (\widehat Y_i - \overline Y)^2.$
+\end{itemize}
+
+\item[$\bullet$] $\displaystyle R^2 =\frac{SC_{reg}} {SC_{tot}} =  1 - \frac{SC_{res}}{SC_{tot}}.$
+
+\item[$\bullet$] Intervalle de confiance de niveau $(1-\alpha)$ pour $ E(Y | X = x_0)$:
+\begin{eqnarray*}
+\left[\widehat{\beta}_0 + \widehat{\beta}_1 x_0 \, \pm \, t_{n-2,1-\alpha/2} \widehat{\sigma} \sqrt{\frac{1}{n}+\frac{(\overline x-x_0)^2}{S_{xx}}}\right].
+\end{eqnarray*}
+
+\item[$\bullet$] 
+Intervalle de prévision de niveau (1-$\alpha$) pour $Y_0^*$, une nouvelle observation en $x_0$:
+$$\left[\widehat{\beta}_0 + \widehat{\beta}_1 x_0 \, \pm \, t_{n-2, 1-\alpha/2} \widehat{\sigma} \sqrt{1+\frac{1}{n}+\frac{(\overline x-x_0)^2}{S_{xx}}} \right].$$
+
+
+
+
+\end{itemize}
+
+
+
+
+\end{document}

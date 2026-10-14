@@ -1,0 +1,80 @@
+
+\documentclass[letter, 11pt]{article}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \oddsidemargin  0.0in
+    \evensidemargin 0.0in
+    \textwidth      6.6in
+    \headheight     0.0in
+    \topmargin      0.0in
+    \textheight=9.0in
+    \parindent=0in
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{MathCommands}
+
+\usepackage{amsthm,amsfonts,amssymb,amsmath}
+\usepackage{graphicx}   %To include graphics
+\usepackage[small,compact]{titlesec}
+
+\usepackage[utf8]{inputenc}
+\usepackage{bm}
+\usepackage[francais]{babel}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[C]{Université Laval}
+\fancyhead[L]{STT-2100 Régression}
+\fancyhead[R]{A.-S. Charest/E. Reny-Nolin}
+
+
+\begin{document}
+
+\vspace*{0.05 in}
+\begin{center}
+{\Large Exercices \\
+Chapitre 5 - Ajuster un modèle de RLM}
+\end{center}
+\vspace*{0.1 in}
+
+\begin{enumerate}\itemsep1cm
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Marie a 34 ans,  16 ans de scolarité, et elle gagne $71\,000$ \$ par année. Marc est allé à l'école pendant 21 ans, il gagne $56\,000$ \$, et vient de souffler ses 30 bougies. André, 50 ans, a un revenu annuel de $91\,000$ \$ et 16 ans de scolarité. Annie, 40 ans, a 14 ans de scolarité et gagne $45\,000$ \$.
+    
+    On veut utiliser un modèle linéaire multiple pour prédire le revenu à partir de l'âge et de la scolarité. 
+    
+    \begin{itemize}
+    \item[(a)] Écrivez le modèle sous sa forme matricielle, et préciser explicitement le contenu de chaque vecteur ou matrice dont les termes sont connus (avant estimation). 
+    \item[(b)] Quel est le rang de la matrice $\bm{X}$?
+    \end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Soit la matrice $\bm{A}=\left[\begin{array}{cc}3&1\\4&2\end{array}\right]$ et le vecteur $\bm{v}'=[v_1\;v_2]$.
+
+\bigskip
+    \begin{itemize}\itemsep4mm
+    \item[(a)] Déterminez $\dfrac{\partial \bm{v'A}}{\partial \bm{v}}$.
+    \item[(b)] Déterminez $\dfrac{\partial \bm{v'Av}}{\partial \bm{v}}$.
+    \end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Démontrez que la matrice chapeau\\
+    \begin{itemize}
+    \item[(a)] est idempotente\\
+    \item[(b)] est symétrique \\
+    \item[(c)] a une trace égale à $p' = p+1$. (Utilisez le fait que  tr$(AB)$ = tr$(BA)$ si les dimensions le permettent.)
+
+    \end{itemize}
+
+
+
+
+
+\end{enumerate}
+
+\end{document} 

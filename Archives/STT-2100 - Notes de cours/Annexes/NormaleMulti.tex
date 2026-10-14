@@ -1,0 +1,154 @@
+
+\chapter{La loi normale multivariée}
+\label{LaLoiNormaleMultivariée}
+
+Rappelons d'abord quelques notions sur la loi normale univariée.
+
+Dans le cas d'une variable aléatoire $Z$ distribuée selon une loi normale centrée réduite $Z\sim\N(0,1)$, la densité de $Z$ s'écrit comme
+\begin{eqnarray*}
+ f_Z(z) = \frac{1}{\sqrt{2\pi}} \exp(-z^2/2)
+\end{eqnarray*}
+Une variable $X$ de distribution normale avec moyenne $\mu$ et variance $\sigma^2$ s'obtient comme $X=\sigma Z+\mu$. On dit dans ce cas que $X \sim \N (\mu,\sigma^2)$. La densité de cette variable $X$ s'exprime comme
+\begin{eqnarray*}
+	f_X(x) =  \frac{1}{\sqrt{2\pi} \sigma} \exp\left\{-\frac{1}{2} \left(\frac{x- \mu}{\sigma}\right)^2\right\}.
+\end{eqnarray*}
+
+On considère maintenant la généralisation pour $p\geq 1$.  En posant $\bo{Z}=[Z_1, Z_2, ..., Z_p]'$ un vecteur de variables aléatoires indépendantes et identiquement distribuées suivant chacune une loi  $\N(0,1)$, on a que la densité conjointe des $Z_i$ peut  s'écrire comme
+\begin{eqnarray}
+ f(Z_1, ..., Z_p) &=& \prod_{i=1}^p f(z_i)\nonumber\\
+  &=& \left(\frac{1}{\sqrt{2\pi}}\right)^p \exp\left(-\sum_{i=1}^p z_i^2/2\right)\nonumber\\
+ &=& \left(\frac{1}{\sqrt{2\pi}}\right)^p \exp\left(-\frac{1}{2} \bo{Z}'\bo{Z}\right)
+\end{eqnarray}
+
+Cette densité conjointe est une loi normale multivariée de dimension $p$, dont le vecteur des espérances est \textbf{0} (un vecteur $p\times 1$ de zéros) et dont la matrice de variances-covariances est $\I_p$ (la matrice identité de dimension $p \times p$). On peut donc écrire
+\begin{eqnarray*}
+ \left[
+\begin{MAT}(r)[2pt,0pt,3cm]{c}
+Z_1 \\
+Z_2 \\
+\vdots \\
+Z_p \\
+\end{MAT}
+\right] \sim \N_p (\textbf{0}, \boI_p) \quad\text{ ou plus simplement }\bo{Z}\sim \N_p (\textbf{0}, \boI_p)
+\end{eqnarray*}
+%où $p$ désigne le nombre de variables aléatoires, 
+
+Considérons la transformation de variables $\boX=\bo\mu + \bo\Sigma^{(1/2)}\bo{Z}$, où $\bo\mu$ désigne le vecteur contenant la moyenne des $p$ variables et $\bo\Sigma$ dénote la matrice de variances-covariances de $\boX$ (de dimension $p \times p$) (voir la section \ref{sec:LaMatriceDesVariancesCovariances}). La densité conjointe des $X_i$ est alors donnée par
+\begin{eqnarray}
+f(X_1, ..., X_p) &=& \prod_{i=1}^p f(x_i) \nonumber\\
+  &=& \left(\frac{1}{\sqrt{2\pi}}\right)^p \frac{1}{\left|\bo\Sigma\right|^{1/2}} \exp\left\{-\frac{1}{2} (\boX- \bo\mu)' (\bo\Sigma^{-1/2})' \bo\Sigma^{-1/2} (\boX- \bo\mu)\right\}\nonumber\\
+ &=& \left(\frac{1}{\sqrt{2\pi}}\right)^p \frac{1}{\left|\bo\Sigma\right|^{1/2}} \exp\left\{-\frac{1}{2} (\boX- \bo\mu)' \bo\Sigma^{-1} (\boX- \bo\mu)\right\}
+\label{normalemulti}
+\end{eqnarray}
+
+Cette densité est celle d'une loi normale multivariée de dimension $p$, et on peut écrire
+\begin{eqnarray*}
+ \left[
+\begin{MAT}(r)[2pt,0pt,3cm]{c}
+X_1 \\
+X_2 \\
+\vdots \\
+X_p \\
+\end{MAT}
+\right] \sim \N_p (\bo\mu, \bo\Sigma)
+\end{eqnarray*}
+
+On pourrait appliquer la transformation inverse et déduire le vecteur des variables aléatoires centrées réduites  comme suit: $$\bo Z =  \bo\Sigma^{(-1/2)} (\boX-\bo\mu).$$
+
+\section{Espérance et variance}
+\label{sec:EspéranceEtVariance}
+On peut déterminer l'espérance et la variance de $\boX\sim\N_p (\bo\mu, \bo\Sigma)$. à partir de celles de $\bo{Z}$.
+\begin{eqnarray*}
+	\esp[\boX] &=& \esp[\bo{\mu} + \bo\Sigma^{1/2}\bo{Z}]\\
+	& =& \esp[\bo\mu]+ \bo\Sigma^{1/2}\esp[\bo{Z}] \\
+	&=& \bo\mu
+\end{eqnarray*}
+\begin{eqnarray*}
+	\var[\boX] &=& \var[\bo\Sigma^{1/2}\bo Z] \\
+	& = & (\bo\Sigma^{1/2})' \var[\bo Z] \bo\Sigma^{1/2} \\
+	&=& (\bo\Sigma^{1/2})' \boI_p \bo\Sigma^{1/2} \\
+	&=& \bo\Sigma
+\end{eqnarray*}
+
+\section{La matrice de variances-covariances}
+\label{sec:LaMatriceDesVariancesCovariances}
+La matrice de variances-covariances s'écrit comme
+
+\[ \bo\Sigma = \left[
+\begin{MAT}(r)[2pt,0pt,3cm]{cccc}
+\var[X_1] & \cov[X_1,X_2] & \cdots & \cov[X_1,X_p]\\
+\cov[X_2,X_1] & \var[X_2] & \cdots & \cov[X_2,X_p]\\
+\vdots & \vdots & \vdots & \vdots \\
+\cov[X_p,X_1] & \cov[X_p,X_2] & \cdots & \var[X_p]\\
+\end{MAT}
+\right]
+\]
+
+On note $\sigma_{i,j}$ la valeur correspondant à $\cov[X_i,X_j]$.
+
+
+Dans le cas centré-réduit, cette matrice devient
+
+\[ \bo\Sigma = \var[\bo Z] = \left[
+\begin{MAT}(e)[2pt,3cm,3cm]{cccc}
+1 & 0 & \cdots & 0\\
+0 & 1 & \cdots & 0\\
+\vdots & \vdots & \vdots & \vdots \\
+0 & 0 & \cdots & 1\\
+\end{MAT}
+\right] = \boI_p.
+\]
+
+\newpage
+La matrice de variances-covariances possède les deux propriétés suivantes :
+
+\begin{enumerate}
+	\item Elle est symétrique: $\sigma_{i,j} = \sigma_{j,i}$
+	\item Elle est semi-définie positive : $\forall \bo{a} \in \R^p$ , $\bo a' \bo\Sigma \bo a \geq 0$\\
+		Cela implique que $\var[\bo a' \bo\Sigma] \geq 0$, et que $\bo\Sigma$ possède $p$ valeurs propres.
+\end{enumerate}
+
+Donc si,
+\begin{itemize}
+	\item $\bo\Sigma$ est la matrice de variances-covariances
+	\item $\bo\Lambda$ est la matrice diagonale des $p$ valeurs propres de $\bo\Sigma$: $\lambda_1, \lambda_2,\ldots,\lambda_p$
+	\item et que $\bo P$ est la matrice dont les colonnes sont les $p$ vecteurs propres de $\bo\Sigma$,
+\end{itemize}
+alors
+	\[\bo\Sigma = \bo P \bo\Lambda \bo P'
+\]
+et
+$$	\left|\bo\Sigma\right| = \left|\bo P \bo\Lambda \bo P'\right|
+	= \left|\bo P\right| \left|\bo\Lambda\right| \left|\bo P'\right|
+	= \left|\bo P\bo P'\right| \left|\bo\Lambda\right|
+	= \prod_{i=1}^p \lambda_i.
+$$
+
+
+On a donc que $\left|\bo\Sigma\right| \neq 0 \Leftrightarrow \lambda_1> \cdots > \lambda_p > 0$ et que $\bo\Sigma^{-1}$ existe.
+
+Dans le cas bivarié $(p=2)$,  la matrice de variances-covariances s'écrit
+
+\[ \bo\Sigma = \left[
+\begin{MAT}(r)[2pt,0pt,3cm]{cc}
+\var[X_1] & \cov[X_1 , X_2] \\
+\cov[X_2 , X_1] & \var[X_2] \\
+\end{MAT}
+\right]
+= \left[
+\begin{MAT}(r)[2pt,0pt,3cm]{cc}
+\sigma_1^2 & r\sigma_1\sigma_2 \\
+r\sigma_2\sigma_1 & \sigma_2^2 \\
+\end{MAT}
+\right]
+\]
+
+puisque si $r= corr(X_1,X_2) = \frac{\cov[X_1,X_2]}{\sqrt{(\var[X_1] \var[X_2])}}$ et $\var[X_1]=\sigma_1^2$ et $\var[X_2]=\sigma_2^2$, alors $\cov[X_1,X_2]= r\sigma_1\sigma_2$.
+
+Le déterminant de $\bo\Sigma$ est alors
+$$\left|\bo\Sigma\right|=\sigma_1^2 \sigma_2^2 - r^2\sigma_1^2\sigma_2^2.$$
+
+\begin{remarque}
+On remarque de l'équation précédente que $\left|\bo\Sigma\right| \neq 0$ si et seulement si $r \neq \pm 1$. Autrement dit, si $r= \pm 1$, $\bo\Sigma$ n'est pas inversible, auquel cas la loi normale multivariée (équation \ref{normalemulti}) n'a plus de sens. Ce sujet est abordé en détails dans la section sur la multicolinéarité (section \ref{sec:Multicolinéarité}).
+\end{remarque}
+

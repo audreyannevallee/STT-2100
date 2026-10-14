@@ -1,0 +1,267 @@
+% Pour toute question sur l'utilisation de cette classe, écrivez à jerome.soucy(at)ulaval.ca
+% Nécessite la classe Evaluation.sty dans le même dossier ou dans le PATH de votre système
+% Nécessite le fichier logo_ul.pdf dans le même dossier un dans le PATH de votre système
+\def\Ponderation{30}
+\def\SigleNumero{STT-2100}
+\def\NomCours{Régression}
+\def\DateEvaluation{17 octobre 2023}
+\def\DateRemise{}
+\def\HeureRemise{}
+\def\HeureEvaluation{8h30 à 10h20}
+\def\Session{Été 2021}
+\def\NomEvaluation{Examen 1}
+
+% Ne rien mettre entre les accolades si l'enseignant (ou l'enseignante) est aussi le coordonnateur (ou la coordonnatrice)
+\def\Coordonnatrice{}
+\def\Coordonnateur{}
+
+% Ne rien mettre entre les accolades s'il y a plus d'une section
+\def\Enseignant{Julien Miron}
+\def\Enseignante{}
+
+% Ne rien mettre entre les accolades s'il s'agit d'un cours à section unique
+% Mettre le nom de chacun des enseignants et enseignantes entre les accolades
+% Une case à cocher sera générée pour chacune des sections
+\def\SectionA{}
+\def\SectionB{}
+\def\SectionC{}
+\def\SectionD{}
+
+
+\def\Directives{
+\begin{enumerate}
+\item Matériel autorisé:
+\begin{itemize}
+\item Calculatrice scientifique {\bf autorisée par la FSG};
+\item Le feuillet de formules fourni avec l'examen. Celui-ci inclut la table de la loi normale. Veuillez ne rien écrire sur le feuillet de formules.
+\end{itemize}
+\item Assurez-vous que cette évaluation comporte \numquestions ~exercices réparties sur \numpages{}~pages, pour un total de \numpoints{}~points.\
+\item \textbf{Veuillez ne pas dégrafer votre examen.}
+\item Ajoutez vos initiales dans le bas de chaque page de l'examen.
+\item Veuillez déposer votre carte d'identité \textbf{admise} avec photo sur votre bureau.\
+\item Vous devez justifier chaque réponse, soit par une démarche, soit par une (des) phrase(s).
+\item  Le verso des feuilles peut être utilisé comme brouillon, \textbf{mais ne sera pas corrigé}. Attention à ne rien dégrafer.
+\end{enumerate}
+}
+
+\documentclass[Examen]{Evaluation}
+\usepackage{multicol,graphicx}
+\begin{document}
+
+\begin{questions}  
+\question 
+Pour chaque énoncé qui suit, indiquez s'il est vrai ou faux.
+\textbf{Justifiez} brièvement votre réponse. Il peut s'agir d'une justification mathématique ou d'une phrase. \\
+\textit{Aucun point ne sera accordé pour une réponse sans justification ou une mauvaise justification.}
+
+\vspace{0.3cm}
+\begin{parts}
+\part[4]  Si la valeur-p du test global pour la régression linéaire est 0,03, alors nous savons que l'intervalle de
+confiance à 95\% pour $\beta_0$ ne contient pas la valeur 0.
+
+     \begin{oneparcheckboxes}
+		\choice VRAI
+		\correctchoice FAUX
+\end{oneparcheckboxes}
+
+\vspace{2.8 cm}
+
+\part[4] Si nous faisons l'hypothèse d’un modèle linéaire dans lequel les erreurs suivent une loi quelconque d'espérance nulle, les estimateurs des moindres carrés obtenus sont toujours les mêmes que lorsque les erreurs sont de loi normale centrée en 0. 
+
+     \begin{oneparcheckboxes}
+		\choice VRAI
+		\correctchoice FAUX
+\end{oneparcheckboxes}
+
+
+\vspace{2.8 cm}
+
+\part[4] Si nous faisons l'hypothèse d’un modèle linéaire dans lequel les erreurs suivent une loi quelconque d'espérance nulle, les estimateurs par le maximum de vraisemblance obtenus sont toujours les mêmes que lorsque les erreurs sont de loi normale centrée en 0. 
+
+     \begin{oneparcheckboxes}
+		\choice VRAI
+		\correctchoice FAUX
+\end{oneparcheckboxes}
+
+\vspace{2.8 cm}
+
+\part[4] Si nous ne rejetons pas $H_0$ au seuil $\alpha$ dans le cadre du test global, alors nous pouvons affirmer qu'au seuil $\alpha$, $\beta_0=\beta_1=0$. 
+
+     \begin{oneparcheckboxes}
+		\choice VRAI
+		\correctchoice FAUX
+\end{oneparcheckboxes}
+
+\vspace{2.8 cm}
+\part[4] Si nous centrons les variables explicatives, l'ordonnée à l'origine représente la valeur moyenne de $Y$ lorsque $x=0$.
+
+     \begin{oneparcheckboxes}
+		\choice VRAI
+		\correctchoice FAUX
+\end{oneparcheckboxes}
+\end{parts}
+
+\newpage
+
+\question
+\vspace{0.5cm}
+\begin{parts}
+\part[5] Pourquoi ajoute-t-on généralement le 4$^e$ postulat (normalité des résidus) en régression linéaire simple?
+\vspace{3 cm}
+\part[5] Tracez un graphique des résidus standardisés en fonction des valeurs prédites pour des observations qui ne satisfont pas l'hypothèse d'homoscédasticité. Supposez que $\widehat{\beta}_1$ est négatif.
+\vspace{1.5 in }
+\part[5] Donnez deux façons d'améliorer la précision de $\widehat{\beta}_1$, l'estimateur par les moindres carrés de $\beta_1$, lorsque $\sigma^2$ est fixée?
+\vspace{3 cm}
+\part[5] Pour quelle raison un $R^2$ exactement égal à $1$ pourrait être problématique en régression linéaire simple?
+\vspace{3 cm}
+\part[5] En supposant que les quatre postulats sont vérifiés, nous faisons un test pour confronter $H_0:\beta_1=c$ et $H_1:\beta_1>c$, et nous obtenons la statistique $w_{obs}$. Tracez deux graphiques: un premier qui représente la situation où nous rejetons $H_0$ et un second graphique qui représente la situation où nous ne rejetons pas $H_0$. Il s'agit ici de tracer (rapidement) la densité de $W_{obs}$ - \textit{identifiez bien sa loi!} - ainsi que d'ajouter la statistique observée du test et la valeur critique (ou la zone de rejet).
+
+
+
+
+
+\end{parts}
+
+\newpage
+
+\question
+Soit le modèle de régression 
+
+\begin{align*}
+    Y_i=\beta\sqrt{x_i} + \varepsilon_i, \ \ i=1,\hdots, n,
+\end{align*}
+où $\varepsilon_i\sim \mathcal{N}(0, \sigma^2)$ et $\varepsilon_i$ est indépendant de $\varepsilon_j$, pour $i\neq j$.
+\begin{parts}
+    \part[4] Montrer que l'estimateur $\widehat{\beta}=\displaystyle \frac{\sum_{i=1}^n Y_i\sqrt{x_i}}{\sum_{i=1}^nx_i}$ est sans biais pour $\beta$.
+    \vspace{10cm}
+    \part[4] En déduire un estimateur sans biais pour le modèle général
+    \begin{align*}
+    Y_i=\beta x_i^p + \varepsilon_i, \ \ i=1,\hdots, n,
+\end{align*}
+où $\varepsilon_i\sim \mathcal{N}(0, \sigma^2)$ et $\varepsilon_i$ est indépendant de $\varepsilon_j$, pour $i\neq j$ et $p\in \mathbb{R^+}$.
+\end{parts}
+
+\newpage
+
+\question\label{appli}
+Voici deux parties de sortie \texttt{R} obtenues en ajustant un modèle de régression linéaire simple à un jeu de données qui contient deux variables, \texttt{consom} et \texttt{cylind}.
+
+\noindent\makebox[\linewidth]{\rule{\textwidth}{1pt}} 
+
+\footnotesize
+\begin{verbatim}
+
+Analysis of Variance Table
+
+Response: consom
+                        Df       Sum Sq      Mean Sq   F value  Pr(>F)    
+Modèle                   1    146.96404          ???       BBB     XXX
+Erreur                 AAA     27.75346      1.54186
+
+
+
+
+Call:
+lm(formula = consom ~ cylind)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+     ???      ???      ???      ???      ???
+
+
+Coefficients:
+             Estimate  Std. Error         t value     Pr(>|t|)    
+Intercept     5.76226     0.72256             DDD       <.0001 ***
+cylind        2.03523         ???            9.76       <.0001 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.24172 on 18 degrees of freedom
+Multiple R-squared:  CCC, Adjusted R-squared:  ??? 
+
+ \end{verbatim}
+ 
+\normalsize	
+
+\noindent\makebox[\linewidth]{\rule{\textwidth}{1pt}} 
+
+\begin{parts}
+    \part[12] Donnez les valeurs de \texttt{AAA}, \texttt{BBB}, \texttt{CCC} et \texttt{DDD}.
+\begin{enumerate}
+\item[]\texttt{AAA}-
+\vspace{2.5cm}
+\item[]\texttt{BBB}-
+\vspace{2.5cm}
+\item[]\texttt{CCC}-
+\vspace{2.5cm}
+\item[]\texttt{DDD}-
+\vspace{1.7cm}
+\end{enumerate}
+\pagesuivante{\ref{appli}}
+\newpage
+\suite{\ref{appli}}
+\part[3] Donnez l'estimation de $\sigma^2$.
+\vspace{2cm}
+\part[3] Sans donner de valeur exacte, à quoi s'attend-on pour \texttt{XXX}?
+\vspace{2cm}
+\part[3] À partir de ces résultats, on sait que deux observations qui sont à 1 unités de différence pour la variable \texttt{cylind} seront à 2,03523 unités de différence pour la variable \texttt{consom}. Que pensez-vous de cette affirmation?
+\vspace{2cm}
+
+\part[4] Au seuil $\alpha = 0,01$, y a-t-il une relation linéaire significative entre \texttt{cylind} et \texttt{consom}?
+
+\vspace{4cm}
+
+\part[6] Donnez un intervalle de confiance de niveau $95\%$ pour $E[Y|X=8]$, sachant que $\overline{x}=6$. \textit{Vous pouvez utiliser le résultat donné au point (b) de l'exercice \ref{theo}.}
+\end{parts}
+
+
+
+\newpage 
+
+ 
+\newpage
+
+\question\label{theo}
+Soit le modèle de régression linéaire donné par
+\begin{align*}
+    Y_i=\beta_0+\beta_1x_i+\varepsilon_i, \ \ i=1,\hdots,n,
+\end{align*}
+et les estimateurs des moindres carrés $\widehat{\beta}_0$ et $\widehat{\beta}_1$, pour $\beta_0$ et $\beta_1$, respectivement.
+
+\begin{parts}
+\part[8]En supposant que les $\varepsilon_i$ sont des variables aléatoires normales indépendantes d'espérance $0$ et de variance $\sigma^2$, que vaut $\text{Cov}(\widehat{\beta}_0, \widehat{\beta}_1)$?
+
+\vspace{21cm}
+\pagesuivante{\ref{theo}}
+\newpage
+\suite{\ref{theo}}
+    \part[8] Montrez que $SC_{REG}=\displaystyle\widehat{\beta}_1^2 S_{xx}$
+
+\end{parts}
+
+
+\end{questions}
+
+
+
+
+\end{document}
+
+
+
+
+\vspace{0.3in}
+\textbf{Question 4 (10 pts)} (Design d'expérience)\\
+
+On s'intéresse à un médicament sensé réduire le nombre de crises chez les individus atteints d'epilepsie. Vous devez aider à planifier une expérience pour étudier l'effet de la dose du médicament sur le nombre de crises. Puisque vous vous intéressez à la relation entre deux variables quantitatives, vous planifiez analyser les données avec un modèle de régression linéaire simple. \\
+
+Soit $x_1, \ldots, x_n$ les valeurs de la dose pour les 20 individus de votre étude.\\ Pour chacun, vous pouvez attribuer n'importe quelle dose entre 2 mg et 21 mg. \\
+
+\begin{itemize}
+%\item [(a)] Pour le modèle de régression linéaire simple $Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$, prouvez que la variance de $\beta_0$ est minimale si les $x_i$ sont tels que $\bar{x}$ = 0.
+\item [(a)] (5 pts) Quelle est la meilleure fa\c{c}on de choisir les valeurs $x_1,\ldots,x_n$ pour minimiser la variance de votre estimateur $\hat{\beta_1}$? Justifiez votre réponse.
+\vspace{0.1 in}
+\item [(b)] (5 pts) Pourquoi ne serait-ce pas vraiment une bonne idée de choisir les valeurs de $x_i$ de cette façon, même si cela minimise la variance de votre estimateur?
+\end{itemize}
+
+\end{document} 

@@ -1,0 +1,78 @@
+
+\documentclass[letter, 11pt]{article}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \oddsidemargin  0.0in
+    \evensidemargin 0.0in
+    \textwidth      6.8in
+    \headheight     0.0in
+    \topmargin      0.0in
+    \textheight=9.0in
+    \parindent=0in
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\familydefault}{\sfdefault} % Police 
+
+\usepackage{amsthm,amsfonts,amssymb,amsmath, xcolor, enumitem}
+\usepackage{graphicx}   %To include graphics
+\usepackage[small,compact]{titlesec}
+
+\usepackage{textcomp}
+\newcommand{\mytilde}{$\sim$}
+\usepackage{fancyvrb}
+\fvset{framesep=1mm,fontfamily=courier,framerule=.3mm,numbersep=1mm,commandchars=\\\{\}}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[french]{babel}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{version} % Pour faire un texte troué pour les étudiants
+%\includeversion{etudiant}\excludeversion{professeur} %version etudiant
+\includeversion{professeur}\excludeversion{etudiants} %version prof
+\newcommand{\etudiant}[1]{\begin{etudiants}#1 \end{etudiants}}
+\newcommand{\prof}[1]{\begin{professeur}\color{blue} {\bf Solution :} #1 \end{professeur}}
+
+
+\fancyhead[L]{STT-2100 \\ Régression}
+\fancyhead[R]{A.-S. Charest, E. Reny-Nolin, A.-A. Vallée \\ Université Laval}
+
+
+\begin{document}
+
+\vspace*{0.01 cm}
+\begin{center}
+{\Large Ajuster une RLS avec R}
+\end{center}
+
+Les mots en rouge indiquent les noms choisis par l'utilisateur.\\
+
+Pour effectuer une analyse de régression linéaire simple avec R, on peut utiliser la fonction {\tt lm( )} (pour {\it linear model}), dont la syntaxe la plus simple prend la forme suivante :
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\textcolor{red}{mod}} <- lm({\textcolor{red}{varY}} \mytilde {\textcolor{red}{varX}}, data={\textcolor{red}{nomDuJeuDeDonnees}} )
+\end{Verbatim}
+où {\textcolor{red}{\texttt varY}} est la variable dépendante et {\textcolor{red}{\tt varX}} est la variable indépendante. 
+Cette fonction retourne un objet de type liste et de classe lm, contenant plusieurs composantes dont les suivantes :
+\begin{itemize}
+\item \texttt{{\textcolor{red}{mod}}\$coefficients} : un vecteur contenant les coefficients ;
+\item \texttt{{\textcolor{red}{mod}}\$residuals} : un vecteur contenant les résidus ;
+\item \texttt{{\textcolor{red}{mod}}\$fitted.values} : un vecteur contenant les valeurs prédites.
+\end{itemize}
+
+
+La fonction \texttt{ls( )} appliquée à un objet de classe lm permet de connaître les noms de toutes ses composantes.
+Pour accéder à une des composantes, on utilise {\tt \$} suivi du nom de la composante. Par exemple, {\tt {\textcolor{red}{mod}}\$coefficients} constitue le vecteur des coefficients $\hat\beta_0$ et $\hat\beta_1$ de la régression de {\textcolor{red}{\tt varY}} sur {\textcolor{red}{\tt varX}}.
+
+\vspace{0.1in}
+Pour tracer un nuage de points, on utilise la commande {\tt plot(x={\textcolor{red}{varX}},y={\textcolor{red}{varY}})}. Les paramètres graphiques peuvent être personnalisés, voir l'aide sur la commande {\tt par}.
+
+\vspace{0.1in}
+Pour ajouter une droite sur un graphique, utiliser la fonction \texttt{abline}, dont les arguments {\tt a} et  {\tt b} sont l’ordonnée à l’origine et la pente de la droite. Par exemple {\tt abline(a=0,b=1)} trace la droite $y=x$. On peut aussi ajouter la droite de régressionà l'aide de {\tt abline(reg={\textcolor{red}{mod}})}.
+
+
+\end{document}
+

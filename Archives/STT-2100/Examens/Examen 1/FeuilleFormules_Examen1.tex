@@ -1,0 +1,106 @@
+
+\documentclass[a4paper, 11pt]{article}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \oddsidemargin  0.0in
+    \evensidemargin 0.0in
+    \textwidth      6.2in
+    \headheight     0.0in
+    \topmargin      0.0in
+    \textheight=9.4in
+    \parindent=0in
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{MathCommands}
+
+\usepackage{amsthm,amsfonts,amssymb,amsmath, enumitem}
+\usepackage{graphicx}   %To include graphics
+\usepackage[small,compact]{titlesec}
+
+\usepackage[utf8]{inputenc} 
+
+\usepackage[francais]{babel}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\renewcommand{\headrulewidth}{2pt}
+\fancyhead[C]{STT-2100 Régression} 
+\fancyhead[L]{}
+\fancyhead[R]{}
+
+
+\begin{document}
+
+%\vspace*{0.2 in}
+\begin{center}
+{\Large Feuille de formules - Examen 1}
+\end{center}
+
+
+\underline{On suppose ici le modèle de régression linéaire simple avec erreurs normales.}
+
+%\vspace{0.2in}
+%\textbf{Estimateurs des paramètres: }
+\begin{itemize}
+\item[$\bullet$]
+
+$ \displaystyle
+\widehat{\beta}_1 = \frac{\displaystyle \sum_{i=1}^n (x_i - \overline{x}) Y_i }{\displaystyle \sum_{i=1}^n (x_i - \overline{x})^2} = \frac{S_{xy}}{S_{xx}}; \; \; \; \; \; \; \; \; \; \;
+ \widehat{\beta}_0 = \overline{Y} - \widehat{\beta}_1\overline{x}; 
+ \; \; \; \; \; \; \; \; \; \;
+  \widehat{\sigma}^2 = \frac{1}{n-2}\sum_{i=1}^n \widehat{\varepsilon}_i^2;
+ $
+
+%\textbf{Variance des estimateurs}
+
+$ \displaystyle \widehat{\mbox{Var}(\widehat{\beta}_0)} = \widehat{\sigma}^2 \left( {1\over n}+{\overline{x}^2\over S_{xx}} \right);   
+\; \; \; \; \; \; \; \; \; \; \widehat{\mbox{Var}(\widehat{\beta}_1)} = \frac{\widehat{\sigma}^2}{S_{xx}}. $
+
+
+\item[$\bullet$] Intervalle de confiance de niveau $(1-\alpha)\%$ pour $\beta$ (pour $\beta_0$ ou $\beta_1$):
+
+
+$$\left[\widehat{\beta} \pm t_{n-2, 1-\alpha/2} \sqrt{\widehat{\mbox{Var}(\widehat{\beta})}} \right] $$
+
+\item[$\bullet$]
+Test d'hypothèse bilatéral au seuil $\alpha$ pour $\beta$ (pour $\beta_0$ ou $\beta_1$): Soit $H_0 : \beta = \beta_{H_0}$ versus $H_1 : \beta \neq \beta_{H_0}$ . 
+On rejette $H_0$ si $$ \left| \frac{\widehat{\beta} - \beta_{H_0} }{\sqrt{\widehat{\mbox{Var}(\widehat{\beta})}}} \right| > t_{n-2, 1- \alpha/2}.$$
+
+\item[$\bullet$]
+Table d'ANOVA:
+
+\begin{table}[htb!]
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{|c|c|c|c|c|}\hline
+Source & Degrés de liberté & Somme des carrés & Carrés moyens & $F$ \\ \hline
+Modèle & $ddl_1=p=1$ & $\displaystyle SC_{reg}=\sum_{i=1}^n (\widehat Y_i - \overline Y)^2$ & $\textbf{ }CM_{reg}=\frac{\displaystyle SC_{reg}}{\displaystyle ddl_1}$  & $ \frac{\displaystyle CM_{reg}}{\displaystyle CM_{res}}$ \\ \hline
+Erreur & $ddl_2=n-2$ & $\displaystyle SC_{res}=\sum_{i=1}^n (Y_i - \widehat Y_i)^2$ & $ CM_{res}=\frac{\displaystyle SC_{res}}{\displaystyle ddl_2}$ & \vspace*{-3 mm}\\
+Résiduelle & & & & \\ \hline
+Totale & $n-1=n-2+p$ & $\displaystyle SC_{tot}=\sum_{i=1}^n (Y_i - \overline Y)^2$ &  & \\ \hline
+\end{tabular}
+\end{table}
+
+
+On rejette l'hypothèse nulle du test global au seuil $\alpha$ si $F\geq \mathcal{F}_{1, n-2,1-\alpha}$.\\
+
+\item[$\bullet$] $\displaystyle R^2 =\frac{SC_{reg}} {SC_{tot}} =  1 - \frac{SC_{res}}{SC_{tot}}.$
+
+\item[$\bullet$] Intervalle de confiance de niveau $(1-\alpha)$ pour $\widehat Y_{0} = E(Y | X = x_0)$:
+\begin{eqnarray*}
+\left[\widehat{\beta}_0 + \widehat{\beta}_1 x_0 \, \pm \, t_{n-2,1-\alpha/2} \widehat{\sigma} \sqrt{\frac{1}{n}+\frac{(\overline x-x_0)^2}{S_{xx}}}\right].
+\end{eqnarray*}
+
+\item[$\bullet$] 
+Intervalle de prévision de niveau (1-$\alpha$) pour $Y_0^*$, une nouvelle observation :
+$$\left[\widehat{\beta}_0 + \widehat{\beta}_1 x_0 \, \pm \, t_{n-2, 1-\alpha/2} \widehat{\sigma} \sqrt{1+\frac{1}{n}+\frac{(\overline x-x_0)^2}{S_{xx}}} \right].$$
+
+\item[$\bullet$] Distribution des résidus: $$ \widehat\varepsilon_i \sim N(0, \, \sigma^2(1-h_{ii})), \quad \mbox{ où } \quad  h_{ii} = \frac{1}{n} + \frac{(\overline{x}-x_i)^2}{S_{xx}}.$$
+
+
+\end{itemize}
+
+
+
+
+\end{document}

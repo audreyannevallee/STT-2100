@@ -1,0 +1,155 @@
+
+\documentclass[letter, 11pt]{article}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \oddsidemargin  0.0in
+    \evensidemargin 0.0in
+    \textwidth      6.8in
+    \headheight     0.0in
+    \topmargin      -0.2in
+    \textheight=9.2in
+    \parindent=0in
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{MathCommands}
+
+\usepackage{amsthm,amsfonts,amssymb,amsmath}
+\usepackage{graphicx}   %To include graphics
+\usepackage[small,compact]{titlesec}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[francais]{babel}
+
+\usepackage{verbatim}
+\usepackage{enumerate}
+\usepackage{fancyhdr,bbold}
+\pagestyle{fancy}
+
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[C]{Automne 2020}
+\fancyhead[L]{STT-2100 Régression}
+\fancyhead[R]{Audrey-Anne Vallée}
+
+
+\newcommand{\var}{\mathbb{V}\text{ar}}
+\newcommand{\cov}{\mathbb{C}\text{ov}}
+\newcommand{\esp}{\mathbb{E}}
+
+\newcommand{\bm}{\boldmath}
+\newcommand{\um}{\unboldmath}
+\newcommand{\botheta}{\mbox{\bm$\theta$\um}}
+\newcommand{\boTheta}{\mbox{\bm$\Theta$\um}}
+\newcommand{\boY}{\mbox{\bm$Y$\um}}
+\newcommand{\bobeta}{\mbox{\bm$\beta$}}
+\newcommand{\boeps}{\mbox{\bm$\varepsilon$\um}}
+\newcommand{\boSigma}{\mbox{\bm$\Sigma$\um}}
+\newcommand{\boldx}{\mbox{\bm$x$\um}}
+\newcommand{\boX}{\mbox{\bm$X$\um}}
+\newcommand{\boR}{\mbox{\bm$R$\um}}
+\newcommand{\boM}{\mbox{\bm$M$\um}}
+\newcommand{\boN}{\mbox{\bm$N$\um}}
+\newcommand{\boP}{\mbox{\bm$P$\um}}
+\newcommand{\boA}{\mbox{\bm$A$\um}}
+\newcommand{\boB}{\mbox{\bm$B$\um}}
+\newcommand{\boun}{\mbox{\bm$1$\um}}
+\newcommand{\boz}{\mbox{\bm$0$\um}}
+\newcommand{\bolambda}{\mbox{\bm$\lambda$\um}}
+\newcommand{\bov}{\mbox{\bm$v$\um}}
+\newcommand{\boV}{\mbox{\bm$V$\um}}
+\newcommand{\bou}{\mbox{\bm$u$\um}}
+\newcommand{\boe}{\mbox{\bm$e$\um}}
+\newcommand{\hbobeta}{\hat{\bobeta}}
+\newcommand{\bo}[1]{\mbox{\bm$#1$\um}}
+\newcommand{\bozero}{\mbox{\bm$0$\um}}
+\newcommand{\bomu}{\mbox{\bm$\mu$\um}}
+\newcommand{\ident}{\mbox{\bm$I$\um}}
+\newcommand{\eproof}{\hfill$\sqcap\!\!\!\!\sqcup$}
+\newcommand{\boy}{\mbox{\bm$y$\um}}
+\newcommand{\boZ}{\mbox{\bm$Z$\um}}
+\newcommand{\bogamma}{\mbox{\bm$\gamma$}}
+
+\begin{document}
+
+%\vspace*{0.05 in}
+\begin{center}
+{\Large Devoir 2 }
+\end{center}
+\vspace*{0.1 in}
+
+\begin{itemize}
+\item Ne remettre qu'un seul travail par équipe.
+\item \underline{La qualité de la langue sera évaluée} dans ce travail. Ceci inclut l'orthographe, la grammaire et la syntaxe.
+\item Le devoir est à remettre au plus tard le {\bf 27 novembre 2020 à 17h00}. {\bf Un travail remis en retard ne sera pas accepté. Les étudiants remettant un devoir en retard recevront la note 0.}
+\item Toutes vos inférences devront être faites au seuil de 5\%.
+\end{itemize}
+
+\vspace{0.2 in}
+\textbf{Question 1} (28 pts)
+\vspace{0.1in}
+
+Soit le mod\`ele de r\'egression lin\'eaire 
+$$\boY=\bo{X}\bobeta+\boeps,$$
+o\`u $\mathrm{E}(\boeps) = {\bf 0}$ et $\mathrm{Var}(\boeps)=\sigma^2 \mathbb{1}_n $, $\sigma>0$ et $\mathbb{1}_n$ est la
+matrice identit\'e de dimension $n\times n$.\\
+
+Soit $\bo{A}$, une matrice sym\'etrique de dimension $n\times n$ et posons $\widetilde{\bobeta}=(\bo{X}'\bo{A}\bo{X})^{-1}\bo{X}'\bo{A}\boY$.
+
+\begin{enumerate}[(a)]
+	\item (8 points) Montrez que $\widetilde{\bobeta}$ est un estimateur non biais\'e de $\bobeta$. Justifiez toutes les étapes de votre démarche.
+	\item On s'intéresse à comparer la variance de  $\widetilde{\bobeta}$ et la variance de l'estimateur des moindres carrés $\widehat{\bobeta}=(\bo{X}'\bo{X})^{-1}\bo{X}'\boY$. 
+		\begin{enumerate}[(i)]
+		\item (12 points) Calculez la variance de $\widetilde{\bobeta}$ et donnez son expression. Justifiez toutes les étapes de votre démarche.
+		\item (8 points) À partir de l'expression obtenue, montrez que si $\bo{A} = \mathbb{1}_n$, alors la variance de $\widetilde{\bobeta}$ est égale à la variance de l'estimateur des moindres carrés $\widehat{\bobeta}$. Autrement dit, montrez que si $\bo{A} = \mathbb{1}_n$, alors $\mathrm{Var}(\widetilde{\bobeta}) = \mathrm{Var}(\widehat{\bobeta})$. Justifiez toutes les étapes de votre démarche.
+		\end{enumerate}
+\end{enumerate}
+
+
+\vspace{0.2 in}
+\textbf{Question 2} (72 pts)
+\vspace{0.1in}
+
+Vous devez répondre à cette question en utilisant le logiciel SAS. Vous remettrez votre programme annoté dans un fichier .sas, mais toutes les réponses aux questions doivent être présentées dans un fichier pdf, en identifiant clairement la question associéee à votre réponse (par exemple (i)
+a)).
+\vspace{0.1in}
+
+Vous trouverez sur le site du cours un fichier nommé {\it Taille.txt}. Il contient la taille (en pouces) de plusieurs étudiants universitaires de différents groupes (classes), ainsi que la taille de leurs parents. Ces données ressemblent un peu à celles de Francis Galton, le généticien dont les travaux ont donné naissance au terme "régression". 
+
+{\bf Dans le document pdf, pour toutes les questions suivantes, donnez un résumé des valeurs qui ont été utilisées pour répondre aux questions. Vos résumés doivent être bref, sous forme de tableaux par exemple. Donnez aussi les graphiques utilisés dans la justification de vos réponses.}
+
+\begin{enumerate}[(a)]
+\item Étudiez brièvement les relations entre la taille des enfants adultes et chacune des autres variables présentes. Résumez brièvement votre étude. Si vous ne pouviez choisir qu'une seule variable pour prédire la taille des enfants à l'âge adulte, laquelle choisiriez-vous et pourquoi?
+%
+\item Vérifiez la présence éventuelle de multicolinéarité. Dans votre document pdf, résumez vos conclusions et vos justifications.  
+%
+\item Sélectionnez le modèle qui vous semble le plus approprié pour prédire la taille des enfants adultes en fonction de toutes les autres variables. Ne transformez pas les variables.
+    \begin{enumerate}[(i)]
+    \item Dans votre code SAS, laissez des traces de votre démarche (modèles et méthodes explorés). N'oubliez pas de commenter le code.
+    \item Assurez-vous brièvement que les postulats du modèle sont rencontrés. Ne montrez que la validation du modèle final.
+    \item  Écrivez l'équation de la régression estimée. Interprétez la valeur des coefficients en contexte.
+    \end{enumerate}
+\item  À l'aide du modèle choisi en (c), ou d'un autre modèle si nécessaire, répondez aux questions suivantes.
+    \begin{enumerate}[(i)]
+    \item Si on connaît la taille de la mère, la taille du père est-elle utile pour prédire encore plus précisément la taille de l'enfant? % test-t- partiel
+    \item La taille de la mère a-t-elle un impact différent sur les filles et sur les garçons? % interaction sexe* taille-mere
+    \item La taille de la mère a-t-elle un impact sur les filles différent de l'impact de la taille du père sur les garçons? % B(Mere)-B(pere)sans interaction, ou B(Mere)+B(Mere*sexe)-B(pere) avec les interactins contenant sexe, selon leur choix.
+    \item Marie a eu une fille avec Jules, puis un garçon avec Marc, qui mesure 5 pouces de plus que Jules. Quelle est la différence moyenne de taille attendue entre les deux enfants à l'âge adulte, selon votre modèle? Calculez l'erreur-type associée à cette différence.
+    \end{enumerate}
+    
+\item Francis Galton a multiplié la taille de toutes les femmes (mères ou filles) par 1.08 pour la rendre équivalente à celle des hommes. Il a ensuite combiné la taille des deux parents pour n'avoir qu'une variable explicative, en faisant la moyenne. 
+    \begin{enumerate}[(i)]
+    \item  Faites comme lui sur vos données, et déterminez si la pente de votre droite diffère de la sienne (0.65) de façon significative.
+    \item Lequel des deux modèles s'ajuste le mieux à vos données? Celui avec les transformations de Galton, ou celui que vous avez ajusté sur les données originales (en c)?
+    \end{enumerate}
+
+\end{enumerate}
+
+
+%Source: Question adapté du problème 6.15 de Applied Linear Regression Models de Kutner, Nachtsheim et Neter.
+
+
+
+\end{document}
+
+
+

@@ -1,0 +1,185 @@
+
+\documentclass[letter, 11pt]{article}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \oddsidemargin  0.0in
+    \evensidemargin 0.0in
+    \textwidth      6.8in
+    \headheight     0.0in
+    \topmargin      -0.2in
+    \textheight=9.2in
+    \parindent=0in
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{MathCommands}
+
+\usepackage{amsthm,amsfonts,amssymb,amsmath}
+\usepackage{graphicx}   %To include graphics
+\usepackage[small,compact]{titlesec}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[francais]{babel}
+
+\usepackage{verbatim}
+\usepackage{enumerate}
+\usepackage{fancyhdr,bbold}
+\pagestyle{fancy}
+
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[C]{Automne 2021}
+\fancyhead[L]{STT-2100 Régression}
+\fancyhead[R]{Audrey-Anne Vallée}
+
+
+\newcommand{\var}{\mathbb{V}\text{ar}}
+\newcommand{\cov}{\mathbb{C}\text{ov}}
+\newcommand{\esp}{\mathbb{E}}
+
+\newcommand{\bm}{\boldmath}
+\newcommand{\um}{\unboldmath}
+\newcommand{\botheta}{\mbox{\bm$\theta$\um}}
+\newcommand{\boTheta}{\mbox{\bm$\Theta$\um}}
+\newcommand{\boY}{\mbox{\bm$Y$\um}}
+\newcommand{\bobeta}{\mbox{\bm$\beta$}}
+\newcommand{\boeps}{\mbox{\bm$\varepsilon$\um}}
+\newcommand{\boSigma}{\mbox{\bm$\Sigma$\um}}
+\newcommand{\boldx}{\mbox{\bm$x$\um}}
+\newcommand{\boX}{\mbox{\bm$X$\um}}
+\newcommand{\boR}{\mbox{\bm$R$\um}}
+\newcommand{\boM}{\mbox{\bm$M$\um}}
+\newcommand{\boN}{\mbox{\bm$N$\um}}
+\newcommand{\boP}{\mbox{\bm$P$\um}}
+\newcommand{\boA}{\mbox{\bm$A$\um}}
+\newcommand{\boB}{\mbox{\bm$B$\um}}
+\newcommand{\boun}{\mbox{\bm$1$\um}}
+\newcommand{\boz}{\mbox{\bm$0$\um}}
+\newcommand{\bolambda}{\mbox{\bm$\lambda$\um}}
+\newcommand{\bov}{\mbox{\bm$v$\um}}
+\newcommand{\boV}{\mbox{\bm$V$\um}}
+\newcommand{\bou}{\mbox{\bm$u$\um}}
+\newcommand{\boe}{\mbox{\bm$e$\um}}
+\newcommand{\hbobeta}{\hat{\bobeta}}
+\newcommand{\bo}[1]{\mbox{\bm$#1$\um}}
+\newcommand{\bozero}{\mbox{\bm$0$\um}}
+\newcommand{\bomu}{\mbox{\bm$\mu$\um}}
+\newcommand{\ident}{\mbox{\bm$I$\um}}
+\newcommand{\eproof}{\hfill$\sqcap\!\!\!\!\sqcup$}
+\newcommand{\boy}{\mbox{\bm$y$\um}}
+\newcommand{\boZ}{\mbox{\bm$Z$\um}}
+\newcommand{\bogamma}{\mbox{\bm$\gamma$}}
+
+\begin{document}
+
+%\vspace*{0.05 in}
+\begin{center}
+{\Large Devoir 2 }
+\end{center}
+
+\begin{itemize}
+\item Ne remettre qu'un seul travail par équipe.
+\item \underline{La qualité de la langue sera évaluée} dans ce travail. Ceci inclut l'orthographe, la grammaire et la syntaxe.
+\item Le devoir est à remettre au plus tard le {\bf 26 novembre 2021 à 17h00}. {\bf Un travail remis en retard ne sera pas accepté. Les étudiants remettant un devoir en retard recevront la note 0.}
+\item Toutes vos inférences devront être faites au seuil de 5\%.
+\end{itemize}
+
+\vspace{0.1 in}
+\textbf{Question 1} (32 pts)
+\vspace{0.1in}
+
+Soit le mod\`ele de r\'egression lin\'eaire 
+$$\boY^*=\bo{X}^*\bobeta+\boeps^*,$$
+o\`u $\boY^* = \bo{A} \boY$, $ \bo{X}^* = \bo{A}\bo{X}$, $\boeps^* = \bo{A}\boeps$,
+$\mathrm{E}(\boeps) = {\bf 0}$ et $\mathrm{Var}(\boeps)=\sigma^2 \mathbb{1}_n $, $\mathbb{1}_n$ est la matrice identit\'e de dimension $n\times n$ et $\bo{A}$ est une matrice connue de dimension $n\times n$. L'estimateur des moindres carrés de $\bobeta$ est $\widehat{\bobeta}^* = \left(\bo{X}^{*\top}\bo{X}^*\right)^{-1} \bo{X}^{*\top} \bo{Y}^*$.
+
+\begin{enumerate}[(a)]
+	\item Supposons que $\bo{A}$ est une matrice orthogonale connue de dimension $n\times n$.
+	\begin{enumerate}[(i)]
+		\item (8 points) Montrez que $\mathrm{E}(\boeps^*) = 0$ et que $\mathrm{Var}(\boeps^*) = \sigma^2 \mathbb{1}_n$. Justifiez toutes les étapes de votre démarche.
+		\item (6 points) Montrez que $\widehat{\bobeta}^* = \widehat{\bobeta}$, où $\widehat{\bobeta} = \left(\bo{X}^{\top}\bo{X}\right)^{-1} \bo{X}^{\top} \bo{Y}$. Justifiez toutes les étapes de votre démarche.
+	\end{enumerate}
+	\item Supposons maintenant que $\bo{A}$ est une matrice connue de dimension $n\times n$ telle que $\bo{A}^\top\bo{A} = {\boldsymbol \Omega}$ et où ${\boldsymbol \Omega}$ est une matrice idempotente.
+		\begin{enumerate}[(i)]
+		\item (8 points) Montrez que $\widehat{\bobeta}^*$ est un estimateur sans biais de $\bobeta$. Justifiez toutes les étapes de votre démarche.
+		\item (10 points)  Montrez que la variance de $\widehat{\bobeta}^*$ est telle que $\mathrm{Var}\left(\widehat{\bobeta}^*\right) = \sigma^2 \left( \bo{X}^\top {\boldsymbol \Omega} \bo{X} \right)^{-1}$. Justifiez toutes les étapes de votre démarche.
+		\end{enumerate}
+\end{enumerate}
+
+
+\vspace{0.1 in}
+\textbf{Question 2} (68 pts)
+\vspace{0.1in}
+
+Vous devez répondre à cette question en utilisant le logiciel SAS. Vous remettrez votre programme annoté dans un fichier .sas, mais toutes les réponses aux questions doivent être présentées dans un fichier pdf, en identifiant clairement la question associée à votre réponse (par exemple (i)
+a)).
+
+Vous trouverez sur le site du cours, sur la page du Devoir 2, un fichier nommé {\it golf.txt}.
+On s'intéresse ici à l'argent remporté par des joueurs de golf professionnels. Votre jeu de données contient des renseignements sur 125 joueurs de golf en 2009. Les variables suivantes sont à votre disposition: 
+
+\begin{itemize}
+	\item Argent gagné (en dizaines de milliers dollars). % C'est faux. Pour Automne 2021, j'ai pris le log du salaire en dollars. donc dans golf.txt, le salaire correspond au log du salaire de golf_0.txt
+	\item Distance moyenne des premiers coups (en verges)
+	\item Pourcentage de coups sur l'allée
+	\item Pourcentage de verts atteints en coups réglementaires (i.e. en deçà d'une limite de coups propre à chaque trou)
+	\item Nombre moyen de coups roulés par partie
+	\item Pourcentage de coups dans le sable récupérés (2 coups pour se rendre dans le trou)
+	\item Nombre de tournois où le joueur était inscrit
+	\item Nombre moyen de coups roulés sur le vert par trou
+	\item Nombre de tournois complétés
+	\item Rang centile moyen par tournoi (un chiffre élevé est meilleur)
+	\item Nombre de parties complétées
+\end{itemize}
+
+\vspace{0.1 in}
+
+Votre objectif est de modéliser le montant d'argent remporté par un joueur dans une année à l'aide d'un modèle de régression linéaire multiple approprié. Ne transformez pas les variables pour ce devoir.
+
+\vspace{0.1 in}
+
+{\bf Dans le document pdf, pour toutes les questions suivantes, donnez un résumé des valeurs qui ont été utilisées pour répondre aux questions. Vos résumés doivent être bref, sous forme de tableaux par exemple. Donnez aussi les graphiques utilisés dans la justification de vos réponses.}
+
+
+\begin{enumerate}[(a)]
+\item Étudiez brièvement les relations entre l'argent gagné des joueurs et chacune des autres variables présentes. Résumez brièvement votre étude. Si vous ne pouviez choisir qu'une seule variable pour prédire l'argent gagné des joueurs, laquelle choisiriez-vous et pourquoi?
+%
+\item Vérifiez la présence éventuelle de multicolinéarité. Dans votre document pdf, résumez vos conclusions et vos justifications.  
+%
+\item À partir de toutes les variables explicatives disponibles, sélectionnez le modèle qui vous semble le plus approprié pour prédire l'argent gagné des joueurs. Ne transformez pas les variables.
+    \begin{enumerate}[(i)]
+    \item Dans votre code SAS, laissez des traces de votre démarche (modèles et méthodes explorés). N'oubliez pas de commenter le code.
+    \item Assurez-vous brièvement que les postulats du modèle sont rencontrés. Ne montrez que la validation du modèle final.
+    \item  Écrivez l'équation de la régression estimée. Interprétez la valeur des coefficients en contexte.
+    \end{enumerate}
+\item  Répondez aux questions suivantes avec le modèle incluant les variables suivantes:
+\begin{enumerate}[1.]
+	\item la constante,
+	\item la distance moyenne des premiers coups (en verges),
+	\item le pourcentage de coups dans le sable récupérés (2 coups pour se rendre dans le trou),
+	\item le rang centile moyen par tournoi (un chiffre élevé est meilleur),
+	\item l'interaction entre la variable en 2. et la variable en 3.,
+	\item l'interaction entre la variable en 2. et la variable en 4.,
+	\item l'interaction entre la variable en 3. et la variable en 4..
+\end{enumerate}
+    \begin{enumerate}[(i)]
+    	\item Il semble logique que le premier coup soit très important pour un joueur. Combien d'argent un joueur peut-il espérer gagner de plus s'il augmente de 5 verges la distance moyenne de ses premiers coups?
+    	\item Est-ce que d'augmenter le pourcentage de coups dans le sable récupéré a significativement le même effet sur l'argent gagné pour un mauvais joueur que pour un bon joueur, tel que mesuré par le rang centile moyen par tournoi?
+    	\item Un autre joueur, qui n'est pas dans vos jeux de données, a les valeurs suivantes pour les variables données dans l'énoncé principal : 
+    	\begin{verbatim} 
+    	256.4   64.5   67.8   30.8   27  17   1.84   11   53.43  46 
+    	\end{verbatim}
+    	Combien d'argent le modèle prédit-il qu'il ait gagné en 2009? \\
+    	% Vraie valeur est 67616
+    \end{enumerate}
+    
+
+\end{enumerate}
+
+
+%Source: Question adapté du problème 6.15 de Applied Linear Regression Models de Kutner, Nachtsheim et Neter.
+
+
+
+\end{document}
+
+
+
